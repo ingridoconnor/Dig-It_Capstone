@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 class="h3 mb-3 font-weight-normal">WELCOME TO DIG IT!</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -12,22 +12,22 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">username</label>
       <input
         type="text"
         id="username"
         class="form-control"
-        placeholder="Username"
+        placeholder="username"
         v-model="user.username"
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <label for="password" class="sr-only">password</label>
       <input
         type="password"
         id="password"
         class="form-control"
-        placeholder="Password"
+        placeholder="password"
         v-model="user.password"
         required
       />
@@ -74,3 +74,7 @@ export default {
   }
 };
 </script>
+<style>
+
+
+</style>
