@@ -29,7 +29,7 @@ COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS plant;
+DROP TABLE IF EXISTS plant CASCADE;
 CREATE TABLE plant (
         plant_id serial NOT NULL,
         plant_name varchar(100) NOT NULL,
@@ -51,14 +51,15 @@ DROP TABLE IF EXISTS plant_subplot;
 CREATE TABLE plant_subplot (
         plant_id int NOT NULL,
         subplot_id int
---        CONSTRAINT PK_plant_id PRIMARY KEY (plant_id)
+--      DBVis throws error when specifying 2 primaty keys for this table.  need to fix
+--      CONSTRAINT PK_plant_id PRIMARY KEY (plant_id),
 );
 COMMIT TRANSACTION;
 
 
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS subplot;
+DROP TABLE IF EXISTS subplot CASCADE;
 CREATE TABLE subplot (
         subplot_id serial NOT NULL,
         length int NOT NULL,
@@ -71,7 +72,7 @@ COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS plot;
+DROP TABLE IF EXISTS plot CASCADE;
 CREATE TABLE plot (
         plot_id int NOT NULL,
         length int NOT NULL,
@@ -87,16 +88,15 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS plot_supplies;
 CREATE TABLE plot_supplies (
         plot_id int,
-        supply_id int,
-        CONSTRAINT PK_supply_id PRIMARY KEY (supply_id)
-        
-
-
+        supply_id int
+--      DBVis throws error when specifying 2 primaty keys for this table.  need to fix        
+--      CONSTRAINT PK_supply_id PRIMARY KEY (supply_id),
+--      CONSTRAINT PK_plot_id PRIMARY KEY (plot_id)
 );
 COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
-DROP TABLE IF EXISTS supplies; 
+DROP TABLE IF EXISTS supplies CASCADE; 
 CREATE TABLE supplies (
         supply_id int NOT NULL,
         supply_name varchar(100) NOT NULL,
