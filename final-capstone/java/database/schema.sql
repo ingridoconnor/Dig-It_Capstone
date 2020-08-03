@@ -50,9 +50,8 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS plant_subplot;
 CREATE TABLE plant_subplot (
         plant_id int NOT NULL,
-        subplot_id int,
-        CONSTRAINT PK_plant_id PRIMARY KEY (plant_id)
-
+        subplot_id int
+--        CONSTRAINT PK_plant_id PRIMARY KEY (plant_id)
 );
 COMMIT TRANSACTION;
 
@@ -67,8 +66,6 @@ CREATE TABLE subplot (
         plot_id serial NOT NULL,
         subplot_name varchar(100) NOT NULL,
         CONSTRAINT PK_subplot_id PRIMARY KEY (subplot_id)
-        
-
 );
 COMMIT TRANSACTION;
 
@@ -79,7 +76,7 @@ CREATE TABLE plot (
         plot_id int NOT NULL,
         length int NOT NULL,
         width int NOT NULL,
-        plot_name int NOT NULL,
+        plot_name varchar(100) NOT NULL,
         CONSTRAINT PK_plot_id PRIMARY KEY (plot_id)
 
 
@@ -103,9 +100,8 @@ DROP TABLE IF EXISTS supplies;
 CREATE TABLE supplies (
         supply_id int NOT NULL,
         supply_name varchar(100) NOT NULL,
-        supply_cost int NOT NULL
-        CONSTRAINT PK_supplies PRIMARY KEY (supplies)
-
+        supply_cost int NOT NULL,
+        CONSTRAINT PK_supplies PRIMARY KEY (supply_id)
 );
 ALTER TABLE subplot ADD FOREIGN KEY (plot_id) REFERENCES plot(plot_id);
 ALTER TABLE plant_subplot ADD FOREIGN KEY (plant_id) REFERENCES plant(plant_id);
