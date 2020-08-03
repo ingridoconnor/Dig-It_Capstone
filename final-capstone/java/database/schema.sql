@@ -32,11 +32,11 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS plant;
 CREATE TABLE plant (
         plant_id serial NOT NULL,
-        plant_name varchar (100) NOT NULL,
-        description varchar (1000) NOT NULL,
+        plant_name varchar(100) NOT NULL,
+        description varchar(1000) NOT NULL,
         plants_per_sq_foot int NOT NULL,
-        sun_requirements varchar (100) NOT NULL,
-        region varchar (100) NOT NULL,
+        sun_requirements varchar(100) NOT NULL,
+        region varchar(100) NOT NULL,
         seed_cost int NOT NULL,
         CONSTRAINT PK_plant_id PRIMARY KEY (plant_id)     
 
@@ -64,9 +64,8 @@ CREATE TABLE subplot (
         subplot_id serial NOT NULL,
         length int NOT NULL,
         width int NOT NULL,
-        total_area int NOT NULL,
         plot_id serial NOT NULL,
-        subplot_name varchar (100) NOT NULL,
+        subplot_name varchar(100) NOT NULL,
         CONSTRAINT PK_subplot_id PRIMARY KEY (subplot_id)
         
 
@@ -80,7 +79,6 @@ CREATE TABLE plot (
         plot_id int NOT NULL,
         length int NOT NULL,
         width int NOT NULL,
-        total_area int NOT NULL,
         plot_name int NOT NULL,
         CONSTRAINT PK_plot_id PRIMARY KEY (plot_id)
 
@@ -104,7 +102,7 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS supplies; 
 CREATE TABLE supplies (
         supply_id int NOT NULL,
-        supply_name varchar (100) NOT NULL,
+        supply_name varchar(100) NOT NULL,
         supply_cost int NOT NULL
         CONSTRAINT PK_supplies PRIMARY KEY (supplies)
 
