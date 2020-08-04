@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users;
-DROP SEQUENCE IF EXISTS seq_user_id;
+DROP TABLE IF EXISTS users CASCADE;
+DROP SEQUENCE IF EXISTS seq_user_id CASCADE;
 
 CREATE SEQUENCE seq_user_id
   INCREMENT BY 1
@@ -89,7 +89,7 @@ COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS plant_subplot;
+DROP TABLE IF EXISTS plant_plot;
 CREATE TABLE plant_plot (
         plant_id int NOT NULL,
         plot_id int,
@@ -122,15 +122,13 @@ CREATE TABLE garden (
         width int NOT NULL,
         garden_name varchar(100) NOT NULL,
         CONSTRAINT PK_garden_id PRIMARY KEY (garden_id)
-		
-INSERT INTO garden (user_id, garden_id, length, width, garden_name) VALUES ('1', '1', '10', '15', 'Xanadu');
 
 
 );
 COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
-DROP TABLE IF EXISTS plot_supplies;
+DROP TABLE IF EXISTS garden_supplies;
 CREATE TABLE garden_supplies (
         garden_id int,
         supply_id int,
@@ -178,7 +176,7 @@ INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('23', 'Dit It
 
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS user_data;
+DROP TABLE IF EXISTS user_data CASCADE;
 CREATE TABLE user_data(
         user_id int DEFAULT nextval('seq_user_id'::regclass) NOT NULL, 
         name varchar(100) NOT NULL,
