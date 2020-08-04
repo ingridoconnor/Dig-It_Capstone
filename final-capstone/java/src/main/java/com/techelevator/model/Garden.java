@@ -20,6 +20,14 @@ public class Garden {
 	public Garden(int gardenId, double gardenLength, double gardenWidth) {
 		super();
 		this.gardenId = gardenId;
+		this.gardenLength = gardenLength;
+		this.gardenWidth = gardenWidth;
+	}
+	public Garden(double gardenLength, double gardenWidth) {
+		super();
+		this.gardenLength = gardenLength;
+		this.gardenWidth = gardenWidth;
+		
 	}
 	
 	
