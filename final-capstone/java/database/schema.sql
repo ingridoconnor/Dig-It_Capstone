@@ -22,6 +22,11 @@ CREATE TABLE users (
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+INSERT INTO users (username,password_hash,role) VALUES ('doyle','$2a$10$Z8rmoLK4SHX3q4/jkEqgqeZP3uTLsLsP/uZUsYkXzMC7AlIu5rtVC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('brandon','$2a$10$Z8rmoLK4SHX3q4/jkEqgqeZP3uTLsLsP/uZUsYkXzMC7AlIu5rtVC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('ingrid','$2a$10$Z8rmoLK4SHX3q4/jkEqgqeZP3uTLsLsP/uZUsYkXzMC7AlIu5rtVC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('ben','$2a$10$Z8rmoLK4SHX3q4/jkEqgqeZP3uTLsLsP/uZUsYkXzMC7AlIu5rtVC','ROLE_USER');
+
 
 
 COMMIT TRANSACTION;
@@ -117,6 +122,8 @@ CREATE TABLE garden (
         width int NOT NULL,
         garden_name varchar(100) NOT NULL,
         CONSTRAINT PK_garden_id PRIMARY KEY (garden_id)
+		
+INSERT INTO garden (user_id, garden_id, length, width, garden_name) VALUES ('1', '1', '10', '15', 'Xanadu');
 
 
 );
