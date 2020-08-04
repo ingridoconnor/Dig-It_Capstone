@@ -11,7 +11,10 @@ import org.springframework.stereotype.Component;
 
 import com.techelevator.model.Plant;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e5950a4f9c112cb3748ed64529e0cdd149219fd
 @Component
 public class PlantSqlDAO implements PlantDAO {
 	
