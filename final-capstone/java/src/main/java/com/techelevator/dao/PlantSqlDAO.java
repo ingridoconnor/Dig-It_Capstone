@@ -7,10 +7,11 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.model.Plant;
 
-
+@Component
 public class PlantSqlDAO implements PlantDAO {
 	
 	private JdbcTemplate template;

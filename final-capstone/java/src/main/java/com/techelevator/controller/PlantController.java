@@ -15,12 +15,12 @@ import com.techelevator.model.Plant;
 @RequestMapping("/api")
 public class PlantController {
 
-//	@Autowired
-//	PlantDAO thePlants;
-//	
-//	@RequestMapping(path = { "/allPlants", "/" })
-//	public List<Plant> listAllPlants() {
-//		List<Plant> allPlants = thePlants.getAllPlants();
-//		return allPlants;
-//	}
+	@Autowired
+	PlantDAO thePlants;
+	
+	@RequestMapping(path = { "/allPlants", "/" })
+	public List<Plant> listAllPlants() {
+		List<Plant> allPlants = thePlants.getAllPlants();
+		return allPlants;
+	}
 }
