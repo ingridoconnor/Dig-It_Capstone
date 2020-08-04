@@ -25,6 +25,9 @@
 </template>
 
 <script>
+
+import gardensService from "../services/GardenService";
+
 export default {
   name: "plot-form",
   props: {
@@ -82,40 +85,40 @@ export default {
           .updatePlot(newPlot)
           .then(response => {
             if (response.status === 200) {
-              this.$router.push(`/board/${newCard.boardId}`);
+              this.$router.push(`/garden/${newPlot.gardenId}`);
             }
           })
           .catch(error => {
             if (error.response) {
               this.errorMsg =
-                "Error updating card. Response received was '" +
+                "Error updating plot. Response received was '" +
                 error.response.statusText +
                 "'.";
             } else if (error.request) {
               this.errorMsg =
-                "Error updating card. Server could not be reached.";
+                "Error updating plot. Server could not be reached.";
             } else {
               this.errorMsg =
-                "Error updating card. Request could not be created.";
+                "Error updating plot. Request could not be created.";
             }
           });
       }
     },
    cancelForm() {
-      this.$router.push(`/board/${this.$route.params.boardID}`);
+      this.$router.push(`/garden/${this.$route.params.gardenID}`);
     }
   },
   created() {
-    if (this.cardID != 0) {
+    if (this.plotID != 0) {
       gardensService
-        .getCard(this.cardID)
+        .getPlot(this.plotID)
         .then(response => {
-          this.card = response.data;
+          this.plot = response.data;
         })
         .catch(error => {
           if (error.response && error.response.status === 404) {
             alert(
-              "Card not available. This card may have been deleted or you have entered an invalid card ID."
+              "Plot not available. This plot may have been deleted or you have entered an invalid plot ID."
             );
             this.$router.push("/");
           }
