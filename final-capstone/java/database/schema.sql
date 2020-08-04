@@ -101,7 +101,7 @@ CREATE TABLE plot (
        plot_id serial NOT NULL,
         length int NOT NULL,
         width int NOT NULL,
-        garden_id serial NOT NULL,
+        garden_id int NOT NULL,
         plot_name varchar(100) NOT NULL,
         CONSTRAINT PK_plot_id PRIMARY KEY (plot_id)
 );
