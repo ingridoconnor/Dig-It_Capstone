@@ -7,10 +7,12 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.model.Plant;
 
 
+@Component
 public class PlantSqlDAO implements PlantDAO {
 	
 	private JdbcTemplate template;
@@ -21,25 +23,50 @@ public class PlantSqlDAO implements PlantDAO {
 
 	@Override
 	public List<Plant> getAllPlants() {
-	    String sqlPuppy = "SELECT * from plant";
-	    SqlRowSet results = template.queryForRowSet(sqlPuppy);
+	    String sql = "SELECT * from plant";
+	    SqlRowSet results = template.queryForRowSet(sql);
 	    return mapResultsToPlants(results);    
 	}
 	
-	private Plant mapResultToPuppy(SqlRowSet result) {
-	    Plant retrievedPuppy = new Plant(result.getInt("id"), result.getString("name"), result.getString("description"),
-	            result.getInt("plantsPerSqFoot"), result.getString("sunRequirements"), result.getString("region"), result.getBigDecimal("seedCost"));
-
-	    return retrievedPuppy;
-	}
+	
 
 	private List<Plant> mapResultsToPlants(SqlRowSet results) {
-	    List<Plant> retrievedPuppies = new ArrayList<>();
+	    List<Plant> retrievedPlants = new ArrayList<>();
 	    while (results.next()) {
-	        retrievedPuppies.add(mapResultToPuppy(results));
+	        retrievedPlants.add(mapRowToPlant(results));
 	    }
 
-	    return retrievedPuppies;
+	    return retrievedPlants;
 	}
+
+	@Override
+	public Plant searchPlantByPlantName() {
+		Plant plant = null;
+		String sql = "SELECT * FROM plant WHERE plant_name = ?";
+		SqlRowSet results = template.queryForRowSet(sql);
+		if(results.next()) {
+			plant = mapRowToPlant(results);
+		}
+		
+		return plant;
+	}
+	@Override
+	public Plant addNewPlant(Plant plant) {
+		String sql = "INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES (?, ?, ?, ?, ?, ?) RETURING plant_id";
+		int newPlantId = template.queryForObject(sql, int.class, plant.getName(), plant.getDescription(), plant.getPlantsPerSqFoot(), plant.getSunRequirements(), plant.getRegion(), plant.getSeedCost());
+		plant.setId(newPlantId);
+		return plant;
+	}
+	private Plant mapRowToPlant(SqlRowSet results) {
+		Plant plant = new Plant();
+		plant.setId(results.getInt("plant_id"));
+		plant.setDescription(results.getString("description"));
+		plant.setName(results.getString("plant_name"));
+		plant.setPlantsPerSqFoot(results.getInt("plants_per_sq_foot"));
+		plant.setRegion(results.getString("region"));
+		plant.setSeedCost(results.getBigDecimal("seed_cost"));
+		return plant;
+	}
+
 
 }
