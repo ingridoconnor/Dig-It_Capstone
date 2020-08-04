@@ -19,7 +19,6 @@ public class PlantSqlDAO implements PlantDAO {
 	    template = new JdbcTemplate(datasource);
 	}
 
-
 	@Override
 	public List<Plant> getAllPlants() {
 	    String sqlPuppy = "SELECT * from plant";
@@ -42,5 +41,5 @@ public class PlantSqlDAO implements PlantDAO {
 
 	    return retrievedPuppies;
 	}
-	
+
 }
