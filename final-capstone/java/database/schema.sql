@@ -50,9 +50,9 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS plant_subplot;
 CREATE TABLE plant_subplot (
         plant_id int NOT NULL,
-        subplot_id int
---      DBVis throws error when specifying 2 primaty keys for this table.  need to fix
---      CONSTRAINT PK_plant_id PRIMARY KEY (plant_id),
+        subplot_id int,
+
+        CONSTRAINT PK_plant_subplot_id PRIMARY KEY (plant_id, subplot_id)
 );
 COMMIT TRANSACTION;
 
@@ -88,10 +88,8 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS plot_supplies;
 CREATE TABLE plot_supplies (
         plot_id int,
-        supply_id int
---      DBVis throws error when specifying 2 primaty keys for this table.  need to fix        
---      CONSTRAINT PK_supply_id PRIMARY KEY (supply_id),
---      CONSTRAINT PK_plot_id PRIMARY KEY (plot_id)
+        supply_id int,
+        CONSTRAINT PK_plot_supply_id PRIMARY KEY (plot_id, supply_id)
 );
 COMMIT TRANSACTION;
 
