@@ -2,7 +2,7 @@
   <div>
   
   <div class="home logged" v-if="$store.state.token != ''">
-    <h1>Hey {{$store.state.user.username}}, let's get digging!</h1>
+    <h1>Hey {{$store.state.user.firstName}}, let's get digging!</h1>
     <p>Since you're logged in, you can see this</p>
   </div>
   <div class="home" v-else>
@@ -33,9 +33,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-
-
+  
 }
 
 .links {
@@ -44,7 +42,5 @@ export default {
   justify-content: center;
   margin-bottom: 20px;
 }
-
-
 
 </style>

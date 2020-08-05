@@ -1,10 +1,13 @@
 <template>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h2 class="h3 mb-3 font-weight-normal">Create Account</h2>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
+      
+     <div class="fields"> 
+      <div class="field">
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -15,6 +18,9 @@
         required
         autofocus
       />
+      </div>
+      
+      <div class="field">
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -23,7 +29,10 @@
         placeholder="Password"
         v-model="user.password"
         required
-      />
+      /></div>
+      
+      <div class="field">
+      <label for="confirmpassword" class="sr-only">Confirm Password</label>
       <input
         type="password"
         id="confirmPassword"
@@ -31,8 +40,9 @@
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
-      />
+      /></div>
 
+      <div class="field">
       <label for="email" class="sr-only">Email</label>
       <input
         type="email"
@@ -41,8 +51,9 @@
         placeholder="user@site.com"
         v-model="user.email"
         required
-      />
+      /></div>
 
+      <div class="field">
      <label for="firstName" class="sr-only">First Name</label>
       <input
         type="text"
@@ -51,8 +62,9 @@
         placeholder="First Name"
         v-model="user.firstName"
         required
-      />
+      /></div>
 
+      <div class="field">
      <label for="lastName" class="sr-only">Last Name</label>
       <input
         type="text"
@@ -61,8 +73,9 @@
         placeholder="Last Name"
         v-model="user.lastName"
         required
-      />
+      /></div>
 
+      <div class="field">
       <label for="city" class="sr-only">City</label>
       <input
         type="text"
@@ -71,8 +84,9 @@
         placeholder="city"
         v-model="user.city"
         required
-      />
+      /></div>
       
+      <div class="field">
       <label for="state" class="sr-only">State</label>
       <input
         type="text"
@@ -81,8 +95,9 @@
         placeholder="State"
         v-model="user.state"
         required
-      />
+      /></div>
 
+      <div class="field">
       <label for="zip" class="sr-only">Zip</label>
       <input 
         id="zip" 
@@ -94,7 +109,8 @@
         placeholder="XXXXX"
         v-model="user.zip"
         required
-      />
+      /></div>
+     </div>
 
       <router-link :to="{ name: 'login' }" id="AlreadyHave">Already have an account?</router-link>
       <button  type="submit" class="button btn btn-lg btn-primary btn-block">
@@ -165,30 +181,32 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start; 
-    align-items: center;
-  margin: 20px 100px 20px 100px;
-
+  align-items: center;
+  background-color: #85A183;
+  margin: 0px 30% 0px 30%;
 }
 
 .form-register {
   display: flex;
   flex-direction: column;
-
-
-
+  align-items: center;
 
 }
 
+.field {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 label {
-  margin-top: 15px;
+  margin-right: 15px;
   line-height: 2em;
+  margin-bottom: 2px;
 }
 
 input {
   width: 50ch;
-  margin-top: 5px;
+  height: 2em;
 }
-
-
-
 </style>

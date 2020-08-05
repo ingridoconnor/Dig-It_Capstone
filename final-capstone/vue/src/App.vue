@@ -35,15 +35,16 @@ export default {
 <style>
 #app {
   background-color: #c1c56d;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: 'Raleway', sans-serif;
-  height: 98vh;
+
 }
 
 #header {
-  margin: 30px 40px;
+  margin: 30px 40px 20px 40px;
   display: flex;
   flex-grow: 1;
   align-items: center;
@@ -94,13 +95,14 @@ export default {
 }
 
 
-h1 {
+h1, h2, h3, h4 {
 font-family: 'Kameron', serif;
 }
 
 #main-view {
   min-height: 80vh;
   margin: 40px 100px 40px 100px;
+  background-color: #c1c56d;
 }
 
 
