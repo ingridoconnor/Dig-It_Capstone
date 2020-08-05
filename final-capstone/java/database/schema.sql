@@ -117,7 +117,7 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS garden CASCADE;
 CREATE TABLE garden (
         user_id int DEFAULT nextval('seq_user_id'::regclass) NOT NULL, 
-        garden_id int NOT NULL,
+        garden_id serial NOT NULL,
         length int NOT NULL,
         width int NOT NULL,
         garden_name varchar(100) NOT NULL,

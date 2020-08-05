@@ -18,30 +18,21 @@ public class PlantController {
 	@Autowired
 	PlantDAO thePlants;
 
-<<<<<<< HEAD
+
 	@RequestMapping(path = { "/allPlants/"}, method = RequestMethod.GET)
-=======
-	@Autowired
-	PlantDAO thePlants;
-	
-	@RequestMapping(path = { "/allPlants", "/" })
->>>>>>> 7e5950a4f9c112cb3748ed64529e0cdd149219fd
-	public List<Plant> listAllPlants() {
+	public Plant[] listAllPlants() {
 		List<Plant> allPlants = thePlants.getAllPlants();
-		return allPlants;
+		Plant[] plants = new Plant[allPlants.size()];
+		plants = allPlants.toArray(plants);
+		return plants;
 	}
-<<<<<<< HEAD
+
 	@RequestMapping(path = {"/plantNameSearch/"}, method = RequestMethod.GET)
 	public Plant searchByName() {
 		Plant searchByNameResult = thePlants.searchPlantByPlantName();
 		return searchByNameResult;
 	}
-//	@RequestMapping(path= {"/addPlant/"}, method = RequestMethod.POST)
-//	public Plant addNewPlant(Plant plant) {
-//		Plant addPlant = thePlants.addNewPlant(plant);
-//		return addPlant;
-//	}
+	
 
-=======
->>>>>>> 7e5950a4f9c112cb3748ed64529e0cdd149219fd
+
 }

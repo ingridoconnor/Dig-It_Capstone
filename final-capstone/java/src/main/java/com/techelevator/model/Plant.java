@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Plant {
 	
-	private int id;
+	private Long id;
 	private String name;
 	private String description;
 	private int plantsPerSqFoot;
@@ -26,7 +26,7 @@ public class Plant {
 		this.seedCost = seedCost;
 	}
 	
-	public Plant(int id, String name, String description, int plantsPerSqFoot, String sunRequirements, String region,
+	public Plant(Long id, String name, String description, int plantsPerSqFoot, String sunRequirements, String region,
 			BigDecimal seedCost) {
 		super();
 		this.id = id;
@@ -38,11 +38,11 @@ public class Plant {
 		this.seedCost = seedCost;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

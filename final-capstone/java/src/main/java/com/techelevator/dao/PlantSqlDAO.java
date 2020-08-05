@@ -11,10 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.techelevator.model.Plant;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 7e5950a4f9c112cb3748ed64529e0cdd149219fd
 @Component
 public class PlantSqlDAO implements PlantDAO {
 	
@@ -28,18 +25,11 @@ public class PlantSqlDAO implements PlantDAO {
 	public List<Plant> getAllPlants() {
 	    String sql = "SELECT * from plant";
 	    SqlRowSet results = template.queryForRowSet(sql);
-	    return mapResultsToPlants(results);    
-	}
-	
-	
-
-	private List<Plant> mapResultsToPlants(SqlRowSet results) {
 	    List<Plant> retrievedPlants = new ArrayList<>();
 	    while (results.next()) {
 	        retrievedPlants.add(mapRowToPlant(results));
 	    }
-
-	    return retrievedPlants;
+	    return retrievedPlants;    
 	}
 
 	@Override
@@ -56,13 +46,13 @@ public class PlantSqlDAO implements PlantDAO {
 	@Override
 	public Plant addNewPlant(Plant plant) {
 		String sql = "INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES (?, ?, ?, ?, ?, ?) RETURING plant_id";
-		int newPlantId = template.queryForObject(sql, int.class, plant.getName(), plant.getDescription(), plant.getPlantsPerSqFoot(), plant.getSunRequirements(), plant.getRegion(), plant.getSeedCost());
+		Long newPlantId = template.queryForObject(sql, Long.class, plant.getName(), plant.getDescription(), plant.getPlantsPerSqFoot(), plant.getSunRequirements(), plant.getRegion(), plant.getSeedCost());
 		plant.setId(newPlantId);
 		return plant;
 	}
 	private Plant mapRowToPlant(SqlRowSet results) {
 		Plant plant = new Plant();
-		plant.setId(results.getInt("plant_id"));
+		plant.setId(results.getLong("plant_id"));
 		plant.setDescription(results.getString("description"));
 		plant.setName(results.getString("plant_name"));
 		plant.setPlantsPerSqFoot(results.getInt("plants_per_sq_foot"));
