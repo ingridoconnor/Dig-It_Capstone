@@ -21,6 +21,7 @@
             <button>Submit</button>
         </div>
     <div class="form-element">
+      </div>
   </form>
 </template>
 
