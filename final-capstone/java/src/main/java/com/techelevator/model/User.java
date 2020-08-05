@@ -41,6 +41,22 @@ public User(Long id, String username, String password, String authorities, Strin
 		this.lastName = lastName;
 	}
 
+public User(String username, String password, boolean activated, Set<Authority> authorities, String email,
+		String zipcode, String city, String state, String region, String firstName, String lastName) {
+	super();
+	this.username = username;
+	this.password = password;
+	this.activated = activated;
+	this.authorities = authorities;
+	this.email = email;
+	this.zipcode = zipcode;
+	this.city = city;
+	this.state = state;
+	this.region = region;
+	this.firstName = firstName;
+	this.lastName = lastName;
+}
+
 public User() { }
 
    

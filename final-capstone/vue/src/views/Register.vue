@@ -89,12 +89,12 @@
         name="zip" 
         type="text" 
         inputmode="numeric" 
-        pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$"
         class="form-control"
         placeholder="XXXXX"
         v-model="user.zip"
         required
       />
+       <!-- pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$" -->
 
       <router-link :to="{ name: 'login' }" id="AlreadyHave">Already have an account?</router-link>
       <button  type="submit" class="button btn btn-lg btn-primary btn-block">

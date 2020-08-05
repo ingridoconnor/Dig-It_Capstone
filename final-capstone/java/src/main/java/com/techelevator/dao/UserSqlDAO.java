@@ -37,6 +37,15 @@ public class UserSqlDAO implements UserDAO {
 			throw new RuntimeException("userId "+userId+" was not found.");
 		}
 	}
+	@Override
+	public long getId(User user) {
+		String sql = "SELECT user_id FROM users WHERE username = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, user.getUsername());
+		results.next();
+		Long id = results.getLong("user_id");
+		
+		return id;
+	}
 
     @Override
     public List<User> findAll() {
@@ -95,4 +104,6 @@ public class UserSqlDAO implements UserDAO {
         user.setActivated(true);
         return user;
     }
+
+	
 }

@@ -10,10 +10,16 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.techelevator.dao.UserDAO;
+import com.techelevator.dao.UserDataDAO;
 import com.techelevator.model.LoginDTO;
 import com.techelevator.model.RegisterUserDTO;
 import com.techelevator.model.User;
@@ -28,11 +34,13 @@ public class AuthenticationController {
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private UserDAO userDAO;
+    private UserDataDAO userDataDAO;
 
-    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDAO userDAO) {
+    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDAO userDAO, UserDataDAO userDataDAO) {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDAO = userDAO;
+        this.userDataDAO = userDataDAO;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -59,8 +67,15 @@ public class AuthenticationController {
             User user = userDAO.findByUsername(newUser.getUsername());
             throw new UserAlreadyExistsException();
         } catch (UsernameNotFoundException e) {
+        	User digItUser = new User(newUser.getUsername(), newUser.getPassword(), true, null, newUser.getEmail(), 
+        			newUser.getZip(), newUser.getCity(), newUser.getState(), newUser.getRegion(), newUser.getFirstName(), newUser.getLastName());
+        	
             userDAO.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
+            digItUser.setId(userDAO.getId(digItUser));
+            System.out.println(digItUser.getId());
+            userDataDAO.createAccountUserData(digItUser);
         }
+       
     }
 
     /**
