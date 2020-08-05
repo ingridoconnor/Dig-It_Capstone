@@ -32,8 +32,52 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+
+      <label for="email" class="sr-only">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        placeholder="user@site.com"
+        v-model="user.email"
+        required
+      />
+      
+      <label for="city" class="sr-only">City</label>
+      <input
+        type="text"
+        id="city"
+        class="form-control"
+        placeholder="city"
+        v-model="user.city"
+        required
+      />
+      
+      <label for="state" class="sr-only">State</label>
+      <input
+        type="text"
+        id="state"
+        class="form-control"
+        placeholder="State"
+        v-model="user.state"
+        required
+      />
+
+      <label for="zip" class="sr-only">Zip</label>
+      <input 
+        id="zip" 
+        name="zip" 
+        type="text" 
+        inputmode="numeric" 
+        pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$"
+        class="form-control"
+        placeholder="XXXXX"
+        v-model="user.zip"
+        required
+      />
+
+      <router-link :to="{ name: 'login' }">Already have an account?</router-link>
+      <button class="create button btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
     </form>
@@ -51,6 +95,10 @@ export default {
         username: '',
         password: '',
         confirmPassword: '',
+        email: '',
+        city: '',
+        state: '',
+        zip: '',
         role: 'user',
       },
       registrationErrors: false,
@@ -90,4 +138,27 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#register {
+  margin: 20px 100px 20px 100px;
+}
+
+.form-register {
+  display: flex;
+  flex-direction: column;
+
+}
+
+label {
+  margin-top: 15px;
+  line-height: 2em;
+}
+
+input {
+  width: 50ch;
+  margin-top: 5px;
+}
+
+
+
+</style>

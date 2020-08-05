@@ -1,24 +1,91 @@
 <template>
   <div id="app">
-    <img class="logo" src="../public/digit.png" alt="digit logo">
-    <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-    <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-      <router-view />
-      <div id="nav">
+          <div id="header">
+              <img class="logo" src="./img/digit.png" alt="digit logo">
+              <div id="nav">
+                  <router-link class="button" v-bind:to="{ name: 'home' }" v-if="isHome">Home</router-link>
+                  <router-link class="button" v-bind:to="{ name: 'login' }" v-if="$store.state.token != ''">Login</router-link>
+                  <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token === ''">Logout</router-link>
+              </div>
+          </div>
 
-      </div>
+          <div id="main-view">
+            <router-view />
+          </div>
 
         
     
   </div>
 </template>
 
+<script>
+export default {
+  computed: {
+    isHome() {
+      return this.$route.name === 'Home';
+    }
+  }
+
+};
+</script>
+
 <style>
-.logo {
-  width: 200px;
+#app {
+  background-color: #c1c56d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Raleway', sans-serif;
+  height: 98vh;
 }
 
-div {
-  background-color: #c1c56d;
+#header {
+  margin: 30px 40px;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  max-height: 20%;
 }
+
+.logo {
+  margin-right: 40px;
+  width: 250px;
+}
+
+#nav {
+  margin-left: 40px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.button {
+  padding: 20px;
+  height: 28px;
+  border-radius: 28px;
+  width: 80px;
+  margin-left: 20px;
+  
+  color: white;
+  font-size: 1.2em;
+  font-weight: 200;
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+
+
+  background-color: #e48438 ;
+}
+
+
+h1 {
+font-family: 'Kameron', serif;
+}
+
+
+
+
+
+
 </style>
