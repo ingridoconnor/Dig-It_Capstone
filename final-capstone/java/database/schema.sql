@@ -179,16 +179,40 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS user_data CASCADE;
 CREATE TABLE user_data(
         user_id int DEFAULT nextval('seq_user_id'::regclass) NOT NULL, 
-        name varchar(100) NOT NULL,
+		first_name varchar(100) NOT NULL,
+		last_name varchar(100) NOT NULL,
         email varchar(100) NOT NULL,
         region varchar(100),
         city varchar(100),
         state varchar(100),
-        zipcode varchar(10),
+		zip varchar(20),
 CONSTRAINT PK_user_data PRIMARY KEY (user_id)        
 
 );
+
+INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('1', 'user', 'x', 'userx@gardenmail.com', 'null', 'Detroit', 'Michigan', '48202');
+INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('2', 'admin', 'x', 'adminx@gardenmail.com', 'null', 'Detroit', 'Michigan', '48202');
+INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('3', 'Doyle', 'ODonnell', 'doyleodo@gardenmail.com', 'null', 'Brighton', 'Michigan', '48114');
+INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('4', 'Brandon', 'Grumbling', 'brandon@gardenmail.com', 'null', 'Philadelphia', 'Michigan', '19125');
+INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('5', 'Ingrid', 'OConnor', 'ingrid@gardenmail.com', 'null', 'Detroit', 'Michigan', '48202');
+INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('6', 'Ben', 'Offer', 'ben@gardenmail.com', 'null', 'Ferndale', 'Michigan', '48220');
+
 COMMIT TRANSACTION;
+
+
+
+BEGIN TRANSACTION;
+
+DROP TABLE IF EXISTS hardiness;
+CREATE TABLE hardiness (
+        hardiness_zone varchar(20),
+		plant_id int,
+        
+        CONSTRAINT PK_hardiness_zone PRIMARY KEY (hardiness_zone)
+);
+COMMIT TRANSACTION;
+
+
 
 ALTER TABLE plot ADD FOREIGN KEY (garden_id) REFERENCES garden(garden_id);
 ALTER TABLE plant_plot ADD FOREIGN KEY (plant_id) REFERENCES plant(plant_id);
@@ -196,5 +220,6 @@ ALTER TABLE plant_plot ADD FOREIGN KEY (plot_id) REFERENCES plot(plot_id);
 ALTER TABLE garden_supplies ADD FOREIGN KEY (garden_id) REFERENCES garden(garden_id);
 ALTER TABLE garden_supplies ADD FOREIGN KEY (supply_id) REFERENCES supplies(supply_id);
 ALTER TABLE user_data ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
-ALTER TABLE garden ADD FOREIGN KEY (user_id) REFERENCES user_data(user_id); 
+ALTER TABLE garden ADD FOREIGN KEY (user_id) REFERENCES user_data(user_id);
+ALTER TABLE hardiness ADD FOREIGN KEY (plant_id) REFERENCES plant(plant_id);
 COMMIT TRANSACTION;
