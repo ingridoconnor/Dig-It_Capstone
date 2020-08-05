@@ -2,14 +2,14 @@ package com.techelevator.model;
 
 public class Garden {
 	private Long userId;
-	private int gardenId;
+	private Long gardenId;
 	private double gardenLength;
 	private double gardenWidth;
 	
 	public Garden() {
 		
 	}
-	public Garden(Long userId, int gardenId, double gardenLength, double gardenWidth) {
+	public Garden(Long userId, Long gardenId, double gardenLength, double gardenWidth) {
 		super();
 		this.userId = userId;
 		this.gardenId = gardenId;
@@ -17,7 +17,7 @@ public class Garden {
 		this.gardenWidth = gardenWidth;
 		
 	}
-	public Garden(int gardenId, double gardenLength, double gardenWidth) {
+	public Garden(Long gardenId, double gardenLength, double gardenWidth) {
 		super();
 		this.gardenId = gardenId;
 		this.gardenLength = gardenLength;
@@ -38,10 +38,10 @@ public class Garden {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	public int getGardenId() {
+	public Long getGardenId() {
 		return gardenId;
 	}
-	public void setGardenId(int gardenId) {
+	public void setGardenId(Long gardenId) {
 		this.gardenId = gardenId;
 	}
 	public double getGardenLength() {

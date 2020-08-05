@@ -41,19 +41,28 @@ public class GardenSqlDAO implements GardenDAO {
 		}
 		return garden;
 	}
+	@Override
+	public Garden addNewGarden(Garden garden) {
+		String sql = "INSERT INTO garden (user_id, length, width, garden_name) VALUES (?, ?, ?, ?) returning garden_id";
+		Long newGardenId = template.queryForObject(sql, Long.class, garden.getUserId(), garden.getGardenLength(), garden.getGardenWidth(), garden.getGardenName());
+		garden.setGardenId(newGardenId);
+		return garden;
+	}
 	
 	
 	
 	private Garden mapRowToGarden(SqlRowSet results) {
 		Garden garden = new Garden();
 		garden.setUserId(results.getLong("user_id"));
-		garden.setGardenId(results.getInt("garden_id"));
+		garden.setGardenId(results.getLong("garden_id"));
 		garden.setGardenLength(results.getDouble("length"));
 		garden.setGardenWidth(results.getDouble("width"));
 		garden.setGardenName(results.getString("garden_name"));
 		return garden;
 		
 	}
+
+	
 
 	
 
