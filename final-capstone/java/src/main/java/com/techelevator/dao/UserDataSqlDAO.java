@@ -15,13 +15,13 @@ public class UserDataSqlDAO {
 		template = new JdbcTemplate(datasource);
 	}
 	
-	@Override
-	public User createAccountUserData(User user) {
-		String sql = "INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-		Long newUserId = template.queryForObject(sql, Long.class, user.getFirstName(), user.getLastName(), user.getEmail(), 
-				user.getRegion(), user.getCity(), user.getState(), user.getZipcode())
-	}
-	
-	
+//	@Override
+//	public User createAccountUserData(User user) {
+//		String sql = "INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) "
+//				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+//		Long newUserId = template.queryForObject(sql, Long.class, user.getFirstName(), user.getLastName(), user.getEmail(), 
+//				user.getRegion(), user.getCity(), user.getState(), user.getZipcode())
+//	}
+//	
+//	
 }
