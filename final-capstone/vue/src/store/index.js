@@ -19,7 +19,14 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    gardens : [],
+    plot: {
+      gardenId: 0,
+      type: "",
+      width: "",
+      length: ""
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -37,6 +44,17 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_GARDEN_PLOTS(state, data) {
+      state.gardens = data;
+    },
+    ADD_PLOT(state,plot) {
+      const garden = this.state.gardens.find(p => p.id == plot.id);
+      garden.plot.unshift(plot);
     }
+    // ADD_GARDEN(state,garden) {
+    //   const garden = this.state.gardens.find(p => p.id == review.id);
+    //   product.reviews.unshift(review);
+    // }
   }
 })
