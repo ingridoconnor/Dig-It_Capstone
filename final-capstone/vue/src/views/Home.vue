@@ -1,15 +1,18 @@
 <template>
   <div>
   
-  <div class="home">
+  <div class="home logged" v-if="$store.state.token != ''">
+    <h1>Hey {{$store.state.user.username}}, let's get digging!</h1>
+    <p>Since you're logged in, you can see this</p>
+  </div>
+  <div class="home" v-else>
     <h1>Let's get digging!</h1>
     <p>Dig It! is an online gardening app that helps you create a vegateble garden.</p>
   </div>
 
-
   <div class="links">
 
-    <router-link  class="button create" v-bind:to="{ name: 'register' }" v-if="$store.state.token != ''">
+    <router-link  class="button create btn-lg" v-bind:to="{ name: 'register' }" v-if="$store.state.token === ''">
       Create an Account
     </router-link>
   </div>

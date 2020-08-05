@@ -6,8 +6,8 @@
 export default {
   created() {
     this.$store.commit("LOGOUT");
-    alert("You have been logged out and will be returned to the login screen.");
-    this.$router.push("/login");
+    alert("You have been logged out and will be returned home.");
+    this.$router.push("/");
   }
 };
 </script>

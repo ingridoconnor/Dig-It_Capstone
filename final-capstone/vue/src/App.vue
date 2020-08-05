@@ -3,8 +3,8 @@
           <div id="header">
               <a href="/"><img class="logo" src="./img/digit.png" alt="digit logo"></a>
               <div id="nav">
-                  <router-link class="button" v-bind:to="{ name: 'home' }" v-if="isHome">Home</router-link>
-                  <router-link class="button" v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''" v-show="isLogin">Login</router-link>
+                  <router-link class="button" v-bind:to="{ name: 'home' }" v-if="!isHome">Home</router-link>
+                  <router-link class="button" v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''" v-show="!isLogin">Login</router-link>
                   <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
               </div>
           </div>
@@ -22,10 +22,10 @@
 export default {
   computed: {
     isHome() {
-      return this.$route.name === 'Home';
+      return this.$route.name === 'home';
     },
     isLogin() {
-      return this.$route.name === 'Login';
+      return this.$route.name === 'login';
     }
   }
 
@@ -80,7 +80,7 @@ export default {
 
 .btn-lg {
   margin: 20px 0px;
-  width: 200px;
+  width: 250px;
   font-size: 1.4em;
   display: flex;
   justify-content: center;
