@@ -19,13 +19,14 @@ public class User {
 	private String zipcode;
 	private String city;
 	private String state;
+	private String region;
 	private String firstName;
 	private String lastName;
 
  
 
 public User(Long id, String username, String password, String authorities, String email,
-			String zipcode, String city, String state, String firstName, String lastName) {
+			String zipcode, String city, String state, String region, String firstName, String lastName) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -34,6 +35,7 @@ public User(Long id, String username, String password, String authorities, Strin
 		this.email = email;
 		this.zipcode = zipcode;
 		this.city = city;
+		this.region = region;
 		this.state = state;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -104,6 +106,12 @@ public User() { }
 
  	public void setZipcode(String zipcode) {
  		this.zipcode = zipcode;
+ 	}
+ 	public String getRegion() {
+ 		return region;
+ 	}
+ 	public void setRegion(String region) {
+ 		this.region = region;
  	}
 
  	public String getCity() {
