@@ -43,7 +43,7 @@
         required
       />
 
-     <label for="firstName" class="sr-only">City</label>
+     <label for="firstName" class="sr-only">First Name</label>
       <input
         type="text"
         id="firstName"
@@ -53,7 +53,7 @@
         required
       />
 
-     <label for="lastName" class="sr-only">City</label>
+     <label for="lastName" class="sr-only">Last Name</label>
       <input
         type="text"
         id="lastName"
@@ -98,7 +98,7 @@
 
       <router-link :to="{ name: 'login' }" id="AlreadyHave">Already have an account?</router-link>
       <button  type="submit" class="button btn btn-lg btn-primary btn-block">
-        Create Account
+        Submit
       </button>
     </form>
   </div>
