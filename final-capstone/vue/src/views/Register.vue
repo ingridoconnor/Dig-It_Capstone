@@ -42,7 +42,27 @@
         v-model="user.email"
         required
       />
-      
+
+     <label for="firstName" class="sr-only">City</label>
+      <input
+        type="text"
+        id="firstName"
+        class="form-control"
+        placeholder="First Name"
+        v-model="user.firstName"
+        required
+      />
+
+     <label for="lastName" class="sr-only">City</label>
+      <input
+        type="text"
+        id="lastName"
+        class="form-control"
+        placeholder="Last Name"
+        v-model="user.lastName"
+        required
+      />
+
       <label for="city" class="sr-only">City</label>
       <input
         type="text"
@@ -76,8 +96,8 @@
         required
       />
 
-      <router-link :to="{ name: 'login' }">Already have an account?</router-link>
-      <button class="create button btn btn-lg btn-primary btn-block" type="submit">
+      <router-link :to="{ name: 'login' }" id="AlreadyHave">Already have an account?</router-link>
+      <button  type="submit" class="button btn btn-lg btn-primary btn-block">
         Create Account
       </button>
     </form>
@@ -96,6 +116,8 @@ export default {
         password: '',
         confirmPassword: '',
         email: '',
+        firstName: '',
+        lastName: '',
         city: '',
         state: '',
         zip: '',
@@ -140,12 +162,20 @@ export default {
 
 <style>
 #register {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+    align-items: center;
   margin: 20px 100px 20px 100px;
+
 }
 
 .form-register {
   display: flex;
   flex-direction: column;
+
+
+
 
 }
 

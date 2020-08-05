@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">WELCOME TO DIG IT!</h1>
+      <h1 class="h3 mb-3 font-weight-normal">DIG IT!</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -31,8 +31,8 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      <router-link :to="{ name: 'register' }" id="NeedAn">Need an account?</router-link>
+      <button type="submit" class="button btn btn-lg btn-primary btn-block">Sign in</button>
     </form>
   </div>
 </template>
@@ -75,6 +75,31 @@ export default {
 };
 </script>
 <style>
+#login {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
 
+
+}
+
+.form-signin {
+  display: flex;
+  flex-direction: column;
+
+
+
+}
+
+label {
+  margin-top: 15px;
+  line-height: 2em;
+
+}
+
+input {
+  width: 50ch;
+  margin-top: 5px;
+}
 
 </style>

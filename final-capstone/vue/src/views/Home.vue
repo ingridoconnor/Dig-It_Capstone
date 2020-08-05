@@ -29,8 +29,9 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 40px 100px 40px 100px;
   justify-content: center;
+
+
 
 }
 
@@ -41,10 +42,6 @@ export default {
   margin-bottom: 20px;
 }
 
-.create {
-  width: 200px;
-  font-size: 1.4em;
-}
 
 
 </style>

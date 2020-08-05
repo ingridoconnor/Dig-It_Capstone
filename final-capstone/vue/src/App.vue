@@ -1,11 +1,11 @@
 <template>
   <div id="app">
           <div id="header">
-              <img class="logo" src="./img/digit.png" alt="digit logo">
+              <a href="/"><img class="logo" src="./img/digit.png" alt="digit logo"></a>
               <div id="nav">
                   <router-link class="button" v-bind:to="{ name: 'home' }" v-if="isHome">Home</router-link>
-                  <router-link class="button" v-bind:to="{ name: 'login' }" v-if="$store.state.token != ''">Login</router-link>
-                  <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token === ''">Logout</router-link>
+                  <router-link class="button" v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''" v-show="isLogin">Login</router-link>
+                  <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
               </div>
           </div>
 
@@ -23,6 +23,9 @@ export default {
   computed: {
     isHome() {
       return this.$route.name === 'Home';
+    },
+    isLogin() {
+      return this.$route.name === 'Login';
     }
   }
 
@@ -66,22 +69,42 @@ export default {
   border-radius: 28px;
   width: 80px;
   margin-left: 20px;
-  
   color: white;
   font-size: 1.2em;
   font-weight: 200;
   text-align: center;
   text-decoration: none;
   align-items: center;
-
-
   background-color: #e48438 ;
+}
+
+.btn-lg {
+  margin: 20px 0px;
+  width: 200px;
+  font-size: 1.4em;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  border: none;
+}
+
+#NeedAn, #AlreadyHave {
+  margin: 20px 0px;
 }
 
 
 h1 {
 font-family: 'Kameron', serif;
 }
+
+#main-view {
+  min-height: 80vh;
+  margin: 40px 100px 40px 100px;
+}
+
+
+
 
 
 
