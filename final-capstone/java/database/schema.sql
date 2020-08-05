@@ -184,6 +184,7 @@ CREATE TABLE user_data(
         region varchar(100),
         city varchar(100),
         state varchar(100),
+        zipcode varchar(10),
 CONSTRAINT PK_user_data PRIMARY KEY (user_id)        
 
 );
