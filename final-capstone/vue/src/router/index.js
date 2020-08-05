@@ -4,6 +4,11 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
+import AddGarden from '../views/AddGarden.vue'
+import AddPlot from '../views/AddPlot.vue'
+import EditPlot from '../views/EditPlot.vue'
+import Garden from '../views/Garden.vue'
+import Plot from '../views/Plot.vue'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -53,6 +58,46 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: '/garden/:gardenid',
+      name: 'garden',
+      component: Garden,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/garden/:gardenid/plot/:plotid',
+      name: 'plot',
+      component: Plot,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/addgarden',
+      name: 'add-garden',
+      component: AddGarden,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/garden/:gardenid/addplot',
+      name: 'add-plot',
+      component: AddPlot,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/garden/:gardenid/editplot/:plotid/',
+      name: 'edit-plot',
+      component: EditPlot,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 })
 
