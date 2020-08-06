@@ -205,10 +205,41 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS hardiness;
 CREATE TABLE hardiness (
-        hardiness_zone varchar(20),
-		plant_id int,
+        hardiness_id int,
+	zone_name varchar(10),
+        CONSTRAINT PK_hardiness_id PRIMARY KEY (hardiness_id)
+);
+
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('1', '3A');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('2', '3B');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('3', '4A');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('4', '4B');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('5', '5A');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('6', '5B');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('7', '6A');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('8', '6B');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('9', '7A');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('10', '7B');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('11', '8A');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('12', '8B');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('13', '9A');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('14', '9B');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('15', '10A');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('16', '10B');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('17', '11A');
+INSERT INTO hardiness (hardiness_id, zone_name) VALUES ('18', '11B');
+
+COMMIT TRANSACTION;
+
+
+
+
+DROP TABLE IF EXISTS plant_hardiness;
+CREATE TABLE plant_hardiness (
+        hardiness_id int,
+	plant_id int,
         
-        CONSTRAINT PK_hardiness_zone PRIMARY KEY (hardiness_zone)
+        CONSTRAINT PK_plant_hardiness PRIMARY KEY (hardiness_id, plant_id)
 );
 COMMIT TRANSACTION;
 
@@ -221,5 +252,6 @@ ALTER TABLE garden_supplies ADD FOREIGN KEY (garden_id) REFERENCES garden(garden
 ALTER TABLE garden_supplies ADD FOREIGN KEY (supply_id) REFERENCES supplies(supply_id);
 ALTER TABLE user_data ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
 ALTER TABLE garden ADD FOREIGN KEY (user_id) REFERENCES user_data(user_id);
-ALTER TABLE hardiness ADD FOREIGN KEY (plant_id) REFERENCES plant(plant_id);
+ALTER TABLE plant_hardiness ADD FOREIGN KEY (hardiness_id) REFERENCES hardiness(hardiness_id);
+ALTER TABLE plant_hardiness ADD FOREIGN KEY (plant_id) REFERENCES plant(plant_id);
 COMMIT TRANSACTION;
