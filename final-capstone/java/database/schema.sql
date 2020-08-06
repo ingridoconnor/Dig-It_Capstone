@@ -132,6 +132,7 @@ DROP TABLE IF EXISTS garden_supplies;
 CREATE TABLE garden_supplies (
         garden_id int,
         supply_id int,
+        supply_qty int,
         CONSTRAINT PK_garden_supply_id PRIMARY KEY (garden_id, supply_id)
 );
 COMMIT TRANSACTION;
@@ -141,33 +142,33 @@ DROP TABLE IF EXISTS supplies CASCADE;
 CREATE TABLE supplies (
         supply_id int NOT NULL,
         supply_name varchar(100) NOT NULL,
-        supply_cost int NOT NULL,
+        supply_cost decimal NOT NULL,
         CONSTRAINT PK_supplies PRIMARY KEY (supply_id)
 );
 
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('1', '2 cu ft. Bagged Brown Mulch', '4');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('2', '2 cu ft. Bagged Red Mulch', '4');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('3', '2 cu ft. Bagged Black Mulch', '4');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('4', '2 cu ft. Bagged Cypress Mulch Blend', '4');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('5', '2 cu ft. Bagged Pine Bark Nuggets', '4');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('6', '16-Tine Rake', '20');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('7', '24-Tine Steel Rake', '20');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('8', 'Hand Trowel', '9');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('9', 'Steel Hand Trowel', '11');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('10', 'Bypass Pruner', '10');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('11', 'Stainless Steel Micro Tip Pruner', '13');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('12', '46 in. Long Handle Steel Round Point Shovel', '8');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('13', '48 in. Round Point Shovel', '26');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('14', '23.5 in. Wood D-Handle Square Point Shovel', '24');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('15', 'Firm Grip Grain Pigskin Gloves', '12');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('16', 'Digz Gardener Glove', '14');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('17', 'Rose Embroidered mid-length Gloves', '14');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('18', 'Multi-Purpose Heavy Duty Dig It! Garden Cart', '100');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('19', 'Plastic Wheelbarrow', '80');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('20', '4-tined basic green cultivator', '18');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('21', '4- tined green hand rake', '9');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('22', 'Dig it! Watering can', '45');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('23', 'Dit It! Copper Logo Watering can', '60');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('1', '2 cu ft. Bagged Brown Mulch', '4.50');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('2', '2 cu ft. Bagged Red Mulch', '4.50');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('3', '2 cu ft. Bagged Black Mulch', '4.50');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('4', '2 cu ft. Bagged Cypress Mulch Blend', '4.50');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('5', '2 cu ft. Bagged Pine Bark Nuggets', '4.50');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('6', '16-Tine Rake', '20.00');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('7', '24-Tine Steel Rake', '20.00');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('8', 'Hand Trowel', '9.00');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('9', 'Steel Hand Trowel', '11.50');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('10', 'Bypass Pruner', '10.75');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('11', 'Stainless Steel Micro Tip Pruner', '13.25');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('12', '46 in. Long Handle Steel Round Point Shovel', '8.25');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('13', '48 in. Round Point Shovel', '26.00');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('14', '23.5 in. Wood D-Handle Square Point Shovel', '24.75');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('15', 'Firm Grip Grain Pigskin Gloves', '12.25');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('16', 'Digz Gardener Glove', '14.50');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('17', 'Rose Embroidered mid-length Gloves', '14.75');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('18', 'Multi-Purpose Heavy Duty Dig It! Garden Cart', '100.00');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('19', 'Plastic Wheelbarrow', '80.00');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('20', '4-tined basic green cultivator', '18.75');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('21', '4- tined green hand rake', '9.50');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('22', 'Dig it! Watering can', '45.00');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('23', 'Dit It! Copper Logo Watering can', '60.00');
 
 
 
