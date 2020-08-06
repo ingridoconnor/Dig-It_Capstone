@@ -1,10 +1,17 @@
 <template>
   <form v-on:submit.prevent="addNewGarden">
     <h1>Add New Garden</h1>
-        <div class="form-element">
+
+    <div class="form-element">
+      <label for="name">Garden Name:</label>
+      <input id="name" type="text" v-model="newGarden.gardenName" />
+    </div>
+
+    <div class="form-element">
       <label for="width">Garden Width in Feet:</label>
       <input id="width" type="number" min="1" v-on:change="changeSize" v-model="newGarden.width" />
     </div>
+
     <div class="form-element">
       <label for="length">Garden Length in Feet:</label>
       <input id="length" type="number" min="1" v-on:change="changeSize" v-model="newGarden.length" />
@@ -15,7 +22,7 @@
 
         <div id="gridView">
       
-      <span class="width" v-for="arrays in this.sizeArray" v-bind:key="arrays">
+      <span class="width" v-for="arrays in this.newGarden.sizeArray" v-bind:key="arrays">
                  
                 <!--  ADD CHECK ALL COLUMN BUTTONS IF TIME PERMITS
                  <input  class="float" type="checkbox">
@@ -43,17 +50,18 @@ export default {
     return {
       newGarden: {
         id: 0,
+        gardenName: "",
         width: 2,
         length: 2,
-      },
-      sizeArray: [ [ 1, 2 ], [ 3, 4 ] ]
+        sizeArray: [ [ 1, 2 ], [ 3, 4 ] ]
+      }
+
     };
   },
   methods: {
     addNewGarden() {
-      const gardenID = this.$route.params.id;
-      this.newGarden.id = gardenID;
-      this.$store.commit("ADD_GARDEN", this.newGarden);
+      this.$store.commit("SET_GARDEN", this.newGarden);
+      this.$router.push("/profile");
     },
     resetForm() {
       this.newGarden = {};
@@ -62,17 +70,17 @@ export default {
       var x = 1;
 
       // Create 1D array
-      this.sizeArray = new Array(this.newGarden.width);
+      this.newGarden.sizeArray = new Array(this.newGarden.width);
 
       // Loop to create 2D array using 1D array
       for (var w = 0; w < this.newGarden.width; w++) {
-        this.sizeArray[w] = new Array(this.newGarden.length);
+        this.newGarden.sizeArray[w] = new Array(this.newGarden.length);
       }
 
       // Loop to Fill In 2D array elements with Numbers.
       for (var wi = 0; wi < this.newGarden.width; wi++) {
         for (var l = 0; l < this.newGarden.length; l++) {
-          this.sizeArray[wi][l] = x++;
+          this.newGarden.sizeArray[wi][l] = x++;
         }
       }
     },
@@ -97,6 +105,14 @@ form {
   border-radius: 20px;
   background-color:  #381c06;
 
+}
+
+input {
+  width: 5ch;
+}
+
+#name {
+  width: 20ch;
 }
 
 .width {
