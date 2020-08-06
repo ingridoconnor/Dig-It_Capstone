@@ -19,7 +19,7 @@ public class PlantController {
 	PlantDAO thePlants;
 
 
-	@RequestMapping(path = { "/allPlants/"}, method = RequestMethod.GET)
+	@RequestMapping(path = { "/allPlants"}, method = RequestMethod.GET)
 	public Plant[] listAllPlants() {
 		List<Plant> allPlants = thePlants.getAllPlants();
 		Plant[] plants = new Plant[allPlants.size()];
