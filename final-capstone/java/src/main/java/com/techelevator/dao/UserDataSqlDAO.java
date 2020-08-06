@@ -18,14 +18,35 @@ public class UserDataSqlDAO implements UserDataDAO{
 	
 	@Override
 	public User createAccountUserData(User user) {
-		System.out.println("creating user account");
 		String sql = "INSERT INTO user_data (user_id, first_name, last_name, email, city, state, zip) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
 		template.update(sql, user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getCity(), user.getState(), user.getZipcode());
-		
-		
 		return user;
 	}
+
+	@Override
+	public User getUserDataFromID(User user) {
+		
+		String sql = "SELECT * FROM user_data WHERE user_id=?";
+		SqlRowSet rs = template.queryForRowSet(sql, user.getId());
+		rs.next();
+		User userData = mapRowToUser(rs);
+		userData.setUsername(user.getUsername());
+		return userData;
+	}
+	
+    private User mapRowToUser(SqlRowSet rs) {
+        User user = new User();
+        user.setId(rs.getLong("user_id"));
+        user.setEmail(rs.getString("email"));
+        user.setZipcode(rs.getString("zip"));
+        user.setRegion(rs.getString("region"));
+        user.setCity(rs.getString("city"));
+        user.setState(rs.getString("state"));
+        user.setFirstName(rs.getString("first_name"));
+        user.setLastName(rs.getString("last_name"));
+        return user;
+    }
 	
 	
 	

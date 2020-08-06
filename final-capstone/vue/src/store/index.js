@@ -11,6 +11,7 @@ Vue.use(Vuex)
  */
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
+const currentUserData = JSON.parse(localStorage.getItem('userData'));
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -20,6 +21,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    userData: currentUserData || {},
     gardens : [],
     plot: {
       gardenId: 0,
@@ -37,6 +39,10 @@ export default new Vuex.Store({
     SET_USER(state, user) {
       state.user = user;
       localStorage.setItem('user',JSON.stringify(user));
+    },
+    SET_USER_DATA(state, userData) {
+      state.userData = userData;
+      localStorage.setItem('userData',JSON.stringify(userData));
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
