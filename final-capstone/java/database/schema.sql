@@ -160,6 +160,7 @@ INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('20', '4-tine
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('21', '4- tined green hand rake', '9.50');
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('22', 'Dig it! Watering can', '45.00');
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('23', 'Dit It! Copper Logo Watering can', '60.00');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('24', 'Dig It! Tomato Cage', '20.00');
 
 
 
