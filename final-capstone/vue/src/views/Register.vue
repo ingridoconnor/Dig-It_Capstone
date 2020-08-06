@@ -108,13 +108,8 @@
         placeholder="XXXXX"
         v-model="user.zip"
         required
-<<<<<<< HEAD
-      />
-       <!-- pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$" -->
-=======
       /></div>
      </div>
->>>>>>> 62724fed61fc52fa9917d9f26196bce4f7a18d23
 
       <router-link :to="{ name: 'login' }" id="AlreadyHave">Already have an account?</router-link>
       <button  type="submit" class="button btn btn-lg btn-primary btn-block">
