@@ -206,34 +206,33 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS hardiness CASCADE;
 CREATE TABLE hardiness (
-        hardiness_id int,
 	zone_name varchar(10),
 	avg_last_frost_month varchar(10),
 	avg_last_frost_day int,
 	avg_first_frost_month varchar(10),
 	avg_first_frost_day int,
 	avg_growing_days int,
-        CONSTRAINT PK_hardiness_id PRIMARY KEY (hardiness_id)
+        CONSTRAINT PK_zone_name PRIMARY KEY (zone_name)
 );
 
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('1', '3A', 'May', '15', 'September', '15', '123');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('2', '3B', 'May', '15', 'September', '15', '123');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('3', '4A', 'May', '15', 'October', '1', '139');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('4', '4B', 'May', '15', 'October', '1', '139');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('5', '5A', 'May', '1', 'October', '15', '168');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('6', '5B', 'May', '1', 'October', '15', '168');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('7', '6A', 'Apr', '15', 'October', '15', '183');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('8', '6B', 'Apr', '15', 'October', '15', '183');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('9', '7A', 'Apr', '1', 'October', '31', '213');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('10', '7B', 'Apr', '1', 'October', '31', '213');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('11', '8A', 'March', '15', 'November', '15', '245');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('12', '8B', 'March', '15', 'November', '15', '245');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('13', '9A', 'February', '15', 'November', '30', '290');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('14', '9B', 'February', '15', 'November', '30', '290');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('15', '10A', 'January', '1', 'December', '31', '290');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('16', '10B', 'January', '1', 'December', '31', '290');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('17', '11A', 'January', '1', 'December', '31', '290');
-INSERT INTO hardiness (hardiness_id, zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('18', '11B', 'January', '1', 'December', '31', '290');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('3a', 'May', '15', 'September', '15', '123');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('3b', 'May', '15', 'September', '15', '123');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('4a', 'May', '15', 'October', '1', '139');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('4b', 'May', '15', 'October', '1', '139');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('5a', 'May', '1', 'October', '15', '168');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('5b', 'May', '1', 'October', '15', '168');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('6a', 'Apr', '15', 'October', '15', '183');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('6b', 'Apr', '15', 'October', '15', '183');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('7a', 'Apr', '1', 'October', '31', '213');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('7b', 'Apr', '1', 'October', '31', '213');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('8a', 'March', '15', 'November', '15', '245');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('8b', 'March', '15', 'November', '15', '245');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('9a', 'February', '15', 'November', '30', '290');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('9b', 'February', '15', 'November', '30', '290');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('10a', 'January', '1', 'December', '31', '290');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('10b', 'January', '1', 'December', '31', '290');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('11a', 'January', '1', 'December', '31', '290');
+INSERT INTO hardiness (zone_name, avg_last_frost_month, avg_last_frost_day, avg_first_frost_month, avg_first_frost_day, avg_growing_days) VALUES ('11b', 'January', '1', 'December', '31', '290');
 
 
 COMMIT TRANSACTION;
@@ -243,10 +242,10 @@ COMMIT TRANSACTION;
 
 DROP TABLE IF EXISTS plant_hardiness;
 CREATE TABLE plant_hardiness (
-        hardiness_id int,
+    zone_name varchar(10),
 	plant_id int,
         
-        CONSTRAINT PK_plant_hardiness PRIMARY KEY (hardiness_id, plant_id)
+        CONSTRAINT PK_plant_hardiness PRIMARY KEY (zone_name, plant_id)
 );
 COMMIT TRANSACTION;
 
@@ -259,6 +258,6 @@ ALTER TABLE garden_supplies ADD FOREIGN KEY (garden_id) REFERENCES garden(garden
 ALTER TABLE garden_supplies ADD FOREIGN KEY (supply_id) REFERENCES supplies(supply_id);
 ALTER TABLE user_data ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
 ALTER TABLE garden ADD FOREIGN KEY (user_id) REFERENCES user_data(user_id);
-ALTER TABLE plant_hardiness ADD FOREIGN KEY (hardiness_id) REFERENCES hardiness(hardiness_id);
+ALTER TABLE plant_hardiness ADD FOREIGN KEY (zone_name) REFERENCES hardiness(zone_name);
 ALTER TABLE plant_hardiness ADD FOREIGN KEY (plant_id) REFERENCES plant(plant_id);
 COMMIT TRANSACTION;
