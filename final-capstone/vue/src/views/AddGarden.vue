@@ -1,16 +1,18 @@
 <template>
   <div>
-    <h1>Add New Garden</h1>
     <add-garden />
+    <plant-list />
   </div>
 </template>
 
 <script>
 import AddGarden from "@/components/AddGarden";
+import PlantList from "@/components/PlantList";
 
 export default {
   components: {
-    AddGarden
+    AddGarden,
+    PlantList
   }
 };
 </script>

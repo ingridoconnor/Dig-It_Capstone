@@ -1,6 +1,7 @@
 <template>
   <form v-on:submit.prevent="addNewGarden">
-    <div class="form-element">
+    <h1>Add New Garden</h1>
+        <div class="form-element">
       <label for="width">Garden Width in Feet:</label>
       <input id="width" type="number" min="1" v-on:change="changeSize" v-model="newGarden.width" />
     </div>
@@ -8,13 +9,25 @@
       <label for="length">Garden Length in Feet:</label>
       <input id="length" type="number" min="1" v-on:change="changeSize" v-model="newGarden.length" />
     </div>
-    <p>{{this.sizeArray}}</p>
+    
+    <p class="temp">For reference during programming only: {{this.sizeArray}}</p>
 
-    <div id="gridView">
+
+        <div id="gridView">
+      
       <span class="width" v-for="arrays in this.sizeArray" v-bind:key="arrays">
-        <div class="squares" v-for="height in arrays" v-bind:key="height">{{height}}</div>
+                 
+                <!--  ADD CHECK ALL COLUMN BUTTONS IF TIME PERMITS
+                 <input  class="float" type="checkbox">
+
+ -->
+        <div class="squares" v-for="height in arrays" v-bind:key="height">
+            {{height}}
+            <input  class="check" type="checkbox">
+            </div>
       </span>
     </div>
+
 
     <div class="actions">
       <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
@@ -30,10 +43,10 @@ export default {
     return {
       newGarden: {
         id: 0,
-        width: 1,
-        length: 1,
+        width: 2,
+        length: 2,
       },
-      sizeArray: "",
+      sizeArray: [ [ 1, 2 ], [ 3, 4 ] ]
     };
   },
   methods: {
@@ -68,37 +81,57 @@ export default {
 </script>
 
 <style>
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #gridView {
   display: flex;
+  width: fit-content;
   justify-content: center;
   align-items: center;
   padding: 20px;
   border-radius: 20px;
-  background-color: #422207b7;
+  background-color:  #381c06;
 
 }
 
 .width {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-items: center;
 
 }
 
 .squares {
-display: grid;
-align-content: center;
+display: flex;
+align-items: center;
+justify-content: center;
   min-height: 50px;
   max-height: 100px;
   min-width: 50px;
   max-width: 100px;
-
   text-align: center;
-  
-
-
-  background-color: rgb(158, 110, 48);
+  background-color: rgb(165, 112, 42);
   border: 2px;
   border-style: solid;
-  border-color: #422207b7;
+  border-color:  #381c06;
 }
+
+.check {
+    display: inline-block;
+    align-content: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+}
+
+.temp {
+    color: red;
+}
+
 </style>

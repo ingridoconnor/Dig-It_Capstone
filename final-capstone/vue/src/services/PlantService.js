@@ -8,4 +8,4 @@ export default {
     getAllPlants() {
         return http.get("/allPlants");
     }
-}
+};
