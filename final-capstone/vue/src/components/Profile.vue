@@ -9,6 +9,14 @@
       <p>State: {{this.$store.state.userData.data.state}}</p>
       <p>Zip: {{this.$store.state.userData.data.zipcode}}</p>
       <p>Region: {{this.$store.state.userData.data.region}}</p>
+        <router-link
+        tag="button"
+        :to="{ name: 'EditProfile', params: {cardID: $route.params.cardID} }"
+        class="button"
+      >Edit Profile</router-link>
+      <button class="button" v-on:click="deleteProfile">Delete Profile</button>
+      <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
+      
 
     </div>
   </div>
@@ -40,4 +48,5 @@ export default {
 </script>
 
 <style>
+
 </style>

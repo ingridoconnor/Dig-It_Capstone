@@ -5,6 +5,7 @@
               <div id="nav">
                   <router-link class="button" v-bind:to="{ name: 'home' }" v-if="!isHome">Home</router-link>
                   <router-link class="button" v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''" v-show="!isLogin">Login</router-link>
+                  <router-link class="button" v-bind:to="{ name: 'profile' }" v-if="$store.state.token != ''">Profile</router-link>
                   <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
               </div>
           </div>
