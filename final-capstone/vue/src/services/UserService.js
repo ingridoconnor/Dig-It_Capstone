@@ -8,7 +8,16 @@ export default {
 
   getUserInfo(id) {
     return http.get(`/user/${id}`);
+  },
+
+  updateUserInfo(id) {
+    return http.put(`/user/${id}`);
+  },
+  
+  addUser(id) {
+    return http.post(`/user/${id}`);
   }
+
 
 
 }
