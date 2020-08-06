@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import Profile from '../views/Profile.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import AddGarden from '../views/AddGarden.vue'
@@ -32,6 +33,14 @@ const router = new Router({
       component: Home,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile,
+      meta: {
+        requiresAuth: true
       }
     },
     {

@@ -186,6 +186,12 @@ public User() { }
               ", username='" + username + '\'' +
               ", activated=" + activated +
               ", authorities=" + authorities +
-              '}';
+              ", email=" + email +
+      		  ", city=" + city +
+      		  ", state=" + state +
+      		  ", region=" + region +
+      		  ", firstName=" + firstName +
+      		  ", lastName=" + lastName +
+      		  '}';
    }
 }
