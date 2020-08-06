@@ -203,7 +203,7 @@ COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS hardiness;
+DROP TABLE IF EXISTS hardiness CASCADE;
 CREATE TABLE hardiness (
         hardiness_id int,
 	zone_name varchar(10),
