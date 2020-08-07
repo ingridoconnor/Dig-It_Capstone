@@ -60,14 +60,16 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    
     SET_PLANTS(state, data) {
       state.plants = data;
     },
     ADD_PLOT(state,plot) {
       const garden = this.state.gardens.find(p => p.id == plot.id);
       garden.plot.unshift(plot);
-    }
+    },
+    SET_GARDEN(state, data) {
+      state.gardens.push(data);
+    },
     // ADD_GARDEN(state,garden) {
     //   const garden = this.state.gardens.find(p => p.id == review.id);
     //   product.reviews.unshift(review);
