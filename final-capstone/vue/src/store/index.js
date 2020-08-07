@@ -23,6 +23,13 @@ export default new Vuex.Store({
     user: currentUser || {},
     userData: currentUserData || {},
     gardens: [],
+    garden: {
+      userId: "",
+      gardenId: "",
+      gardenName: "",
+      gardenWidth: "",
+      gardenLength: "",
+    },
     plants: {
       gardenId: "",
       gardenName: "",
@@ -77,6 +84,7 @@ export default new Vuex.Store({
     },
     SET_GARDEN(state, data) {
       state.gardens.push(data);
+      state.garden = data;
     },
     // ADD_GARDEN(state,garden) {
     //   const garden = this.state.gardens.find(p => p.id == review.id);
