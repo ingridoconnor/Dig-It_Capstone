@@ -37,6 +37,14 @@ export default new Vuex.Store({
       type: "",
       width: "",
       length: ""
+    },
+    zone: {
+      zoneName: "test Name",
+      lastFrostMonth: "testMonth",
+      lastFrostDay: "testDay",
+      firstFrostMonth: "testMonth",
+      firstFrostDay: "testDay",
+      avgGrowingDays: "testAvgDays"
     }
   },
   mutations: {

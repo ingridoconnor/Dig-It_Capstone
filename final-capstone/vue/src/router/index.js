@@ -10,6 +10,7 @@ import AddPlot from '../views/AddPlot.vue'
 import EditPlot from '../views/EditPlot.vue'
 import Garden from '../views/Garden.vue'
 import Plot from '../views/Plot.vue'
+import Zone from '../views/Zone.vue'
 import store from '../store/index'
 import EditProfile from '../views/EditProfile.vue'
 
@@ -112,6 +113,14 @@ const router = new Router({
       path: '/editprofile/:userid/',
       name: 'edit-profile',
       component: EditProfile,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/zone/',
+      name: 'zone',
+      component: Zone,
       meta: {
         requiresAuth: true
       }
