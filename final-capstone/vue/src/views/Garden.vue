@@ -1,16 +1,15 @@
 <template>
   <div>
-    <h1>garden vue</h1>
-    <plots-list />
+        <garden-details />
     </div>
 </template>
 
 <script>
-import PlotsList from '@/components/AllPlots';
+import GardenDetails from '@/components/GardenDetails';
 
 export default {
   components: {
-    PlotsList
+    GardenDetails
   }
 };
 </script>
