@@ -10,25 +10,37 @@
       <p>State: {{this.$store.state.userData.data.state}}</p>
       <p>Zip: {{this.$store.state.userData.data.zipcode}}</p>
       <p>Region: {{this.$store.state.userData.data.region}}</p>
+        
         <router-link
         tag="button"
         :to="{ name: 'EditProfile', params: {cardID: $route.params.cardID} }"
         class="button"
       >Edit Profile</router-link>
-      <button class="button" v-on:click="deleteProfile">Delete Profile</button>
+
+      <!-- <router-link class="button" v-bind:to="{ name: 'ProfileForm' }" v-if="$store.state.token != ''">Edit Profile</router-link>
+
+<router-link class="button" v-bind:to="{ name: 'ProfileForm' }" v-on:click="deleteUser" v-if="$store.state.token != ''">Delete Profile</router-link> -->
+
+<div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
+
+
+      <button class="button" v-on:click="deleteUser">Delete Profile</button>
       <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
       
+
+
   <router-link :to="{name: 'add-garden'}" >Add a Garden</router-link>
     </div>
   </div>
 </template>
 
 <script>
-import UserService from "../services/UserService";
+import userService from "../services/UserService";
+//import profileForm from "../components/ProfileForm";
 
 export default {
   created() {
-    UserService.getUserInfo(this.$store.state.user.id)
+    userService.getUserInfo(this.$store.state.user.id)
       .then((response) => {
         this.$store.commit("SET_USER_DATA", response);
       })
@@ -45,6 +57,38 @@ export default {
   data() {
     return {};
   },
+ methods: {
+    deleteUser() {
+      if (
+        confirm(
+          "Are you sure you want to delete this user? This action cannot be undone."
+        )
+      ) {
+        userService
+          .deleteUser(this.user.id)
+          .then(response => {
+            if (response.status === 200) {
+              alert("User successfully deleted");
+              this.$router.push(`/`);
+            }
+          })
+          .catch(error => {
+            if (error.response) {
+              this.errorMsg =
+                "Error deleting user. Response received was '" +
+                error.response.statusText +
+                "'.";
+            } else if (error.request) {
+              this.errorMsg =
+                "Error deleting user. Server could not be reached.";
+            } else {
+              this.errorMsg =
+                "Error deleting user. Request could not be created.";
+            }
+          });
+      }
+    }
+  }
 };
 </script>
 
