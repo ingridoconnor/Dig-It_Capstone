@@ -11,9 +11,6 @@ public class UserService {
 	private String BASE_URL = "https://phzmapi.org/";
 	private RestTemplate restTemplate = new RestTemplate();
 	
-	public UserService(String url) {
-		this.BASE_URL = url;
-	}
 	
 	public String getHardinessZone(User user) throws UserServiceException {
 		

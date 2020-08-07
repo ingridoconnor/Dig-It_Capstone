@@ -18,7 +18,7 @@
       <button class="button" v-on:click="deleteProfile">Delete Profile</button>
       <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
       
-
+  <router-link :to="{ name: 'add-garden' }" >Add a Garden</router-link>
     </div>
   </div>
 </template>
