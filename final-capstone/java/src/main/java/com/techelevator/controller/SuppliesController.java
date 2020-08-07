@@ -32,5 +32,11 @@ public class SuppliesController {
 		Supplies searchSupplyBySupplyNameResult = theSupplies.searchSupplyBySupplyName();
 		return searchSupplyBySupplyNameResult;
 	}
+	
+	@RequestMapping(path = {"/supplyCostBySupply"}, method = RequestMethod.GET)
+	public Supplies getSuppliesFromSupplyCount() {
+		Supplies supplyCostSupply = theSupplies.getSuppliesFromSupplyCount();
+		return supplyCostSupply;
+	}
 
 }
