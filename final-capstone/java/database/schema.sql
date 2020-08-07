@@ -87,16 +87,6 @@ COMMIT TRANSACTION;
 
 
 
-BEGIN TRANSACTION;
-
-DROP TABLE IF EXISTS plant_plot;
-CREATE TABLE plant_plot (
-        plant_id int NOT NULL,
-        plot_id int,
-
-        CONSTRAINT PK_plant_subplot_id PRIMARY KEY (plant_id, plot_id)
-);
-COMMIT TRANSACTION;
 
 
 BEGIN TRANSACTION;
@@ -107,7 +97,8 @@ CREATE TABLE plot (
         length int NOT NULL,
         width int NOT NULL,
         garden_id int NOT NULL,
-        plot_name varchar(100) NOT NULL,
+        plot_number int NOT NULL,
+        plant_id int,
         CONSTRAINT PK_plot_id PRIMARY KEY (plot_id)
 );
 COMMIT TRANSACTION;
@@ -169,6 +160,7 @@ INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('20', '4-tine
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('21', '4- tined green hand rake', '9.50');
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('22', 'Dig it! Watering can', '45.00');
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('23', 'Dit It! Copper Logo Watering can', '60.00');
+INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('24', 'Dig It! Tomato Cage', '20.00');
 
 
 
@@ -252,12 +244,12 @@ COMMIT TRANSACTION;
 
 
 ALTER TABLE plot ADD FOREIGN KEY (garden_id) REFERENCES garden(garden_id);
-ALTER TABLE plant_plot ADD FOREIGN KEY (plant_id) REFERENCES plant(plant_id);
-ALTER TABLE plant_plot ADD FOREIGN KEY (plot_id) REFERENCES plot(plot_id);
+
 ALTER TABLE garden_supplies ADD FOREIGN KEY (garden_id) REFERENCES garden(garden_id);
 ALTER TABLE garden_supplies ADD FOREIGN KEY (supply_id) REFERENCES supplies(supply_id);
 ALTER TABLE user_data ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
 ALTER TABLE garden ADD FOREIGN KEY (user_id) REFERENCES user_data(user_id);
 ALTER TABLE plant_hardiness ADD FOREIGN KEY (zone_name) REFERENCES hardiness(zone_name);
 ALTER TABLE plant_hardiness ADD FOREIGN KEY (plant_id) REFERENCES plant(plant_id);
+ALTER TABLE plot ADD FOREIGN KEY (plant_id) REFERENCES plant(plant_id);
 COMMIT TRANSACTION;

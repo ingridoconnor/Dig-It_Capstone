@@ -5,40 +5,49 @@ public class Plot {
 	private int gardenId;
 	private double plotLength;
 	private double plotWidth;
-	private String plotName;
+	private int plantId;
 	
 	
 	
 	public Plot() {
 		
 	}
-	public Plot(Long plotId, int gardenId, double plotLength, double plotWidth, String plotName) {
+	
+	public Plot(Long plotId, int gardenId, double plotLength, double plotWidth, int plantId) {
 		super();
 		this.plotId = plotId;
 		this.gardenId = gardenId;
 		this.plotLength = plotLength;
 		this.plotWidth = plotWidth;
-		this.plotName = plotName;
-		
+		this.plantId = plantId;
 	}
-	public Plot(int gardenId, double plotLength, double plotWidth, String plotName) {
+	
+	
+	
+	
+	public Plot(int gardenId, double plotLength, double plotWidth, int plantId) {
 		super();
 		this.gardenId = gardenId;
 		this.plotLength = plotLength;
 		this.plotWidth = plotWidth;
-		this.plotName = plotName;
+		this.plantId = plantId;
 	}
-	public Plot(double plotLength, double plotWidth, String plotName) {
+
+	
+	public Plot(double plotLength, double plotWidth, int plantId) {
 		super();
 		this.plotLength = plotLength;
 		this.plotWidth = plotWidth;
-		this.plotName = plotName;
-		
+		this.plantId = plantId;
 	}
 	
-	
-	
-	
+
+	public Plot(double plotLength, double plotWidth) {
+		super();
+		this.plotLength = plotLength;
+		this.plotWidth = plotWidth;
+	}
+
 	public Long getPlotId() {
 		return plotId;
 	}
@@ -63,12 +72,27 @@ public class Plot {
 	public void setPlotWidth(double plotWidth) {
 		this.plotWidth = plotWidth;
 	}
-	public String getPlotName() {
-		return plotName;
+
+
+
+
+
+	public int getPlantId() {
+		return plantId;
 	}
-	public void setPlotName(String plotName) {
-		this.plotName = plotName;
+
+
+
+
+
+	public void setPlantId(int plantId) {
+		this.plantId = plantId;
 	}
+
+
+
+
+
 	
 	
 	

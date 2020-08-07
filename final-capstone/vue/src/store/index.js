@@ -22,7 +22,16 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     userData: currentUserData || {},
-    gardens : [],
+    gardens: [],
+    plants: {
+      id: "",
+      name: "",
+      description: "",
+      plantsPerSqFoot: "",
+      sunRequirements: "", 
+      region: "", 
+      seedCost: ""
+    },
     plot: {
       gardenId: 0,
       type: "",
@@ -51,13 +60,16 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    SET_GARDEN_PLOTS(state, data) {
-      state.gardens = data;
+    SET_PLANTS(state, data) {
+      state.plants = data;
     },
     ADD_PLOT(state,plot) {
       const garden = this.state.gardens.find(p => p.id == plot.id);
       garden.plot.unshift(plot);
-    }
+    },
+    SET_GARDEN(state, data) {
+      state.gardens.push(data);
+    },
     // ADD_GARDEN(state,garden) {
     //   const garden = this.state.gardens.find(p => p.id == review.id);
     //   product.reviews.unshift(review);
