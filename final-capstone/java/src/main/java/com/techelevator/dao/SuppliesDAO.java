@@ -8,6 +8,7 @@ public interface SuppliesDAO {
 	
 	List<Supplies> getAllSupplies();
 	Supplies searchSupplyBySupplyName();
+	Supplies getSuppliesFromSupplyCount();
 	
 
 }

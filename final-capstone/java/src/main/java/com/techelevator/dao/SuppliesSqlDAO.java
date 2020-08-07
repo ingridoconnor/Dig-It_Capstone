@@ -41,6 +41,20 @@ public class SuppliesSqlDAO implements SuppliesDAO{
 		}
 		return supply;
 	}
+	@Override
+	public Supplies getSuppliesFromSupplyCount() {
+		Supplies supply = null;
+		String sql = "SELECT SUM(supply_cost * garden_supplies.supply_qty) "
+				+ "FROM supplies "
+				+ "INNER JOIN garden_supplies"
+				+ "ON supplies.supply_cost = garden_supplies.supply_qty"
+				+ "WHERE garden_supplies.supply_id = ?";
+			SqlRowSet results = template.queryForRowSet(sql);
+			if(results.next()) {
+				supply = mapRowToSupply(results);
+			}
+		return supply;
+	}
 	
 	private Supplies mapRowToSupply(SqlRowSet results) {
 		Supplies supply = new Supplies();
@@ -49,5 +63,7 @@ public class SuppliesSqlDAO implements SuppliesDAO{
 		supply.setSupplyName(results.getString("supply_name"));
 		return supply;
 	}
+
+	
 
 }
