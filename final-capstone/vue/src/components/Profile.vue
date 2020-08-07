@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <p>Gardens: <span v-for="garden in this.$store.state.gardens" v-bind:key="garden"> {{garden.name}} </span></p>
+      <p>Gardens: <span v-for="garden in this.$store.state.gardens" v-bind:key="garden"> {{garden.gardenName}} </span></p>
       <p>Username: {{this.$store.state.user.username}}</p>
       <p>First Name: {{this.$store.state.userData.data.firstName}}</p>
       <p>Last Name: {{this.$store.state.userData.data.lastName}}</p>
@@ -18,7 +18,7 @@
       <button class="button" v-on:click="deleteProfile">Delete Profile</button>
       <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
       
-  <router-link :to="{ name: 'add-garden' }" >Add a Garden</router-link>
+  <router-link :to="{name: 'add-garden'}" >Add a Garden</router-link>
     </div>
   </div>
 </template>

@@ -24,8 +24,8 @@ export default new Vuex.Store({
     userData: currentUserData || {},
     gardens: [],
     plants: {
-      id: "",
-      name: "",
+      gardenId: "",
+      gardenName: "",
       description: "",
       plantsPerSqFoot: "",
       sunRequirements: "", 
