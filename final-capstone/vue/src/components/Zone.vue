@@ -27,21 +27,28 @@
 </template>
 
 <script>
-// import UserService from "../services/UserService";
+// import ZoneService from "../services/ZoneService";
+  import userService from "../services/UserService";
 
 export default {
-//   created() {
-//     UserService.getUserInfo(this.$store.state.user.id)
-//       .then((response) => {
-//         this.$store.commit("SET_USER_DATA", response);
-//       })
-//       .catch((error) => {
-//         if (error.response && error.response.status === 404) {
-//           alert("User Data not available.");
-//           this.$router.push("/");
-//         }
-//       });
-//   },
+    // created() {
+    //     ZoneService.getZoneInfo()
+    //         .then((response) => {
+    //             this.$store.commit("")
+    //         })
+    // }
+  created() {
+    userService.getUserInfo(this.$store.state.user.id)
+      .then((response) => {
+        this.$store.commit("SET_USER_DATA", response);
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          alert("User Data not available.");
+          this.$router.push("/");
+        }
+      });
+  },
 
   name: "zone-data",
   components: {},

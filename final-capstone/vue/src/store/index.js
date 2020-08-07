@@ -46,12 +46,12 @@ export default new Vuex.Store({
       length: ""
     },
     zone: {
-      zoneName: "test Name",
-      lastFrostMonth: "testMonth",
-      lastFrostDay: "testDay",
-      firstFrostMonth: "testMonth",
-      firstFrostDay: "testDay",
-      avgGrowingDays: "testAvgDays"
+      zoneName: "",
+      lastFrostMonth: "",
+      lastFrostDay: "",
+      firstFrostMonth: "",
+      firstFrostDay: "",
+      avgGrowingDays: ""
     }
   },
   mutations: {
@@ -77,6 +77,9 @@ export default new Vuex.Store({
     },
     SET_PLANTS(state, data) {
       state.plants = data;
+    },
+    SET_ZONE(state, data) {
+      state.zone = data;
     },
     ADD_PLOT(state,plot) {
       const garden = this.state.gardens.find(p => p.id == plot.id);

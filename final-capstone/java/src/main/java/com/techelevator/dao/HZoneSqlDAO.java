@@ -31,7 +31,7 @@ public class HZoneSqlDAO implements HZoneDAO {
 				"	JOIN user_data u ON u.region=h.zone_name " + 
 				"	WHERE u.zip = ? " + 
 				"	GROUP BY h.zone_name";
-		SqlRowSet results = template.queryForRowSet(sql, user);
+		SqlRowSet results = template.queryForRowSet(sql, user.getZipcode());
 		if(results.next()) {
 			details = mapRowToZone(results);
 		}
