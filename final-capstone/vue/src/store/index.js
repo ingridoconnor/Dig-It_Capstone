@@ -30,7 +30,7 @@ export default new Vuex.Store({
       plantsPerSqFoot: "",
       sunRequirements: "", 
       region: "", 
-      seedCost: ""
+      seedlingCost: ""
     },
     plot: {
       gardenId: 0,

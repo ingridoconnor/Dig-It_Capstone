@@ -58,8 +58,8 @@ public class PlantSqlDAO implements PlantDAO {
 	}
 	@Override
 	public Plant addNewPlant(Plant plant) {
-		String sql = "INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES (?, ?, ?, ?, ?, ?) RETURING plant_id";
-		Long newPlantId = template.queryForObject(sql, Long.class, plant.getName(), plant.getDescription(), plant.getPlantsPerSqFoot(), plant.getSunRequirements(), plant.getRegion(), plant.getSeedCost());
+		String sql = "INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES (?, ?, ?, ?, ?, ?) RETURNING plant_id";
+		Long newPlantId = template.queryForObject(sql, Long.class, plant.getName(), plant.getDescription(), plant.getPlantsPerSqFoot(), plant.getSunRequirements(), plant.getRegion(), plant.getSeedlingCost());
 		plant.setId(newPlantId);
 		return plant;
 	}
@@ -70,7 +70,7 @@ public class PlantSqlDAO implements PlantDAO {
 		plant.setName(results.getString("plant_name"));
 		plant.setPlantsPerSqFoot(results.getInt("plants_per_sq_foot"));
 		plant.setRegion(results.getString("region"));
-		plant.setSeedCost(results.getBigDecimal("seed_cost"));
+		plant.setSeedlingCost(results.getBigDecimal("seedling_cost"));
 		return plant;
 	}
 

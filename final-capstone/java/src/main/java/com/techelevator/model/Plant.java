@@ -10,7 +10,7 @@ public class Plant {
 	private int plantsPerSqFoot;
 	private String sunRequirements;
 	private String region;
-	private BigDecimal seedCost;
+	private BigDecimal seedlingCost;
 
 	public Plant() {
 	}
@@ -23,7 +23,7 @@ public class Plant {
 		this.plantsPerSqFoot = plantsPerSqFoot;
 		this.sunRequirements = sunRequirements;
 		this.region = region;
-		this.seedCost = seedCost;
+		this.seedlingCost = seedCost;
 	}
 	
 	public Plant(Long id, String name, String description, int plantsPerSqFoot, String sunRequirements, String region,
@@ -35,7 +35,7 @@ public class Plant {
 		this.plantsPerSqFoot = plantsPerSqFoot;
 		this.sunRequirements = sunRequirements;
 		this.region = region;
-		this.seedCost = seedCost;
+		this.seedlingCost = seedCost;
 	}
 
 	public Long getId() {
@@ -86,12 +86,12 @@ public class Plant {
 		this.region = region;
 	}
 
-	public BigDecimal getSeedCost() {
-		return seedCost;
+	public BigDecimal getSeedlingCost() {
+		return seedlingCost;
 	}
 
-	public void setSeedCost(BigDecimal seedCost) {
-		this.seedCost = seedCost;
+	public void setSeedlingCost(BigDecimal seedCost) {
+		this.seedlingCost = seedCost;
 	}
 
 }
