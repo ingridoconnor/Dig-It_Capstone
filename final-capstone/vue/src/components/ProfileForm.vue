@@ -1,6 +1,5 @@
 <template>
-<div>
-<h1>HELLO!</h1>
+
   <form v-on:submit.prevent="submitForm" class="profileForm">
     <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
     <div class="form-group">
@@ -8,22 +7,22 @@
       <input id="username" type="text" class="form-control" v-model="user.username" autocomplete="off" />
 
       <label for="email">Email: </label>
-      <input id="email" type="email" class="form-control" v-model="userData.data.email" autocomplete="off" />
+      <input id="email" type="email" class="form-control" v-model="userData.email" autocomplete="off" />
       
       <label for="firstname">First name: </label>
-      <input id="firstname" type="text" class="form-control" v-model="userData.data.firstName" autocomplete="off" />
+      <input id="firstname" type="text" class="form-control" v-model="userData.firstName" autocomplete="off" />
       
       <label for="lastname">Last name: </label>
-      <input id="lastname" type="text" class="form-control" v-model="userData.data.lastName" autocomplete="off" />  
+      <input id="lastname" type="text" class="form-control" v-model="userData.lastName" autocomplete="off" />  
     
       <label for="city">City: </label>
-      <input id="city" type="text" class="form-control" v-model="userData.data.city" autocomplete="off" />  
+      <input id="city" type="text" class="form-control" v-model="userData.city" autocomplete="off" />  
     
       <label for="state">State: </label>
-      <input id="state" type="text" class="form-control" v-model="userData.data.state" autocomplete="off" />  
+      <input id="state" type="text" class="form-control" v-model="userData.state" autocomplete="off" />  
     
       <label for="zipcode">Zip: </label>
-      <input id="zipcode" type="text" class="form-control" v-model="userData.data.zipcode" autocomplete="off" />  
+      <input id="zipcode" type="text" class="form-control" v-model="userData.zipcode" autocomplete="off" />  
     
     
     </div>
@@ -32,8 +31,10 @@
     <button class="btn btn-submit, button" type="submit">Submit</button>
     <button class="btn btn-cancel, button" v-on:click.prevent="cancelForm" type="cancel">Cancel</button>
   </form>
-</div>
+
 </template>
+
+
 
 <script>
 import userService from "../services/UserService";
@@ -49,7 +50,7 @@ export default {
   },
   data() {
     return {
-      user: {
+      userData: {
         username: "",
         email: "",
         firstname: "",
@@ -57,7 +58,11 @@ export default {
         city: "",
         state: "",
         zipcode: "",
+        userID: ""
 
+      },
+      user: {
+        username: ""
       },
       errorMsg: ""
     };
@@ -65,14 +70,14 @@ export default {
   methods: {
     submitForm() {
       const newUser = {
-        userId: Number(this.$route.params.userID),
+        userID: Number(this.$route.params.userID),
         username: this.user.username,
-        email: this.user.email,
-        firstname: this.user.firstname,
-        lastname: this.user.lastname,
-        city: this.user.city,
-        state: this.user.state,
-        zipcode: this.user.zipcode,
+        email: this.userData.data.email,
+        firstname: this.userData.datafirstname,
+        lastname: this.userData.datalastname,
+        city: this.userData.datacity,
+        state: this.userData.datastate,
+        zipcode: this.userData.datazipcode,
       };
 
       if (this.userID === 0) {
@@ -81,7 +86,7 @@ export default {
           .addUser(newUser)
           .then(response => {
             if (response.status === 201) {
-              this.$router.push(`/board/${newUser.userId}`);
+              this.$router.push(`/profile/${newUser.userID}`);
             }
           })
           .catch(error => {
