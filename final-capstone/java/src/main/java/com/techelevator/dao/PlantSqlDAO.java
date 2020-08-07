@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import com.techelevator.model.LineItem;
 import com.techelevator.model.Plant;
 import com.techelevator.model.Plot;
 import com.techelevator.model.ShoppingList;
@@ -34,22 +35,23 @@ public class PlantSqlDAO implements PlantDAO {
 	    return retrievedPlants;    
 	}
 	@Override
-	public Plant getPlantCostFromPlot(Plot plot) {
-		Plant list = null;
-		String sql = "SELECT SUM(seedling_cost * plant_per_sq_foot), plant_name FROM plant "
+	public LineItem getPlantCostFromPlot(Plot plot) {
+		LineItem list = null;
+		String sql = "SELECT SUM(seedling_cost * plant_per_sq_foot) AS line_cost, plant_name FROM plant "
 				+ "WHERE plant_id = ?";
 		SqlRowSet results = template.queryForRowSet(sql, plot);
 		if(results.next()) {
-			list = mapRowToPlant(results);
+			list.setCost(results.getBigDecimal("line_cost"));
+			list.setItemName(results.getString("plant_name"));
 		}
 		return list;
 	}
 
 	@Override
-	public Plant searchPlantByPlantName() {
+	public Plant searchPlantByPlantName(String name) {
 		Plant plant = null;
 		String sql = "SELECT * FROM plant WHERE plant_name = ?";
-		SqlRowSet results = template.queryForRowSet(sql);
+		SqlRowSet results = template.queryForRowSet(sql, name);
 		if(results.next()) {
 			plant = mapRowToPlant(results);
 		}

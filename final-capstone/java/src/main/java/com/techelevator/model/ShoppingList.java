@@ -1,8 +1,8 @@
 package com.techelevator.model;
 
 public class ShoppingList {
-	private int gardenId;
-	private int supplyId;
+	private long gardenId;
+	private long supplyId;
 	private int supplyQty;
 	
 	
@@ -14,27 +14,27 @@ public class ShoppingList {
 	public ShoppingList() {
 		super();
 	}
-	public ShoppingList(int supplyId, int supplyQty) {
+	public ShoppingList(long supplyId, int supplyQty) {
 		super();
 		this.supplyId = supplyId;
 		this.supplyQty = supplyQty;
 	}
-	public ShoppingList(int gardenId, int supplyId, int supplyQty) {
+	public ShoppingList(long gardenId, long supplyId, int supplyQty) {
 		super();
 		this.gardenId = gardenId;
 		this.supplyId = supplyId;
 		this.supplyQty = supplyQty;
 	}
-	public int getGardenId() {
+	public long getGardenId() {
 		return gardenId;
 	}
-	public void setGardenId(int gardenId) {
+	public void setGardenId(long gardenId) {
 		this.gardenId = gardenId;
 	}
-	public int getSupplyId() {
+	public long getSupplyId() {
 		return supplyId;
 	}
-	public void setSupplyId(int supplyId) {
+	public void setSupplyId(long supplyId) {
 		this.supplyId = supplyId;
 	}
 	public int getSupplyQty() {

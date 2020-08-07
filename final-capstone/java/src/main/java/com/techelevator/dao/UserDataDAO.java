@@ -6,5 +6,7 @@ public interface UserDataDAO {
 	User createAccountUserData(User user);
 	
 	User getUserDataFromID(User user);
+	
+	User editProfile(User user);
 
 }

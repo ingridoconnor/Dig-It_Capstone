@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.dao.SuppliesDAO;
+import com.techelevator.model.LineItem;
 import com.techelevator.model.Supplies;
 
 @RestController
@@ -28,14 +30,14 @@ public class SuppliesController {
 	}
 	
 	@RequestMapping(path = { "/supplyNameSearch/"}, method = RequestMethod.GET)
-	public Supplies searchSupplyBySupplyName() {
-		Supplies searchSupplyBySupplyNameResult = theSupplies.searchSupplyBySupplyName();
+	public Supplies searchSupplyBySupplyName(@RequestParam String name) {
+		Supplies searchSupplyBySupplyNameResult = theSupplies.searchSupplyBySupplyName(name);
 		return searchSupplyBySupplyNameResult;
 	}
 	
 	@RequestMapping(path = {"/supplyCostBySupply"}, method = RequestMethod.GET)
-	public Supplies getSuppliesFromSupplyCount() {
-		Supplies supplyCostSupply = theSupplies.getSuppliesFromSupplyCount();
+	public LineItem getSuppliesFromSupplyCount() {
+		LineItem supplyCostSupply = theSupplies.getSuppliesFromSupplyCount();
 		return supplyCostSupply;
 	}
 

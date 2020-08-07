@@ -34,6 +34,17 @@ public class UserDataSqlDAO implements UserDataDAO{
 		userData.setUsername(user.getUsername());
 		return userData;
 	}
+	@Override
+	public User editProfile(User user) {
+		String sql = "UPDATE user_data SET"
+				+ "first_name = ?, last_name = ?, email = ?, region = ?,"
+				+ "city = ?, state = ?, zip = ?"
+				+ "WHERE user_id = ?";
+		template.update(sql, user.getFirstName(), user.getLastName(), user.getEmail(),
+				user.getRegion(), user.getCity(), user.getState(), user.getZipcode(), user.getId());
+		
+		return user;
+	}
 	
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
@@ -47,6 +58,8 @@ public class UserDataSqlDAO implements UserDataDAO{
         user.setLastName(rs.getString("last_name"));
         return user;
     }
+
+	
 	
 	
 	
