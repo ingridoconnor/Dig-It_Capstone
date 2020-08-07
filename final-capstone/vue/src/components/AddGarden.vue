@@ -17,17 +17,13 @@
       <input id="length" type="number" min="1" v-on:change="changeSize" v-model="newGarden.gardenLength" />
     </div>
 
-    <p class="temp">For reference during programming only: {{this.sizeArray}}</p>
+
 
     <div id="gridView">
       <span class="width" v-for="arrays in this.newGarden.sizeArray" v-bind:key="arrays">
-        <!--  ADD CHECK ALL COLUMN BUTTONS IF TIME PERMITS
-                 <input  class="float" type="checkbox">
 
-        -->
         <div class="squares" v-for="height in arrays" v-bind:key="height">
-          {{height}}
-          <input class="check" type="checkbox" />
+    
         </div>
       </span>
     </div>
@@ -36,6 +32,7 @@
       <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
       <button>Submit</button>
     </div>
+
   </form>
 </template>
 
@@ -64,9 +61,9 @@ export default {
       GardenService.addGarden(this.newGarden)
         .then((response) => {
           if (response.status == 200) {
-            this.newGarden.gardenId = response.data.garden.gardenId;
-            this.$store.commit("SET_GARDEN", this.newGarden);
-            this.$router.push(`/garden/${this.newGarden.gardenId}`);
+            this.newGarden.gardenId = response.data.gardenId;
+            this.$store.commit("SET_GARDEN", response.data);
+            this.$router.push({ name: "garden", params: { gardenid: this.newGarden.gardenId } });
 
           }
         })
@@ -81,7 +78,10 @@ export default {
 
     },
     resetForm() {
-      this.newGarden = {};
+      this.newGarden.gardenName = '';
+      this.newGarden.gardenWidth = 2;
+      this.newGarden.gardenLength = 2;
+      this.newGarden.sizeArray = [[1, 2], [3, 4],];
     },
     changeSize() {
       var x = 1;
@@ -153,15 +153,5 @@ input {
   border-color: #381c06;
 }
 
-.check {
-  display: inline-block;
-  align-content: center;
-  justify-content: center;
-  width: 15px;
-  height: 15px;
-}
 
-.temp {
-  color: red;
-}
 </style>

@@ -1,13 +1,15 @@
 <template>
-  <plots-list />
+  <div>
+        <garden-details />
+    </div>
 </template>
 
 <script>
-import PlotsList from '@/components/AllPlots';
+import GardenDetails from '@/components/GardenDetails';
 
 export default {
   components: {
-    PlotsList
+    GardenDetails
   }
 };
 </script>

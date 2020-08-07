@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.techelevator.dao.HZoneDAO;
 import com.techelevator.dao.UserDAO;
 import com.techelevator.dao.UserDataDAO;
+import com.techelevator.model.HZone;
 import com.techelevator.model.User;
 
 @RestController
@@ -22,6 +24,9 @@ public class UserController {
 	@Autowired
 	UserDAO uDao;
 	
+	@Autowired
+	HZoneDAO hDao;
+	
 	@RequestMapping(path = { "/user/{id}"}, method = RequestMethod.GET)
 	public User getUserData(@PathVariable long id) {
 		User user = new User();
@@ -31,12 +36,11 @@ public class UserController {
 		return newUser;
 	}
 	
-
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(path = { "/zone"}, method = RequestMethod.GET)
+	public HZone getHZoneData() {
+		HZone hzone = new HZone();
+		User user = new User();	
+		hzone = hDao.getHZoneDetails(user);
+		return hzone;
+	}
 }

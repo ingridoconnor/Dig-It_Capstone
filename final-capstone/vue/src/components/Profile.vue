@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <p>Gardens: <span v-for="garden in this.$store.state.gardens" v-bind:key="garden"> {{garden.gardenName}} </span></p>
+      <p>Gardens: <span v-for="garden in this.$store.state.gardens" v-bind:key="garden"> {{garden.newGarden.gardenName}} </span></p>
       <p>Username: {{this.$store.state.user.username}}</p>
       <p>ID: {{this.$store.state.userData.data.id}}</p>
       <p>First Name: {{this.$store.state.userData.data.firstName}}</p>

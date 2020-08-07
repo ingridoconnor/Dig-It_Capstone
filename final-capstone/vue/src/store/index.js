@@ -23,6 +23,13 @@ export default new Vuex.Store({
     user: currentUser || {},
     userData: currentUserData || {},
     gardens: [],
+    garden: {
+      userId: "",
+      gardenId: "",
+      gardenName: "",
+      gardenWidth: "",
+      gardenLength: "",
+    },
     plants: {
       gardenId: "",
       gardenName: "",
@@ -39,12 +46,12 @@ export default new Vuex.Store({
       length: ""
     },
     zone: {
-      zoneName: "test Name",
-      lastFrostMonth: "testMonth",
-      lastFrostDay: "testDay",
-      firstFrostMonth: "testMonth",
-      firstFrostDay: "testDay",
-      avgGrowingDays: "testAvgDays"
+      zoneName: "",
+      lastFrostMonth: "",
+      lastFrostDay: "",
+      firstFrostMonth: "",
+      firstFrostDay: "",
+      avgGrowingDays: ""
     }
   },
   mutations: {
@@ -71,12 +78,16 @@ export default new Vuex.Store({
     SET_PLANTS(state, data) {
       state.plants = data;
     },
+    SET_ZONE(state, data) {
+      state.zone = data;
+    },
     ADD_PLOT(state,plot) {
       const garden = this.state.gardens.find(p => p.id == plot.id);
       garden.plot.unshift(plot);
     },
     SET_GARDEN(state, data) {
       state.gardens.push(data);
+      state.garden = data;
     },
     // ADD_GARDEN(state,garden) {
     //   const garden = this.state.gardens.find(p => p.id == review.id);
