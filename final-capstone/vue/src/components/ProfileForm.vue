@@ -1,15 +1,11 @@
 <template>
+<div>
+<h1>HELLO!</h1>
   <form v-on:submit.prevent="submitForm" class="profileForm">
     <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
     <div class="form-group">
       <label for="username">Username: </label>
       <input id="username" type="text" class="form-control" v-model="user.username" autocomplete="off" />
-      
-      <label for="password">Password: </label>
-      <input id="password" type="text" class="form-control" v-model="userData.data.password" autocomplete="off" />
-
-      <label for="confirmpassword">Confirm Password: </label>
-      <input id="confirmpassword" type="text" class="form-control" v-model="userData.data.password" autocomplete="off" />
 
       <label for="email">Email: </label>
       <input id="email" type="email" class="form-control" v-model="userData.data.email" autocomplete="off" />
@@ -29,23 +25,22 @@
       <label for="zipcode">Zip: </label>
       <input id="zipcode" type="text" class="form-control" v-model="userData.data.zipcode" autocomplete="off" />  
     
-      <label for="region">Region: </label>
-      <input id="region" type="text" class="form-control" v-model="userData.data.region" autocomplete="off" />  
     
     </div>
     
     
-    <button class="btn btn-submit, button">Submit</button>
+    <button class="btn btn-submit, button" type="submit">Submit</button>
     <button class="btn btn-cancel, button" v-on:click.prevent="cancelForm" type="cancel">Cancel</button>
   </form>
+</div>
 </template>
 
 <script>
 import userService from "../services/UserService";
-// import moment from "moment";
+
 
 export default {
-  name: "user-form",
+  name: "profile-form",
   props: {
     userID: {
       type: Number,
@@ -56,15 +51,12 @@ export default {
     return {
       user: {
         username: "",
-        password: "",
-        confirmpassword: "",
         email: "",
         firstname: "",
         lastname: "",
         city: "",
         state: "",
         zipcode: "",
-        region: ""
 
       },
       errorMsg: ""
@@ -75,15 +67,12 @@ export default {
       const newUser = {
         userId: Number(this.$route.params.userID),
         username: this.user.username,
-        password: this.user.password,
-        confirmpassword: this.user.confirmpassword,
         email: this.user.email,
         firstname: this.user.firstname,
         lastname: this.user.lastname,
         city: this.user.city,
         state: this.user.state,
         zipcode: this.user.zipcode,
-        region: this.user.region
       };
 
       if (this.userID === 0) {
@@ -113,15 +102,12 @@ export default {
         // update
         newUser.id = this.userID;
         newUser.username = this.user.username;
-        newUser.password = this.user.password;
-        newUser.confirmpassword = this.user.confirmpassword;
         newUser.email = this.user.email;
         newUser.firstname = this.user.firstname;
         newUser.lastname = this.user.lastname;
         newUser.city = this.user.city;
         newUser.state = this.user.state;
         newUser.zipcode = this.user.zipcode;
-        newUser.region = this.user.region;
 
         userService
           .updateUserInfo(newUser.id)

@@ -16,6 +16,10 @@ export default {
   
   addUser(id) {
     return http.post(`/user/${id}`);
+  },
+
+  deleteUser(id) {
+    return http.delete(`/user/${id}`);
   }
 
 
