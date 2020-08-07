@@ -183,12 +183,12 @@ CONSTRAINT PK_user_data PRIMARY KEY (user_id)
 
 );
 
-INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('1', 'user', 'x', 'userx@gardenmail.com', '6b', 'Detroit', 'Michigan', '48202');
-INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('2', 'admin', 'x', 'adminx@gardenmail.com', '6b', 'Detroit', 'Michigan', '48202');
-INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('3', 'Doyle', 'ODonnell', 'doyleodo@gardenmail.com', '5b', 'Brighton', 'Michigan', '48114');
-INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('4', 'Brandon', 'Grumbling', 'brandon@gardenmail.com', '7b', 'Philadelphia', 'Michigan', '19125');
-INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('5', 'Ingrid', 'OConnor', 'ingrid@gardenmail.com', '6b', 'Detroit', 'Michigan', '48202');
-INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('6', 'Ben', 'Offer', 'ben@gardenmail.com', '6a', 'Ferndale', 'Michigan', '48220');
+INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('1', 'user', 'x', 'userx@gardenmail.com', 'null', 'Detroit', 'Michigan', '48202');
+INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('2', 'admin', 'x', 'adminx@gardenmail.com', 'null', 'Detroit', 'Michigan', '48202');
+INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('3', 'Doyle', 'ODonnell', 'doyleodo@gardenmail.com', 'null', 'Brighton', 'Michigan', '48114');
+INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('4', 'Brandon', 'Grumbling', 'brandon@gardenmail.com', 'null', 'Philadelphia', 'Michigan', '19125');
+INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('5', 'Ingrid', 'OConnor', 'ingrid@gardenmail.com', 'null', 'Detroit', 'Michigan', '48202');
+INSERT INTO user_data (user_id, first_name, last_name, email, region, city, state, zip) VALUES ('6', 'Ben', 'Offer', 'ben@gardenmail.com', 'null', 'Ferndale', 'Michigan', '48220');
 
 COMMIT TRANSACTION;
 
