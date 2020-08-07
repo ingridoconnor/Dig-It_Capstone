@@ -36,6 +36,8 @@
       <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
       <button>Submit</button>
     </div>
+<p>Garden ID for Testing:  {{this.newGarden.gardenId}}</p>
+
   </form>
 </template>
 
@@ -64,9 +66,9 @@ export default {
       GardenService.addGarden(this.newGarden)
         .then((response) => {
           if (response.status == 200) {
-            this.newGarden.gardenId = response.data.garden.gardenId;
-            this.$store.commit("SET_GARDEN", this.newGarden);
-            this.$router.push(`/garden/${this.newGarden.gardenId}`);
+            this.newGarden.gardenId = response.data.gardenId;
+            this.$store.commit("SET_GARDEN", response.data);
+            this.$router.push({ name: "garden", params: { gardenid: this.newGarden.gardenId } });
 
           }
         })

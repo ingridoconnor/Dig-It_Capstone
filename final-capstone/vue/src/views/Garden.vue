@@ -1,5 +1,8 @@
 <template>
-  <plots-list />
+  <div>
+    <h1>garden vue</h1>
+    <plots-list />
+    </div>
 </template>
 
 <script>
