@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.dao.PlantDAO;
 import com.techelevator.model.Plant;
+import com.techelevator.model.Plot;
 
 @RestController
 @CrossOrigin
@@ -32,6 +33,13 @@ public class PlantController {
 		Plant searchByNameResult = thePlants.searchPlantByPlantName();
 		return searchByNameResult;
 	}
+	
+	@RequestMapping(path = {"/plantCostByPlot"}, method = RequestMethod.GET)
+		public Plant getPlantCostFromPlot(Plot plot) {
+			Plant plantCostPlot = thePlants.getPlantCostFromPlot(plot);
+			return plantCostPlot;
+		}
+	
 	
 
 

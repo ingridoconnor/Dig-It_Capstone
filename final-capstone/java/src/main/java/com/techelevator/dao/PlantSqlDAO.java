@@ -10,6 +10,8 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import com.techelevator.model.Plant;
+import com.techelevator.model.Plot;
+import com.techelevator.model.ShoppingList;
 
 
 @Component
@@ -30,6 +32,17 @@ public class PlantSqlDAO implements PlantDAO {
 	        retrievedPlants.add(mapRowToPlant(results));
 	    }
 	    return retrievedPlants;    
+	}
+	@Override
+	public Plant getPlantCostFromPlot(Plot plot) {
+		Plant list = null;
+		String sql = "SELECT SUM(seedling_cost * plant_per_sq_foot), plant_name FROM plant "
+				+ "WHERE plant_id = ?";
+		SqlRowSet results = template.queryForRowSet(sql, plot);
+		if(results.next()) {
+			list = mapRowToPlant(results);
+		}
+		return list;
 	}
 
 	@Override

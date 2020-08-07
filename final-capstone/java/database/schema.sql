@@ -42,45 +42,44 @@ CREATE TABLE plant (
         plants_per_sq_foot int NOT NULL,
         sun_requirements varchar(100) NOT NULL,
         region varchar(100) NOT NULL,
-        seed_cost decimal NOT NULL,
+        seedling_cost decimal NOT NULL,
         CONSTRAINT PK_plant_id PRIMARY KEY (plant_id)     
 
 );
-
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Arugula', 'Leafy green, with an herbaceous, peppery flavor, great for salads and sandwiches', '4', '3-4 hours', 'Mediterranean', '6.25');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Basil', 'Aromatic herb, great for cooking and in sauces', '3', '6-8 hours', 'Tropical', '3.75');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Beets', 'Colorful root vegetable', '9', '6 hours', 'Mediterranean', '4.50');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Bok Choy', 'Leafy grren vegetable in the cabbage family, great for cooking', '9', '3-5 hours', 'Asia', '2.50');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Broccoli', 'Cruciferous vegetable with many health benefits and cooking uses', '1', 'Partial Shade', 'Southwestern United States', '2.75');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Brussel Sprout', 'Mini cabbages, they taste great when roasted', '1', 'Minimum of 6 hours', 'Mediterranean', '3.75');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Cabbage', 'Leafy green, red, purple or white crop in the broccoli family', '1', 'Minimum of 6 hours', 'Europe', '5.00');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Carrot', 'Delicious, orange root vegetable, great for cooking or eating raw', '16', 'Minimum of 6 hours', 'Africa', '3.00');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Cauliflower', 'Crucerferous vegetable with versitle cooking properties', '1', 'Minimum of 6 hours', 'Asia', '7.75');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Corn', 'Sweet yellow grain, great for cooking', '4', 'Minimum of 6 hours', 'United States', '6.25');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Collards', 'Deep leafy grren member of the cabbage family', '1', '4-5 hours', 'Mediterranean', '2.95');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Cucumber', 'Refreshing vine fruit, great for salads', '2', 'Minimum of 8 hours', 'India', '3.75');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Eggplant', 'Herbaceous perennial, related to the tomato, great for cooking', '1', 'Minimum of 6 hours', 'India', '7.50');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Garlic', 'Herbaceous, pungent, flowering bulb, often used in cooking, keeps the vampires away!', '9', 'Minimum of 8 hours', 'Middle Asia', '3.25');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Green Onions', 'Also known as scallions, often used for cooking', '16', '6-7 hours', 'Asia', '1.75');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Kale', 'Leafy herbaceous biennial plant, great for cooking or eating raw', '1', 'Minimum of 6 hours', 'Mediterranean', '5.00');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Lettuce (leaf)', 'Perfect for salads!', '6', '10-12 hours', 'Egypt', '4.95');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Lettuce (head)', 'Perfect for salads!', '2', '10-12 hours', 'Egypt', '4.95');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Mint', 'Perfect for teas, cooking, and garnishing', '4', '4-6 hours', 'South America', '2.25');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Onion', 'Pungent biennial, great for cooking', '9', '13-16 hours', 'Central Asia', '2.50');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Zucchini', 'Dark green summer squash, great for cooking', '1', '6-8 hours', 'Central America', '8.00');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Thyme', 'Wiry, stemmed, herbaceous perennial, often used as a seasoning', '4', '6 hours', 'Southern Europe', '6.25');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Turnips', 'Hardy biennia plant in the mustard family', '9', 'Minimum of 6 hours', 'Europe', '5.50');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Tomato', 'Acidic nightshade, often used for cooking', '1', 'Minimum of 8 hours', 'Central America', '6.00');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Spinach', 'Iron-rich leafy grren, Popeye would be proud!', '9', 'Minimum of 6 hours', 'Southwestern Asia', '3.50');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Squash', 'Great for fall dishes', '1', '6 hours', 'Mexico', '2.95');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Sage', 'Evergreen herb in the mint family', '1', '6-8 hours', 'Mediterranean', '2.50');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Rosemary', 'Evergreen shrub, with purple flowers and a lovely scent', '1', '6-8 hours', 'Mediterranean', '5.50');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Rhubarb', 'Perfect for pies, jellies, and more, should not be eaten raw', '1', 'Minimum of 6 hours', 'Central Asia', '1.50');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Rashishes', 'Bitter root vegetable, great for salads and garnishes', '16', 'Minimum of 6 hours', 'Mediterranean', '2.75');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Potato', 'Versitile, starchy root vegetable', '4', 'Minimum of 6 hours', 'Peru', '3.50');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Bell Pepper', 'Perfect for salads and stir-fry dishes', '1', '6-8 hours', 'South America', '6.25');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Peas', 'Classic garden veggie, great for novice gardeners', '9', '6-8 hours', 'Mediterranean', '4.00');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seed_cost) VALUES ('Parsley', 'Great for garnishing', '4', '5 hours', 'Mediterranean', '6.25');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Arugula', 'Leafy green, with an herbaceous, peppery flavor, great for salads and sandwiches', '4', '3-4 hours', 'Mediterranean', '6.25');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Basil', 'Aromatic herb, great for cooking and in sauces', '3', '6-8 hours', 'Tropical', '3.75');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Beets', 'Colorful root vegetable', '9', '6 hours', 'Mediterranean', '4.50');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Bok Choy', 'Leafy grren vegetable in the cabbage family, great for cooking', '9', '3-5 hours', 'Asia', '2.50');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Broccoli', 'Cruciferous vegetable with many health benefits and cooking uses', '1', 'Partial Shade', 'Southwestern United States', '2.75');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Brussel Sprout', 'Mini cabbages, they taste great when roasted', '1', 'Minimum of 6 hours', 'Mediterranean', '3.75');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Cabbage', 'Leafy green, red, purple or white crop in the broccoli family', '1', 'Minimum of 6 hours', 'Europe', '5.00');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Carrot', 'Delicious, orange root vegetable, great for cooking or eating raw', '16', 'Minimum of 6 hours', 'Africa', '3.00');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Cauliflower', 'Crucerferous vegetable with versitle cooking properties', '1', 'Minimum of 6 hours', 'Asia', '7.75');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Corn', 'Sweet yellow grain, great for cooking', '4', 'Minimum of 6 hours', 'United States', '6.25');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Collards', 'Deep leafy grren member of the cabbage family', '1', '4-5 hours', 'Mediterranean', '2.95');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Cucumber', 'Refreshing vine fruit, great for salads', '2', 'Minimum of 8 hours', 'India', '3.75');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Eggplant', 'Herbaceous perennial, related to the tomato, great for cooking', '1', 'Minimum of 6 hours', 'India', '7.50');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Garlic', 'Herbaceous, pungent, flowering bulb, often used in cooking, keeps the vampires away!', '9', 'Minimum of 8 hours', 'Middle Asia', '3.25');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Green Onions', 'Also known as scallions, often used for cooking', '16', '6-7 hours', 'Asia', '1.75');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Kale', 'Leafy herbaceous biennial plant, great for cooking or eating raw', '1', 'Minimum of 6 hours', 'Mediterranean', '5.00');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Lettuce (leaf)', 'Perfect for salads!', '6', '10-12 hours', 'Egypt', '4.95');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Lettuce (head)', 'Perfect for salads!', '2', '10-12 hours', 'Egypt', '4.95');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Mint', 'Perfect for teas, cooking, and garnishing', '4', '4-6 hours', 'South America', '2.25');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Onion', 'Pungent biennial, great for cooking', '9', '13-16 hours', 'Central Asia', '2.50');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Zucchini', 'Dark green summer squash, great for cooking', '1', '6-8 hours', 'Central America', '8.00');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Thyme', 'Wiry, stemmed, herbaceous perennial, often used as a seasoning', '4', '6 hours', 'Southern Europe', '6.25');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Turnips', 'Hardy biennia plant in the mustard family', '9', 'Minimum of 6 hours', 'Europe', '5.50');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Tomato', 'Acidic nightshade, often used for cooking', '1', 'Minimum of 8 hours', 'Central America', '6.00');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Spinach', 'Iron-rich leafy grren, Popeye would be proud!', '9', 'Minimum of 6 hours', 'Southwestern Asia', '3.50');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Squash', 'Great for fall dishes', '1', '6 hours', 'Mexico', '2.95');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Sage', 'Evergreen herb in the mint family', '1', '6-8 hours', 'Mediterranean', '2.50');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Rosemary', 'Evergreen shrub, with purple flowers and a lovely scent', '1', '6-8 hours', 'Mediterranean', '5.50');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Rhubarb', 'Perfect for pies, jellies, and more, should not be eaten raw', '1', 'Minimum of 6 hours', 'Central Asia', '1.50');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Rashishes', 'Bitter root vegetable, great for salads and garnishes', '16', 'Minimum of 6 hours', 'Mediterranean', '2.75');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Potato', 'Versitile, starchy root vegetable', '4', 'Minimum of 6 hours', 'Peru', '3.50');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Bell Pepper', 'Perfect for salads and stir-fry dishes', '1', '6-8 hours', 'South America', '6.25');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Peas', 'Classic garden veggie, great for novice gardeners', '9', '6-8 hours', 'Mediterranean', '4.00');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Parsley', 'Great for garnishing', '4', '5 hours', 'Mediterranean', '6.25');
 
 
 COMMIT TRANSACTION;
