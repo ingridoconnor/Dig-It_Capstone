@@ -3,13 +3,14 @@ package com.techelevator.model;
 public class Garden {
 	private Long userId;
 	private Long gardenId;
-	private double gardenLength;
-	private double gardenWidth;
+	private Long gardenLength;
+	private Long gardenWidth;
+	private String gardenName;
 	
 	public Garden() {
 		
 	}
-	public Garden(Long userId, Long gardenId, double gardenLength, double gardenWidth) {
+	public Garden(Long userId, Long gardenId, Long gardenLength, Long gardenWidth) {
 		super();
 		this.userId = userId;
 		this.gardenId = gardenId;
@@ -17,13 +18,13 @@ public class Garden {
 		this.gardenWidth = gardenWidth;
 		
 	}
-	public Garden(Long gardenId, double gardenLength, double gardenWidth) {
+	public Garden(Long gardenId, Long gardenLength, Long gardenWidth) {
 		super();
 		this.gardenId = gardenId;
 		this.gardenLength = gardenLength;
 		this.gardenWidth = gardenWidth;
 	}
-	public Garden(double gardenLength, double gardenWidth) {
+	public Garden(Long gardenLength, Long gardenWidth) {
 		super();
 		this.gardenLength = gardenLength;
 		this.gardenWidth = gardenWidth;
@@ -44,16 +45,16 @@ public class Garden {
 	public void setGardenId(Long gardenId) {
 		this.gardenId = gardenId;
 	}
-	public double getGardenLength() {
+	public Long getGardenLength() {
 		return gardenLength;
 	}
-	public void setGardenLength(double gardenLength) {
+	public void setGardenLength(Long gardenLength) {
 		this.gardenLength = gardenLength;
 	}
-	public double getGardenWidth() {
+	public Long getGardenWidth() {
 		return gardenWidth;
 	}
-	public void setGardenWidth(double gardenWidth) {
+	public void setGardenWidth(Long gardenWidth) {
 		this.gardenWidth = gardenWidth;
 	}
 	public String getGardenName() {
@@ -62,6 +63,17 @@ public class Garden {
 	public void setGardenName(String gardenName) {
 		this.gardenName = gardenName;
 	}
-	private String gardenName;
 
+	 @Override
+	   public String toString() {
+	      return "Garden{" +
+	              "gardenId=" + gardenId +
+	              ", userId='" + userId +
+	           	  ", gardenLength=" + gardenLength +
+	      		  ", gardenWidth=" + gardenWidth +
+	      		  ", gardenName=" + gardenName +
+	      		  '}';
+	   }
+	 
+	 
 }

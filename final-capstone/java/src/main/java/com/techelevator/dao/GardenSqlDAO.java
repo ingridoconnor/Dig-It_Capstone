@@ -55,8 +55,8 @@ public class GardenSqlDAO implements GardenDAO {
 		Garden garden = new Garden();
 		garden.setUserId(results.getLong("user_id"));
 		garden.setGardenId(results.getLong("garden_id"));
-		garden.setGardenLength(results.getDouble("length"));
-		garden.setGardenWidth(results.getDouble("width"));
+		garden.setGardenLength(results.getLong("length"));
+		garden.setGardenWidth(results.getLong("width"));
 		garden.setGardenName(results.getString("garden_name"));
 		return garden;
 		

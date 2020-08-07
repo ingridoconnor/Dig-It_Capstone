@@ -1,6 +1,8 @@
 <template>
   <div>
     <div>
+      <h1>This is the garden detail page i guess</h1>
+      
       <router-link
         tag="button"
         class="btn addNewPlot"
