@@ -11,6 +11,7 @@ import EditPlot from '../views/EditPlot.vue'
 import Garden from '../views/Garden.vue'
 import Plot from '../views/Plot.vue'
 import store from '../store/index'
+import EditProfile from '../views/EditProfile.vue'
 
 Vue.use(Router)
 
@@ -103,6 +104,14 @@ const router = new Router({
       path: '/garden/:gardenid/editplot/:plotid/',
       name: 'edit-plot',
       component: EditPlot,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/editprofile/:userid/',
+      name: 'edit-profile',
+      component: EditProfile,
       meta: {
         requiresAuth: true
       }

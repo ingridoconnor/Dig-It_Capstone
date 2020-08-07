@@ -13,7 +13,7 @@
         
         <router-link
         tag="button"
-        :to="{ name: 'EditProfile', params: {cardID: $route.params.cardID} }"
+        :to="{ name: 'edit-profile', params: {userID: $route.params.userID} }"
         class="button"
       >Edit Profile</router-link>
 
@@ -21,7 +21,6 @@
 
 <router-link class="button" v-bind:to="{ name: 'ProfileForm' }" v-on:click="deleteUser" v-if="$store.state.token != ''">Delete Profile</router-link> -->
 
-<div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
 
 
       <button class="button" v-on:click="deleteUser">Delete Profile</button>

@@ -9,6 +9,7 @@
 import ProfileForm from "@/components/ProfileForm";
 
 export default {
+   
   components: {
     ProfileForm
   }

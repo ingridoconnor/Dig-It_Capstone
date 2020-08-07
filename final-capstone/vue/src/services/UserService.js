@@ -18,8 +18,8 @@ export default {
     return http.post(`/user/${id}`);
   },
 
-  deleteUser(user) {
-    return http.delete(`/user/`, user);
+  deleteUser(id) {
+    return http.delete(`/user/${id}`);
   }
 
 
