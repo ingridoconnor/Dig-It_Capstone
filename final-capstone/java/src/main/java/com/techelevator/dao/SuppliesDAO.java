@@ -13,5 +13,6 @@ public interface SuppliesDAO {
 	LineItem getSuppliesFromSupplyCount();
 	public void addToShoppingListGardenSupplies(ShoppingList item);
 	
+	
 
 }
