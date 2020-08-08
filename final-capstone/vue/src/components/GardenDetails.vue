@@ -1,13 +1,13 @@
 <template>
   <form v-on:submit.prevent="updatePlots">
-    <h1>Garden Details</h1>
+    <h1>{{this.$store.state.garden.gardenName}}</h1>
 
     <div id="gridView">
       <span class="width" v-for="arrays in this.plotArray" v-bind:key="arrays">
-        <!--  ADD CHECK ALL COLUMN BUTTONS IF TIME PERMITS
-                 <input  class="float" type="checkbox">
 
-        -->
+                 <input  class="float check" type="checkbox">
+
+
         <div class="squares" v-for="height in arrays" v-bind:key="height">
           {{height}}
           <input class="check" type="checkbox" />
@@ -109,13 +109,8 @@ form {
   background-color: #381c06;
 }
 
-input {
-  width: 5ch;
-}
 
-#name {
-  width: 20ch;
-}
+
 
 .width {
   display: flex;

@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <p v-for="plant in this.$store.state.plants" v-bind:key="plant">{{plant.name}}</p>
-  </div>
+
+    <form>
+      <div v-for="plant in this.$store.state.plants" v-bind:key="plant">
+        <input type="radio" >  {{plant.name}} 
+    </div>
+  </form>
+
 </template>
 
 <script>

@@ -18,7 +18,7 @@ public class UserDataController {
 	UserDataDAO theUserData;
 	
 	@RequestMapping(path = { "/editProfile"}, method = RequestMethod.PUT)
-	public User editProfile(User user) {
+	public User editProfile(@RequestBody User user) {
 		User editedProf = theUserData.editProfile(user);
 		return editedProf;
 		
