@@ -24,16 +24,21 @@ public class ShoppingListController {
 	@Autowired
 	PlantDAO thePlants;
 	
-//	@RequestMapping(path = { "/myShoppingList"}, method = RequestMethod.GET)
-//	public ShoppingList[] listAllItems() {
-//		List<ShoppingList> allItems = null;
-//		List<Supplies> allSupplies = theSupplies.getAllSupplies();
-//		List<Plant> allPlants = thePlants.getAllPlants();
-//	
-//		Plant[] plants = new Plant[allPlants.size()];
-//		plants = allPlants.toArray(plants);
-//		return plants;
-//	}
+	@RequestMapping(path = { "/myShoppingList"}, method = RequestMethod.GET)
+	public ShoppingList[] listAllItems() {
+		List<ShoppingList> allItems = null;
+		List<Supplies> allSupplies = theSupplies.getAllSupplies();
+		List<Plant> allPlants = thePlants.getAllPlants();
+	
+		Plant[] plants = new Plant[allPlants.size()];
+		plants = allPlants.toArray(plants);
+		return plants;
+		
+		Supplies[] supply = new Supplies[allSupplies.size()];
+		supply = allSupplies.toArray(supply);
+		return supply;
+		
+	}
 	@RequestMapping(path = { "/addToMyShoppingList"}, method = RequestMethod.POST)
 	public void addToList(@RequestParam String listItem, @RequestParam long gardenId, @RequestParam int quantity) {
 		
