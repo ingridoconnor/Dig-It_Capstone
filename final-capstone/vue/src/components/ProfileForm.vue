@@ -3,25 +3,23 @@
   <form v-on:submit.prevent="submitForm" class="profileForm">
     <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
     <div class="form-group">
-      <label for="username">Current Username: {{this.$store.state.user.username}}</label>
-      <input id="username" type="text" class="form-control" v-model="user.username" autocomplete="off" />
-
-      <label for="email">Current Email: {{this.$store.state.userData.data.email}}</label>
+     
+      <label for="email">Current Email: </label>
       <input id="email" type="email" class="form-control" v-model="userData.email" autocomplete="off" />
       
-      <label for="firstname">Current First name: {{this.$store.state.userData.data.firstName}}</label>
+      <label for="firstname">Current First name: </label>
       <input id="firstname" type="text" class="form-control" v-model="userData.firstName" autocomplete="off" />
       
-      <label for="lastname">Current Last name: {{this.$store.state.userData.data.lastName}}</label>
+      <label for="lastname">Current Last name: </label>
       <input id="lastname" type="text" class="form-control" v-model="userData.lastName" autocomplete="off" />  
     
-      <label for="city">Current City: {{this.$store.state.userData.data.city}}</label>
+      <label for="city">Current City: </label>
       <input id="city" type="text" class="form-control" v-model="userData.city" autocomplete="off" />  
     
-      <label for="state">Current State: {{this.$store.state.userData.data.state}}</label>
+      <label for="state">Current State: </label>
       <input id="state" type="text" class="form-control" v-model="userData.state" autocomplete="off" />  
     
-      <label for="zipcode">Current Zip: {{this.$store.state.userData.data.zipcode}}</label>
+      <label for="zipcode">Current Zip: </label>
       <input id="zipcode" type="text" class="form-control" v-model="userData.zipcode" autocomplete="off" />  
     
     
@@ -51,74 +49,29 @@ export default {
   data() {
     return {
       userData: {
-        username: "",
-        email: "",
-        firstname: "",
-        lastname: "",
-        city: "",
-        state: "",
-        zipcode: "",
-        userID: ""
+
+        email: this.$store.state.userData.data.email,
+        firstName: this.$store.state.userData.data.firstName,
+        lastName: this.$store.state.userData.data.lastName,
+        city: this.$store.state.userData.data.city,
+        state: this.$store.state.userData.data.state,
+        zipcode: this.$store.state.userData.data.zipcode,
+        id: this.$store.state.userData.data.id
 
       },
-      user: {
-        username: ""
-      },
+      
       errorMsg: ""
     };
   },
   methods: {
     submitForm() {
-      const newUser = {
-        userID: Number(this.$route.params.userID),
-        username: this.user.username,
-        email: this.userData.data.email,
-        firstname: this.userData.datafirstname,
-        lastname: this.userData.datalastname,
-        city: this.userData.datacity,
-        state: this.userData.datastate,
-        zipcode: this.userData.datazipcode,
-      };
-
-      if (this.userID === 0) {
-        // add
+      
         userService
-          .addUser(newUser)
-          .then(response => {
-            if (response.status === 201) {
-              this.$router.push(`/profile/`);
-            }
-          })
-          .catch(error => {
-            if (error.response) {
-              this.errorMsg =
-                "Error submitting info. Response received was '" +
-                error.response.statusText +
-                "'.";
-            } else if (error.request) {
-              this.errorMsg =
-                "Error submitting info. Server could not be reached.";
-            } else {
-              this.errorMsg =
-                "Error submitting info. Request could not be created.";
-            }
-          });
-      } else {
-        // update
-        newUser.id = this.userID;
-        newUser.username = this.user.username;
-        newUser.email = this.user.email;
-        newUser.firstname = this.user.firstname;
-        newUser.lastname = this.user.lastname;
-        newUser.city = this.user.city;
-        newUser.state = this.user.state;
-        newUser.zipcode = this.user.zipcode;
-
-        userService
-          .updateUserInfo(newUser.id)
+          .updateUserInfo(this.userData)
           .then(response => {
             if (response.status === 200) {
-              this.$router.push(`/profile/${newUser.id}`);
+              this.$store.commit("SET_USER_DATA", response);
+              this.$router.push(`/profile/${this.userData.id}`);
             }
           })
           .catch(error => {
@@ -135,7 +88,7 @@ export default {
                 "Error updating info. Request could not be created.";
             }
           });
-      }
+      
     },
     cancelForm() {
       this.$router.push(`/profile/`);
