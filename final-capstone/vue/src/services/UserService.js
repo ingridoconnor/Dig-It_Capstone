@@ -10,8 +10,8 @@ export default {
     return http.get(`/user/${id}`);
   },
 
-  updateUserInfo(id) {
-    return http.put(`/user/${id}`);
+  updateUserInfo(user) {
+    return http.put('/editProfile', user);
   },
   
   addUser(id) {
