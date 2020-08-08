@@ -58,6 +58,7 @@ public class SuppliesSqlDAO implements SuppliesDAO{
 			}
 		return supply;
 	}
+	
 	@Override
 	public void addToShoppingListGardenSupplies(ShoppingList item) {
 		String sql = "INSERT INTO garden_supplies VALUES (?, ?, ?)";
@@ -72,6 +73,8 @@ public class SuppliesSqlDAO implements SuppliesDAO{
 		supply.setSupplyName(results.getString("supply_name"));
 		return supply;
 	}
+
+	
 
 	
 
