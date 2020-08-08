@@ -86,7 +86,7 @@ export default {
           .addUser(newUser)
           .then(response => {
             if (response.status === 201) {
-              this.$router.push(`/profile/${newUser.userID}`);
+              this.$router.push(`/profile/`);
             }
           })
           .catch(error => {
