@@ -3,33 +3,33 @@
   <form v-on:submit.prevent="submitForm" class="profileForm">
     <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
     <div class="form-group">
-      <label for="username">Username: </label>
+      <label for="username">Current Username: {{this.$store.state.user.username}}</label>
       <input id="username" type="text" class="form-control" v-model="user.username" autocomplete="off" />
 
-      <label for="email">Email: </label>
+      <label for="email">Current Email: {{this.$store.state.userData.data.email}}</label>
       <input id="email" type="email" class="form-control" v-model="userData.email" autocomplete="off" />
       
-      <label for="firstname">First name: </label>
+      <label for="firstname">Current First name: {{this.$store.state.userData.data.firstName}}</label>
       <input id="firstname" type="text" class="form-control" v-model="userData.firstName" autocomplete="off" />
       
-      <label for="lastname">Last name: </label>
+      <label for="lastname">Current Last name: {{this.$store.state.userData.data.lastName}}</label>
       <input id="lastname" type="text" class="form-control" v-model="userData.lastName" autocomplete="off" />  
     
-      <label for="city">City: </label>
+      <label for="city">Current City: {{this.$store.state.userData.data.city}}</label>
       <input id="city" type="text" class="form-control" v-model="userData.city" autocomplete="off" />  
     
-      <label for="state">State: </label>
+      <label for="state">Current State: {{this.$store.state.userData.data.state}}</label>
       <input id="state" type="text" class="form-control" v-model="userData.state" autocomplete="off" />  
     
-      <label for="zipcode">Zip: </label>
+      <label for="zipcode">Current Zip: {{this.$store.state.userData.data.zipcode}}</label>
       <input id="zipcode" type="text" class="form-control" v-model="userData.zipcode" autocomplete="off" />  
     
     
     </div>
     
     
-    <button class="btn btn-submit, button" type="submit">Submit</button>
-    <button class="btn btn-cancel, button" v-on:click.prevent="cancelForm" type="cancel">Cancel</button>
+    <button class="btn-submit" type="submit">Submit</button>
+    <button class="btn-cancel" v-on:click.prevent="cancelForm" type="cancel">Cancel</button>
   </form>
 
 </template>
@@ -138,7 +138,7 @@ export default {
       }
     },
     cancelForm() {
-      this.$router.push(`/profile/${this.$route.params.userID}`);
+      this.$router.push(`/profile/`);
     }
   },
   created() {
@@ -199,13 +199,18 @@ select.form-control {
 
 .btn-submit {
   color: #fff;
-  background-color: #0062cc;
-  border-color: #005cbf;
+  background-color: #e48438;
+  border-color: #e48438;
+  width: 150px;
+  margin-right: 5px;
+  border-radius: 5px; 
 }
 .btn-cancel {
   color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: #307C55;
+  border-color: #307C55;
+  width: 150px;
+  border-radius: 5px; 
 }
 
 .status-message {
@@ -223,5 +228,21 @@ select.form-control {
 .status-message.error {
   background-color: #f08080;
 }
+
+.button {
+  padding: 20px;
+  height: 28px;
+  border-radius: 28px;
+  width: 80px;
+  margin-left: 20px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 200;
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+  background-color: #e48438 ;
+}
+
 
 </style>

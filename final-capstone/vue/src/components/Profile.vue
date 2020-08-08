@@ -15,17 +15,11 @@
         <router-link
         tag="button"
         :to="{ name: 'edit-profile', params: {userID: $route.params.userID} }"
-        class="button"
+        class="btn-submit"
       >Edit Profile</router-link>
 
-      <!-- <router-link class="button" v-bind:to="{ name: 'ProfileForm' }" v-if="$store.state.token != ''">Edit Profile</router-link>
-
-<router-link class="button" v-bind:to="{ name: 'ProfileForm' }" v-on:click="deleteUser" v-if="$store.state.token != ''">Delete Profile</router-link> -->
-
-
-
-      <button class="button" v-on:click="deleteUser">Delete Profile</button>
-      <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
+      <button class="btn-cancel" v-on:click="deleteUser">Delete Profile</button>
+      
       
 
 
@@ -93,5 +87,19 @@ export default {
 </script>
 
 <style>
-
+.btn-submit {
+  color: #fff;
+  background-color: #e48438;
+  border-color: #e48438;
+  width: 150px;
+  margin-right: 5px; 
+  border-radius: 5px; 
+}
+.btn-cancel {
+  color: #fff;
+  background-color: #307C55;
+  border-color: #307C55;
+  width: 150px;
+  border-radius: 5px; 
+}
 </style>
