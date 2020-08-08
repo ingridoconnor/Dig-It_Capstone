@@ -71,7 +71,7 @@ export default {
           .then(response => {
             if (response.status === 200) {
               this.$store.commit("SET_USER_DATA", response);
-              this.$router.push(`/profile/${this.userData.id}`);
+              this.$router.push(`/profile/`);
             }
           })
           .catch(error => {
