@@ -36,9 +36,9 @@ public class UserDataSqlDAO implements UserDataDAO{
 	}
 	@Override
 	public User editProfile(User user) {
-		String sql = "UPDATE user_data SET"
+		String sql = "UPDATE user_data SET "
 				+ "first_name = ?, last_name = ?, email = ?, "
-				+ "city = ?, state = ?, zip = ?"
+				+ "city = ?, state = ?, zip = ? "
 				+ "WHERE user_id = ?";
 		template.update(sql, user.getFirstName(), user.getLastName(), user.getEmail(),
 				 user.getCity(), user.getState(), user.getZipcode(), user.getId());
