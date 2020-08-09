@@ -1,20 +1,13 @@
 <template>
   <form v-on:submit.prevent="updatePlots">
-
-<p>{{this.$route.params.gardenid}}</p>
-
-
+   
     <h1>{{this.$store.state.garden.gardenName}}</h1>
-    <h1>{{this.$store.state.garden.gardenWidth}}</h1>
-        <h1>{{this.$store.state.garden.gardenLength}}</h1>
-            <h1>{{this.$store.state.garden.gardenId}}</h1>
+    
     <div id="gridView">
       <span class="width" v-for="arrays in this.plotArray" v-bind:key="arrays">
+        <input class="float check" type="checkbox" />
 
-                 <input  class="float check" type="checkbox">
-
-
-        <div class="squares" v-for="height in arrays" v-bind:key="height" >
+        <div class="squares" v-for="height in arrays" v-bind:key="height">
           {{height}}
           <input class="check" type="checkbox" />
         </div>
@@ -25,8 +18,6 @@
       <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
       <button>Update</button>
     </div>
-
-
   </form>
 </template>
 
@@ -41,18 +32,17 @@ export default {
         gardenId: 0,
         width: 1,
         length: 1,
-        vegatableId: ""
+        vegatableId: "",
       },
       PlotList: [],
-      plotArray: ""
+      plotArray: "",
     };
   },
   created() {
-      if (this.$state.store.garden.gardenId === 0) {
-      
-      GardenService.getGardenById(this.$route.params.gardenid)
+    GardenService.getGardenById(this.$route.params.gardenid)
       .then((response) => {
         this.$store.commit("SET_GARDEN", response.data);
+        this.loadArray();
       })
       .catch((error) => {
         if (error.response && error.response.status === 404) {
@@ -60,10 +50,9 @@ export default {
           this.$router.push("/");
         }
       });
-      }
-      
-      this.loadArray();
+
   },
+
   methods: {
     updatePlots() {
       GardenService.addGarden(this.newGarden)
@@ -71,8 +60,10 @@ export default {
           if (response.status == 200) {
             this.newGarden.gardenId = response.data.gardenId;
             this.$store.commit("SET_GARDEN", response.data);
-            this.$router.push({ name: "garden", params: { gardenid: this.newGarden.gardenId } });
-
+            this.$router.push({
+              name: "garden",
+              params: { gardenid: this.newGarden.gardenId },
+            });
           }
         })
         .catch((error) => {
@@ -82,8 +73,6 @@ export default {
             this.invalidCredentials = true;
           }
         });
-
-
     },
     resetForm() {
       this.newPlot = "";
@@ -128,9 +117,6 @@ form {
   border-radius: 20px;
   background-color: #381c06;
 }
-
-
-
 
 .width {
   display: flex;
