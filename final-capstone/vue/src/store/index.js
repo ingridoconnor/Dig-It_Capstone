@@ -52,7 +52,8 @@ export default new Vuex.Store({
       firstFrostMonth: "",
       firstFrostDay: "",
       avgGrowingDays: ""
-    }
+    },
+    mapValue: "5"
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {

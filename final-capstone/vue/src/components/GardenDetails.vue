@@ -62,7 +62,7 @@ export default {
       });
       }
       
-      this.loadArray;
+      this.loadArray();
   },
   methods: {
     updatePlots() {

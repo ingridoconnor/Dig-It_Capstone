@@ -36,7 +36,7 @@
       </div>
       <div class="profile-field">
         <span class="label-field">Hardiness Zone:</span>
-        <span>{{this.$store.state.userData.data.region}}</span>
+        <span>{{this.$store.state.userData.data.region}} <router-link class="zonelink" :to="{ name: 'zone'}">View my region details</router-link> </span>
       </div>
 
       <div class="button-container">

@@ -7,7 +7,7 @@ const http = axios.create({
 export default {
 
   getZoneInfo() {
-    return http.get(`/zone}`);
+    return http.get('/zone');
   }
 
 }
