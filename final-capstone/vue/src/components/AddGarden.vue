@@ -62,7 +62,7 @@ export default {
         .then((response) => {
           if (response.status == 200) {
             this.newGarden.gardenId = response.data.gardenId;
-            this.$store.commit("SET_GARDEN", response.data);
+            this.$store.commit("ADD_GARDEN", response.data);
             this.$router.push({ name: "garden", params: { gardenid: this.newGarden.gardenId } });
 
           }

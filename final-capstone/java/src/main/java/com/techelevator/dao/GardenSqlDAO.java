@@ -31,6 +31,35 @@ public class GardenSqlDAO implements GardenDAO {
 		}
 		return retrievedGardens;
 	}
+	
+	@Override
+	public Garden[] getGardensByUserId(Long id){
+		List<Garden> retrievedGardens = new ArrayList<>();
+		
+		String sql = "SELECT * FROM garden WHERE user_id = ? ";
+		SqlRowSet results = template.queryForRowSet(sql, id);
+
+		while (results.next()) {
+			retrievedGardens.add(mapRowToGarden(results));
+		}
+		Garden[] gardens = new Garden[retrievedGardens.size()];
+		for (int i = 0; i < gardens.length; i++) {
+			gardens[i] = retrievedGardens.get(i);
+		}
+		return gardens;
+	}
+	
+	@Override
+	public Garden getGardenById(Long id){
+		
+		String sql = "SELECT * FROM garden WHERE garden_id = ? ";
+		SqlRowSet results = template.queryForRowSet(sql, id);
+
+		results.next();
+		Garden garden = mapRowToGarden(results);
+		return garden;
+	}
+	
 	@Override
 	public Garden searchGardenByName() {
 		Garden garden = null;

@@ -1,14 +1,20 @@
 <template>
   <form v-on:submit.prevent="updatePlots">
-    <h1>{{this.$store.state.garden.gardenName}}</h1>
 
+<p>{{this.$route.params.gardenid}}</p>
+
+
+    <h1>{{this.$store.state.garden.gardenName}}</h1>
+    <h1>{{this.$store.state.garden.gardenWidth}}</h1>
+        <h1>{{this.$store.state.garden.gardenLength}}</h1>
+            <h1>{{this.$store.state.garden.gardenId}}</h1>
     <div id="gridView">
       <span class="width" v-for="arrays in this.plotArray" v-bind:key="arrays">
 
                  <input  class="float check" type="checkbox">
 
 
-        <div class="squares" v-for="height in arrays" v-bind:key="height">
+        <div class="squares" v-for="height in arrays" v-bind:key="height" >
           {{height}}
           <input class="check" type="checkbox" />
         </div>
@@ -37,12 +43,26 @@ export default {
         length: 1,
         vegatableId: ""
       },
-      newPlots: [],
+      PlotList: [],
       plotArray: ""
     };
   },
   created() {
-      this.loadArray();
+      if (this.$state.store.garden.gardenId === 0) {
+      
+      GardenService.getGardenById(this.$route.params.gardenid)
+      .then((response) => {
+        this.$store.commit("SET_GARDEN", response.data);
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          alert("Garden Data not available.");
+          this.$router.push("/");
+        }
+      });
+      }
+      
+      this.loadArray;
   },
   methods: {
     updatePlots() {

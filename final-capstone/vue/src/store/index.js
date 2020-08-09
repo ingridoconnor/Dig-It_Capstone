@@ -86,8 +86,14 @@ export default new Vuex.Store({
       garden.plot.unshift(plot);
     },
     SET_GARDEN(state, data) {
+      state.garden = data;
+    },    
+    ADD_GARDEN(state, data) {
       state.gardens.push(data);
       state.garden = data;
+    },
+    SET_GARDENS(state, data) {
+      state.gardens = data;
     },
     // ADD_GARDEN(state,garden) {
     //   const garden = this.state.gardens.find(p => p.id == review.id);
