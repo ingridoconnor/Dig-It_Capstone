@@ -10,7 +10,9 @@
       <p>City: {{this.$store.state.userData.data.city}}</p>
       <p>State: {{this.$store.state.userData.data.state}}</p>
       <p>Zip: {{this.$store.state.userData.data.zipcode}}</p>
-      <p>Region: {{this.$store.state.userData.data.region}}</p>
+      <p>Region: {{this.$store.state.userData.data.region}}
+        <router-link class="zonelink" :to="{ name: 'zone'}">View my region details</router-link>
+      </p>
         
         <router-link
         tag="button"

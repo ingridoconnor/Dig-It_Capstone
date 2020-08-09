@@ -1,42 +1,74 @@
 <template>
   <div>
-    <div>
+    
+    <div class="map">
+        <img class="zonemap" src="../img/zonemaps/zone3.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '3a' || this.$store.state.userData.data.region == '3b'">
+        <img class="zonemap" src="../img/zonemaps/zone4.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '4a' || this.$store.state.userData.data.region == '4b'">
+        <img class="zonemap" src="../img/zonemaps/zone5.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '5a' || this.$store.state.userData.data.region == '5b'">
+        <img class="zonemap" src="../img/zonemaps/zone6.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '6a' || this.$store.state.userData.data.region == '6b'">
+        <img class="zonemap" src="../img/zonemaps/zone7.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '7a' || this.$store.state.userData.data.region == '7b'">
+        <img class="zonemap" src="../img/zonemaps/zone8.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '8a' || this.$store.state.userData.data.region == '8b'">
+        <img class="zonemap" src="../img/zonemaps/zone9.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '9a' || this.$store.state.userData.data.region == '9b'">
+        <img class="zonemap" src="../img/zonemaps/zone10.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '10a' || this.$store.state.userData.data.region == '10b'">
+        <h1>Zone {{this.$store.state.userData.data.region}}</h1>
+    </div>
 
-      <p>City: {{this.$store.state.userData.data.city}}</p>
-      <p>State: {{this.$store.state.userData.data.state}}</p>
-      <p>Zip: {{this.$store.state.userData.data.zipcode}}</p>
-      <p>Zone Name: {{this.$store.state.userData.data.region}}</p>
+    <div>
+     <p>{{this.$store.state.userData.data.firstName}}, your garden is located in Plant Hardiness Zone  {{this.$store.state.userData.data.region}}</p>
+      <p>{{this.$store.state.userData.data.city}}, {{this.$store.state.userData.data.state}}, {{this.$store.state.userData.data.zipcode}}</p>
+
       <p>Start of Growing Season: {{this.$store.state.zone.lastFrostMonth}} {{this.$store.state.zone.lastFrostDay}}</p>
       <p>End of Growing Season: {{this.$store.state.zone.firstFrostMonth}} {{this.$store.state.zone.firstFrostDay}}</p>
       <p>Average Annual Number of Growing Days: {{this.$store.state.zone.avgGrowingDays}}</p>
 
     </div>
 
-    <img class="zonemap" src="../img/zone3.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '3a' || this.$store.state.userData.data.region == '3b'">
-    <img class="zonemap" src="../img/zone4.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '4a' || this.$store.state.userData.data.region == '4b'">
-    <img class="zonemap" src="../img/zone5.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '5a' || this.$store.state.userData.data.region == '5b'">
-    <img class="zonemap" src="../img/zone6.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '6a' || this.$store.state.userData.data.region == '6b'">
-    <img class="zonemap" src="../img/zone7.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '7a' || this.$store.state.userData.data.region == '7b'">
-    <img class="zonemap" src="../img/zone8.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '8a' || this.$store.state.userData.data.region == '8b'">
-    <img class="zonemap" src="../img/zone9.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '9a' || this.$store.state.userData.data.region == '9b'">
-    <img class="zonemap" src="../img/zone10.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '10a' || this.$store.state.userData.data.region == '10b'">
+    <div>
+      <br>
+        <h1 id="zone3" v-show="mapValue == '3'">Zone {{mapValue}}</h1>
+        <img class="zonemap" src="../img/zonemaps/zone3.png" alt="grow zones map" v-show="mapValue == '3'">
+        <h1 id="zone4" v-show="mapValue == '4'">Zone {{mapValue}}</h1>
+        <img class="zonemap" src="../img/zonemaps/zone4.png" alt="grow zones map" v-show="mapValue == '4'">
+        <h1 id="zone5" v-show="mapValue == '5'">Zone {{mapValue}}</h1>
+        <img class="zonemap" src="../img/zonemaps/zone5.png" alt="grow zones map" v-show="mapValue == '5'">
+        <h1 id="zone6" v-show="mapValue == '6'">Zone {{mapValue}}</h1>
+        <img class="zonemap" src="../img/zonemaps/zone6.png" alt="grow zones map" v-show="mapValue == '6'">
+        <h1 id="zone7" v-show="mapValue == '7'">Zone {{mapValue}}</h1>
+        <img class="zonemap" src="../img/zonemaps/zone7.png" alt="grow zones map" v-show="mapValue == '7'">
+        <h1 id="zone8" v-show="mapValue == '8'">Zone {{mapValue}}</h1>
+        <img class="zonemap" src="../img/zonemaps/zone8.png" alt="grow zones map" v-show="mapValue == '8'">
+        <h1 id="zone9" v-show="mapValue == '9'">Zone {{mapValue}}</h1>
+        <img class="zonemap" src="../img/zonemaps/zone9.png" alt="grow zones map" v-show="mapValue == '9'">
+        <h1 id="zone10" v-show="mapValue == '10'">Zone {{mapValue}}</h1>
+        <img class="zonemap" src="../img/zonemaps/zone10.png" alt="grow zones map" v-show="mapValue == '10'">
+        
+        <p>See other Hardiness Zones</p>
+        <select name="mapValue" id="hzones" v-model="mapValue">
+          <option selected disabled>Choose Zone</option>
+          <option value="3">Zones 3A and 3B</option>
+          <option value="4">Zones 4A and 4B</option>
+          <option value="5">Zones 5A and 5B</option>
+          <option value="6">Zones 6A and 6B</option>
+          <option value="7">Zones 7A and 7B</option>
+          <option value="8">Zones 8A and 8B</option>
+          <option value="9">Zones 9A and 9B</option>
+          <option value="10">Zones 10A and 10B</option>
+        </select>
 
-      
-  <router-link :to="{ name: 'add-garden' }" >Add a Garden</router-link>
+
+
+    </div>
   </div>
 </template>
 
 <script>
+
+
+
 // import ZoneService from "../services/ZoneService";
   import userService from "../services/UserService";
 
 export default {
-    // created() {
-    //     ZoneService.getZoneInfo()
-    //         .then((response) => {
-    //             this.$store.commit("")
-    //         })
-    // }
   created() {
     userService.getUserInfo(this.$store.state.user.id)
       .then((response) => {
@@ -52,8 +84,12 @@ export default {
 
   name: "zone-data",
   components: {},
+
   data() {
-    return {};
+    return {
+          mapValue: "",
+    };
+
   },
 };
 </script>
@@ -61,7 +97,60 @@ export default {
 <style>
 
     .zonemap {
+      text-align: center;
         width: 400px;
+    }
+
+    .map {
+      text-align: center;
+    }
+
+    #zone3 {
+      font-size: 45px;
+      color: #E58BE1;
+      text-shadow: 3px 3px 3px #5f5f5f;
+    }
+
+    #zone4 {
+      font-size: 45px;
+      color: #886FB1;
+      text-shadow: 3px 3px 3px #5f5f5f;
+    }
+    
+    #zone5 {
+      font-size: 45px;
+      color: #80ACFB;
+      text-shadow: 3px 3px 3px #5f5f5f;
+    }
+
+    #zone6 {
+      font-size: 45px;
+      color: #49AD4B;
+      text-shadow: 3px 3px 3px #5f5f5f;
+    }
+
+    #zone7 {
+      font-size: 45px;
+      color: #AFE651;
+      text-shadow: 3px 3px 3px #5f5f5f;
+    }
+
+    #zone8 {
+      font-size: 45px;
+      color: #F9EA61;
+      text-shadow: 3px 3px 3px #5f5f5f;
+    }
+
+    #zone9 {
+      font-size: 45px;
+      color: #DFBA45;
+      text-shadow: 3px 3px 3px #5f5f5f;
+    }
+
+    #zone10 {
+      font-size: 45px;
+      color: #E48028;
+      text-shadow: 3px 3px 3px #5f5f5f;
     }
 
 </style>
