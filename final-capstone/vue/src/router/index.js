@@ -13,6 +13,7 @@ import Plot from '../views/Plot.vue'
 import Zone from '../views/Zone.vue'
 import store from '../store/index'
 import EditProfile from '../views/EditProfile.vue'
+import EditPlant from '../views/EditPlant.vue'
 
 Vue.use(Router)
 
@@ -123,6 +124,14 @@ const router = new Router({
       component: Zone,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path: '/editplant/',
+      name: 'edit-plant',
+      component: EditPlant,
+      meta: {
+        requiresAuth: false
       }
     }
   ]
