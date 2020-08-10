@@ -46,7 +46,7 @@ public class SuppliesSqlDAO implements SuppliesDAO{
 	@Override
 	public LineItem getSuppliesFromSupplyCount() {
 		LineItem supply = null;
-		String sql = "SELECT SUM(supply_cost * garden_supplies.supply_qty) AS line_cost "
+		String sql = "SELECT supply_cost * garden_supplies.supply_qty AS line_cost "
 				+ "FROM supplies "
 				+ "INNER JOIN garden_supplies"
 				+ "ON supplies.supply_cost = garden_supplies.supply_qty"

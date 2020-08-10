@@ -38,7 +38,7 @@ public class PlantSqlDAO implements PlantDAO {
 	@Override
 	public LineItem getPlantCostFromPlot(Plot plot) {
 		LineItem list = null;
-		String sql = "SELECT SUM(seedling_cost * plant_per_sq_foot) AS line_cost, plant_name FROM plant "
+		String sql = "SELECT seedling_cost * plant_per_sq_foot AS line_cost, plant_name FROM plant "
 				+ "WHERE plant_id = ?";
 		SqlRowSet results = template.queryForRowSet(sql, plot);
 		if(results.next()) {
