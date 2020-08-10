@@ -1,26 +1,33 @@
 <template>
   <div class="shopping-list-container">
-    <p>{{this.$store.state.shoppingList}}</p>
+    <p>{{$store.state.shoppingLists}}</p>
 
-    <p>{{this.$store.state.plots}}</p>
-
-
-
-
+    <p>{{$store.state.plots}}</p>
   </div>
 </template>
 
 <script>
-import PlotService from "@/services/PlotService"
-import ShoppingService from "@/services/ShoppingService"
-
+import PlotService from "@/services/PlotService";
+import ShoppingService from "@/services/ShoppingService";
+import GardenService from "@/services/GardenService";
 
 export default {
-    name: "shopping-list",
-    created() {
-        PlotService.getPlotsByGardenId(this.$route.params.gardenid)
+  name: "shopping-list",
+  created() {
+    GardenService.getGardenById(this.$route.params.gardenid)
       .then((response) => {
-          this.$store.commit("SET_PLOTS", response.data);
+        this.$store.commit("SET_GARDEN", response.data);
+       })
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          alert("Garden Data not available.");
+          this.$router.push("/");
+        }
+      });
+      
+      PlotService.getPlotsByGardenId(this.$route.params.gardenid)
+      .then((response) => {
+        this.$store.commit("SET_PLOTS", response.data);
       })
       .catch((error) => {
         if (error.response && error.response.status === 404) {
@@ -28,10 +35,10 @@ export default {
           this.$router.push("/");
         }
       });
-        
-        ShoppingService.generateSeedlingShoppingList(this.$store.state.plots)
- .then((response) => {
-          this.$store.commit("SET_SHOPPING_LIST", response.data);
+
+    ShoppingService.generateSeedlingShoppingList(JSON.stringify(this.$store.state.plots))
+      .then((response) => {
+        this.$store.commit("SET_SHOPPING_LISTS", response.data);
       })
       .catch((error) => {
         if (error.response && error.response.status === 404) {
@@ -39,12 +46,9 @@ export default {
           this.$router.push("/");
         }
       });
-
-    }
-}
+  },
+};
 </script>
 
 <style>
-
-
 </style>

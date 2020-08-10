@@ -76,17 +76,18 @@ public class ShoppingListController {
 	@RequestMapping(path = {"/generateSuggestedSeedlingList"}, method = RequestMethod.GET)
 	public LineItem[] suggestedList(@RequestBody Plot[] plots) {
 		List<LineItem> items = new ArrayList<>();
+		System.out.println(plots);
 		for(Plot p: plots) {
 			items.add(thePlants.getPlantCostFromPlot(p));
 		}
 		LineItem[] seedling = new LineItem[items.size()];
-		for(int i = 0; i > items.size(); i++) {
+		for(int i = 0; i < items.size(); i++) {
 			seedling[i] = items.get(i);
 		}
-				
 		return seedling;	
-		
 	}
+	
+	
 	@RequestMapping(path = {"/supplyCostByItemCount"}, method = RequestMethod.GET)
 	public LineItem supplyCost(@RequestBody Supplies supply) {
 		LineItem supplyCost = theSupplies.getSuppliesFromSupplyCount();

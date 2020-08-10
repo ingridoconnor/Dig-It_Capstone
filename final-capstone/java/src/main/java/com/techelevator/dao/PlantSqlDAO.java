@@ -1,11 +1,11 @@
 package com.techelevator.dao;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.springframework.data.relational.core.query.Update;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import com.techelevator.model.LineItem;
 import com.techelevator.model.Plant;
 import com.techelevator.model.Plot;
-import com.techelevator.model.ShoppingList;
 
 
 @Component
@@ -37,12 +36,14 @@ public class PlantSqlDAO implements PlantDAO {
 	}
 	@Override
 	public LineItem getPlantCostFromPlot(Plot plot) {
-		LineItem list = null;
-		String sql = "SELECT seedling_cost * plant_per_sq_foot AS line_cost, plant_name FROM plant "
+		LineItem list = new LineItem();
+		String sql = "SELECT * FROM plant "
 				+ "WHERE plant_id = ?";
-		SqlRowSet results = template.queryForRowSet(sql, plot);
+		SqlRowSet results = template.queryForRowSet(sql, plot.getPlantId());
 		if(results.next()) {
-			list.setCost(results.getBigDecimal("line_cost"));
+			BigDecimal costEach = results.getBigDecimal("seedling_cost");
+			BigDecimal plants = results.getBigDecimal("plants_per_sq_foot");
+			list.setCost(costEach.multiply(plants));
 			list.setItemName(results.getString("plant_name"));
 		}
 		return list;
