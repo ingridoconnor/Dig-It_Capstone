@@ -2,7 +2,7 @@
   <div>
     
     <div class="garden-listing bubble-block">
-      <h2>{{this.$store.state.userData.data.firstName}}'s Gardens:</h2>
+      <h2>{{this.$store.state.userData.firstName}}'s Gardens:</h2>
       <div class="garden-list">
         <router-link
           class="garden-links"
@@ -24,19 +24,19 @@
       </div>
       <div class="profile-field">
         <span class="label-field">Name:</span>
-        <span>{{this.$store.state.userData.data.firstName}} {{this.$store.state.userData.data.lastName}}</span>
+        <span>{{this.$store.state.userData.firstName}} {{this.$store.state.userData.lastName}}</span>
       </div>
       <div class="profile-field">
         <span class="label-field">Email:</span>
-        <span>{{this.$store.state.userData.data.email}}</span>
+        <span>{{this.$store.state.userData.email}}</span>
       </div>
       <div class="profile-field">
         <span class="label-field">City, State Zip:</span>
-        <span>{{this.$store.state.userData.data.city}}, {{this.$store.state.userData.data.state}} {{this.$store.state.userData.data.zipcode}}</span>
+        <span>{{this.$store.state.userData.city}}, {{this.$store.state.userData.state}} {{this.$store.state.userData.zipcode}}</span>
       </div>
       <div class="profile-field">
         <span class="label-field">Hardiness Zone:</span>
-        <span>{{this.$store.state.userData.data.region}} <router-link class="zonelink" :to="{ name: 'zone'}">View my region details</router-link> </span>
+        <span>{{this.$store.state.userData.region}} <router-link class="zonelink" :to="{ name: 'zone'}">View my region details</router-link> </span>
       </div>
 
       <div class="button-container">
@@ -62,7 +62,7 @@ export default {
     userService
       .getUserInfo(this.$store.state.user.id)
       .then((response) => {
-        this.$store.commit("SET_USER_DATA", response);
+        this.$store.commit("SET_USER_DATA", response.data);
       })
       .catch((error) => {
         if (error.response && error.response.status === 404) {
