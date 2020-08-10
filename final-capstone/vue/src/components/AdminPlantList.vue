@@ -1,5 +1,5 @@
 <template>
-  <form id="plant-selector" class ="profile-details bubble-block">
+  <form id="plant-selector" class ="plant-container profile-details bubble-block">
     <div id="plants">
       <div class="plant" v-for="plant in this.$store.state.plants" v-bind:key="plant">
         <input
@@ -12,6 +12,11 @@
         />
         <label v-bind:for="`Plant-${plant.id}`">{{plant.name}}</label>
       </div>
+    </div>
+    <div>
+      <button class="btn-edit btn-profile" type="submit">Add Plant</button>
+      <button class="btn-edit btn-profile" type="submit">Edit Plant</button>
+      <button class="btn-delete btn-profile" type="submit">Delete Plant</button>
     </div>
   </form>
 </template>
@@ -183,6 +188,10 @@ h2 {
   background-color: #c1c65d;
   border: 1px solid #c1c65d;
   border-radius: 5px;
+}
+
+.plant-container {
+    background-color: #307C55;
 }
 
 </style>
