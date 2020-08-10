@@ -29,18 +29,24 @@ public class ShoppingListController {
 	PlantDAO thePlants;
 	
 	@RequestMapping(path = { "/myShoppingList"}, method = RequestMethod.GET)
-	public ShoppingList[] listAllItems() {
+	public List<ShoppingList> listAllItems(@RequestBody Plant[] plant, @RequestBody Supplies[] supplies) {
 		List<ShoppingList> allItems = null;
 		List<Supplies> allSupplies = theSupplies.getAllSupplies();
+		for(Supplies s: supplies) {
+			allItems.add((ShoppingList) theSupplies.getAllSupplies());
+		}
 		List<Plant> allPlants = thePlants.getAllPlants();
-	
-		Plant[] plants = new Plant[allPlants.size()];
-		plants = allPlants.toArray(plants);
-		return allItems.addAll(allPlants);
-		
-		Supplies[] supply = new Supplies[allSupplies.size()];
-		supply = allSupplies.toArray(supply);
-		return allItems.addAll(allSupplies);
+		for(Plant p: plant) {
+			allItems.add((ShoppingList) thePlants.getAllPlants());
+		}
+		return allItems;
+//		Plant[] plants = new Plant[allPlants.size()];
+//		plants = allPlants.toArray(plants);
+//		return ;
+//		
+//		Supplies[] supply = new Supplies[allSupplies.size()];
+//		supply = allSupplies.toArray(supply);
+//		return allItems.addAll(allSupplies);
 		
 		
 	}
