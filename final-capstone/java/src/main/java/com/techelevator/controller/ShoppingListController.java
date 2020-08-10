@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,17 +65,20 @@ public class ShoppingListController {
 		}
 		
 	}
-//	@RequestMapping(path = {"/generateSuggestedShoppingList"}, method = RequestMethod.GET)
-//	public LineItem[] suggestedList(@RequestBody Plot[] plots) {
-//		List<LineItem> items = null;
-//		for(Plot p: plots) {
-//			items.add(thePlants.getPlantCostFromPlot(p));
-//		}
-//		theSupplies.getSuppliesFromSupplyCount()
-//		
-//		
-//		
-//	}
+	@RequestMapping(path = {"/generateSuggestedSeedlingList"}, method = RequestMethod.GET)
+	public LineItem[] suggestedList(@RequestBody Plot[] plots) {
+		List<LineItem> items = new ArrayList<>();
+		for(Plot p: plots) {
+			items.add(thePlants.getPlantCostFromPlot(p));
+		}
+		LineItem[] seedling = new LineItem[items.size()];
+		for(int i = 0; i > items.size(); i++) {
+			seedling[i] = items.get(i);
+		}
+				
+		return seedling;	
+		
+	}
 	
 
 }
