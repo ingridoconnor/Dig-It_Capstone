@@ -50,13 +50,13 @@ export default {
     return {
       userData: {
 
-        email: this.$store.state.userData.data.email,
-        firstName: this.$store.state.userData.data.firstName,
-        lastName: this.$store.state.userData.data.lastName,
-        city: this.$store.state.userData.data.city,
-        state: this.$store.state.userData.data.state,
-        zipcode: this.$store.state.userData.data.zipcode,
-        id: this.$store.state.userData.data.id
+        email: this.$store.state.userData.email,
+        firstName: this.$store.state.userData.firstName,
+        lastName: this.$store.state.userData.lastName,
+        city: this.$store.state.userData.city,
+        state: this.$store.state.userData.state,
+        zipcode: this.$store.state.userData.zipcode,
+        id: this.$store.state.userData.id
 
       },
       
@@ -70,7 +70,7 @@ export default {
           .updateUserInfo(this.userData)
           .then(response => {
             if (response.status === 200) {
-              this.$store.commit("SET_USER_DATA", response);
+              this.$store.commit("SET_USER_DATA", response.data);
               this.$router.push(`/profile/`);
             }
           })
