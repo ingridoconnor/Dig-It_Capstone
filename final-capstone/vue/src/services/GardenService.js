@@ -9,8 +9,10 @@ export default {
     getGarden() {
         return http.get('/garden');
     },
-
-    getPlots(gardenID) {
+    getGardensByUserId(userId) {
+      return http.get(`/${userId}/gardens`);
+    },
+    getGardenById(gardenID) {
         return http.get(`/garden/${gardenID}`)
     },
 

@@ -55,7 +55,6 @@ public class PlantSqlDAO implements PlantDAO {
 		if(results.next()) {
 			plant = mapRowToPlant(results);
 		}
-		
 		return plant;
 	}
 	@Override

@@ -22,7 +22,9 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     userData: currentUserData || {},
+    vegetable: "",
     gardens: [],
+    plots: [],
     garden: {
       userId: "",
       gardenId: "",
@@ -39,12 +41,6 @@ export default new Vuex.Store({
       region: "", 
       seedlingCost: ""
     },
-    plot: {
-      gardenId: 0,
-      type: "",
-      width: "",
-      length: ""
-    },
     zone: {
       zoneName: "",
       lastFrostMonth: "",
@@ -52,7 +48,8 @@ export default new Vuex.Store({
       firstFrostMonth: "",
       firstFrostDay: "",
       avgGrowingDays: ""
-    }
+    },
+    mapValue: "5"
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -86,9 +83,21 @@ export default new Vuex.Store({
       garden.plot.unshift(plot);
     },
     SET_GARDEN(state, data) {
+      state.garden = data;
+    },    
+    ADD_GARDEN(state, data) {
       state.gardens.push(data);
       state.garden = data;
     },
+    SET_GARDENS(state, data) {
+      state.gardens = data;
+    },
+    SET_PLOTS(state, data) {
+      state.plots = data;
+    },
+    SET_VEGETABLE(state, data) {
+      state.vegetable = data;
+    },  
     // ADD_GARDEN(state,garden) {
     //   const garden = this.state.gardens.find(p => p.id == review.id);
     //   product.reviews.unshift(review);
