@@ -1,10 +1,6 @@
 <template>
-  <form>
-    <h1>{{this.$store.state.garden.gardenName}}</h1>
-
-    <h3>Select plots that you'd like to assign a vegetable to:</h3>
-
-    <div id="gridView">
+  <form id="garden-grid-form">
+     <div id="gridView">
       <div class="row" v-for="i in rowCount" v-bind:key="i">
         <span class="squares" v-for="plot in itemCountInRow(i)" v-bind:key="plot.id">
           <input
@@ -30,15 +26,8 @@
         <h3
           class="the-directions"
           v-else-if="this.$store.state.vegetable.name != null"
-        >Select at Least 1 Plot from the Grid Above</h3>
-        <h3
-          class="the-directions"
-          v-else-if="this.selectedPlots != ''"
-        >Select a Vegetable to Assign it to the Selected Plot{{this.selectedPlots.length > 1 ? 's' : ''}}</h3>
-        <h3
-          class="the-directions"
-          v-else
-        >Select at Least 1 Plot from the Grid Above and a Vegetable from the List Below</h3>
+        >Select at Least 1 Plot from the Grid Above to Start Assigning Plants</h3>
+       
       </div>
       <div class="center-it">
         <a
@@ -58,9 +47,10 @@ import PlotService from "@/services/PlotService";
 
 export default {
   name: "garden-details",
+
   data() {
     return {
-      itemsPerRow: this.$store.state.garden.gardenWidth,
+      itemsPerRow: 0,
       updatesMade: false,
 
       plot: {
@@ -75,23 +65,29 @@ export default {
     };
   },
   created() {
+    GardenService.getGardenById(this.$route.params.gardenid)
+      .then((response) => {
+        this.$store.commit("SET_GARDEN", response.data);
+        this.itemsPerRow = this.$store.state.garden.gardenWidth;
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          alert("Garden Data not available.");
+          this.$router.push("/");
+        }
+      });
+
     PlotService.getPlotsByGardenId(this.$route.params.gardenid)
       .then((response) => {
-        if (response.data.length === (this.$store.state.garden.gardenWidth * this.$store.state.garden.gardenLength)) {
+        if (
+          response.data.length ===
+          this.$store.state.garden.gardenWidth *
+            this.$store.state.garden.gardenLength
+        ) {
           this.$store.commit("SET_PLOTS", response.data);
           this.plotArray = response.data;
         } else {
-          GardenService.getGardenById(this.$route.params.gardenid)
-            .then((response) => {
-              this.$store.commit("SET_GARDEN", response.data);
-              this.loadArray();
-            })
-            .catch((error) => {
-              if (error.response && error.response.status === 404) {
-                alert("Garden Data not available.");
-                this.$router.push("/");
-              }
-            });
+          this.loadArray();
         }
       })
       .catch((error) => {
@@ -174,17 +170,20 @@ export default {
 </script>
 
 <style scoped>
-form {
+.garden-grid-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+    flex-grow: 1;
+  width: 100%;
 }
 
 #gridView {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 95%;
+  height: 500px;
   justify-content: center;
   align-items: center;
   padding: 20px;
@@ -194,6 +193,8 @@ form {
 
 .row {
   display: flex;
+  width: 100%;
+  height: 100%;
 }
 
 .squares {
@@ -201,10 +202,9 @@ form {
   flex-grow: 1;
   align-items: center;
   justify-content: center;
-  min-height: 50px;
-  max-height: 100px;
-  min-width: 50px;
-  max-width: 100px;
+  max-width: 500px;
+  max-height: 500px;
+
   text-align: center;
   background-color: rgb(165, 112, 42);
   border: 2px;
@@ -261,8 +261,8 @@ form {
 }
 .btn-update:hover,
 .btn-save-garden:hover {
-  background-color: #85a183;
-  border-color: #85a183;
+  background-color: #e48438;
+  border-color: #e48438
 }
 
 .btn-save-garden {

@@ -2,8 +2,8 @@
   <div>
   
   <div class="home logged" v-if="$store.state.token != ''">
-    <h1>Hey {{$store.state.user.firstName}}, let's get digging!</h1>
-    <p>Since you're logged in, you can see this</p>
+    <h1>Hey {{$store.state.userData.firstName}}, let's get digging!</h1>
+    <p>Your profile is always a great place to start.</p>
   </div>
   <div class="home" v-else>
     <h1>Let's get digging!</h1>
