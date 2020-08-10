@@ -1,15 +1,26 @@
 <template>
   <form v-on:submit.prevent="updatePlots">
-   
     <h1>{{this.$store.state.garden.gardenName}}</h1>
-    
+
+    <p>{{this.selectedPlots}}</p>
+    <p>{{this.$store.state.vegetable}}</p>
+
     <div id="gridView">
       <span class="width" v-for="arrays in this.plotArray" v-bind:key="arrays">
+        
+<!-- THIS IS FOR COLUMN SELECT ALL BUTTONS
         <input class="float check" type="checkbox" />
 
+ -->
         <div class="squares" v-for="height in arrays" v-bind:key="height">
           {{height}}
-          <input class="check" type="checkbox" />
+          <input
+            class="check"
+            type="checkbox"
+            v-bind:id="height"
+            v-on:change="selectPlot($event)"
+            v-bind:checked="selectedPlots.includes(height)"
+          />
         </div>
       </span>
     </div>
@@ -34,7 +45,8 @@ export default {
         length: 1,
         vegatableId: "",
       },
-      PlotList: [],
+      selectedPlots: [],
+      plotList: [],
       plotArray: "",
     };
   },
@@ -50,10 +62,18 @@ export default {
           this.$router.push("/");
         }
       });
-
   },
 
   methods: {
+    selectPlot(event) {
+      if (event.target.checked) {
+        this.selectedPlots.push(parseInt(event.target.id));
+      } else {
+        this.selectedPlots = this.selectedPlots.filter((plot) => {
+          return plot !== parseInt(event.target.id);
+        });
+      }
+    },
     updatePlots() {
       GardenService.addGarden(this.newGarden)
         .then((response) => {

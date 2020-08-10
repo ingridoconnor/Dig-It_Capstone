@@ -22,6 +22,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     userData: currentUserData || {},
+    vegetable: "",
     gardens: [],
     garden: {
       userId: "",
@@ -96,6 +97,9 @@ export default new Vuex.Store({
     SET_GARDENS(state, data) {
       state.gardens = data;
     },
+    SET_VEGETABLE(state, data) {
+      state.vegetable = data;
+    },  
     // ADD_GARDEN(state,garden) {
     //   const garden = this.state.gardens.find(p => p.id == review.id);
     //   product.reviews.unshift(review);

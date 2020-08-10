@@ -1,11 +1,20 @@
 <template>
-
-    <form>
-      <div v-for="plant in this.$store.state.plants" v-bind:key="plant">
-        <input type="radio" >  {{plant.name}} 
+  <form id="plant-selector">
+    <h3>Current Plant Selection: {{this.vegetable}}</h3>
+    <div id="plants">
+      <div class="plant" v-for="plant in this.$store.state.plants" v-bind:key="plant">
+        <input
+          type="radio"
+          name="veggie"
+          class="radios"
+          v-bind:id="`Plant-${plant.id}`"
+          v-bind:value="plant.id"
+          v-on:change="selectVegetable($event)"
+        />
+        <label v-bind:for="`Plant-${plant.id}`">{{plant.name}}</label>
+      </div>
     </div>
   </form>
-
 </template>
 
 <script>
@@ -28,11 +37,70 @@ export default {
   name: "plant-data",
   components: {},
   data() {
-    return {};
+    return {
+      vegetable: {
+        id: "",
+        name: "",
+        description: "",
+        plantsPerSqFoot: "",
+        sunRequirements: "",
+        region: "",
+        seedlingCost: "",
+      },
+    };
+  },
+  methods: {
+    selectVegetable(event) {
+      if (event.target.checked) {
+        this.vegetable.description = this.$store.state.plants.filter(
+          (plant) => {
+            if (plant.id == event.target.value) {
+              this.vegetable = plant;
+              this.$store.commit("SET_VEGETABLE", this.vegetable);
+            }
+          }
+        );
+      } else {
+        this.vegetable = null;
+      }
+    },
   },
 };
 </script>
 
 <style>
+#plant-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+#plants {
+  display: flex;
+  flex-direction: column;
+  height: 25vh;
+  width: 80%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.plant {
+  display: flex;
+  width: 18ch;
+  align-items: center;
+  /* margin: 3px 3px;
+  background-color: #85a183;
+  border: 1px solid #85a183;
+  border-radius: 5px; */
+
+}
+
+.plant label {
+  margin: 0px;
+}
+.radios {
+  width: 13px;
+  margin-bottom: 5px;
+}
 </style>
