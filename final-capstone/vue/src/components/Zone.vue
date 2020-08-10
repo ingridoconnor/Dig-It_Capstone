@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     
     <div class="map">
       <h1>Your Plant Hardiness Zone</h1>
@@ -57,6 +57,8 @@
         </select>
     </div>
 
+
+
   </div>
 </template>
 
@@ -95,6 +97,10 @@ export default {
 </script>
 
 <style>
+
+    template {
+    cursor:url("../img/carrot.png"),auto;
+    }
 
     .zonemap {
       text-align: center;
