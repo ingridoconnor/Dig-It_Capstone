@@ -1,6 +1,5 @@
 <template>
   <form id="plant-selector">
-    <h3>Current Plant Selection: {{this.vegetable}}</h3>
     <div id="plants">
       <div class="plant" v-for="plant in this.$store.state.plants" v-bind:key="plant">
         <input
@@ -73,13 +72,14 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 25px;
 }
 
 #plants {
   display: flex;
   flex-direction: column;
-  height: 25vh;
-  width: 80%;
+  height: 30vh;
+  width: 90%;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;

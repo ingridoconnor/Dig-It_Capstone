@@ -24,6 +24,7 @@ export default new Vuex.Store({
     userData: currentUserData || {},
     vegetable: "",
     gardens: [],
+    plots: [],
     garden: {
       userId: "",
       gardenId: "",
@@ -39,12 +40,6 @@ export default new Vuex.Store({
       sunRequirements: "", 
       region: "", 
       seedlingCost: ""
-    },
-    plot: {
-      gardenId: 0,
-      type: "",
-      width: "",
-      length: ""
     },
     zone: {
       zoneName: "",
@@ -96,6 +91,9 @@ export default new Vuex.Store({
     },
     SET_GARDENS(state, data) {
       state.gardens = data;
+    },
+    SET_PLOTS(state, data) {
+      state.plots = data;
     },
     SET_VEGETABLE(state, data) {
       state.vegetable = data;

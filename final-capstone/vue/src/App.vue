@@ -1,7 +1,7 @@
 <template>
   <div id="app">
           <div id="header">
-              <a href="/"><img class="logo" src="./img/digit.png" alt="digit logo"></a>
+              <a href="/"><img v-bind:class="isHome ? '' : 'shrink-nav' " class="logo" src="./img/digit.png" alt="digit logo"></a>
               <div id="nav">
                   <router-link class="button" v-bind:to="{ name: 'home' }" v-if="!isHome">Home</router-link>
                   <router-link class="button" v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''" v-show="!isLogin">Login</router-link>
@@ -49,12 +49,16 @@ export default {
   display: flex;
   flex-grow: 1;
   align-items: center;
-  max-height: 20%;
+  max-height: 15%;
 }
 
 .logo {
   margin-right: 40px;
   width: 250px;
+}
+
+.shrink-nav {
+  width: 150px;
 }
 
 #nav {

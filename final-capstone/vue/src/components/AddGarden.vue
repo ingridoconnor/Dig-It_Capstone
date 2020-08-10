@@ -9,30 +9,40 @@
 
     <div class="form-element">
       <label for="width">Garden Width in Feet:</label>
-      <input id="width" type="number" min="1" v-on:change="changeSize" v-model="newGarden.gardenWidth" />
+      <input
+        id="width"
+        type="number"
+        min="1"
+        v-on:change="changeSize"
+        v-model="newGarden.gardenWidth"
+      />
     </div>
 
     <div class="form-element">
       <label for="length">Garden Length in Feet:</label>
-      <input id="length" type="number" min="1" v-on:change="changeSize" v-model="newGarden.gardenLength" />
+      <input
+        id="length"
+        type="number"
+        min="1"
+        v-on:change="changeSize"
+        v-model="newGarden.gardenLength"
+      />
     </div>
 
-
-
     <div id="gridView">
-      <span class="width" v-for="arrays in this.newGarden.sizeArray" v-bind:key="arrays">
-
-        <div class="squares" v-for="height in arrays" v-bind:key="height">
-    
-        </div>
-      </span>
+      <div class="row" v-for="i in rowCount" v-bind:key="i">
+        <span
+          class="squares"
+          v-for="plot in itemCountInRow(i)"
+          v-bind:key="plot"
+        >{{plot.plotNumber}}</span>
+      </div>
     </div>
 
     <div class="actions">
       <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
       <button>Submit</button>
     </div>
-
   </form>
 </template>
 
@@ -48,23 +58,58 @@ export default {
         gardenId: 0,
         gardenName: "",
         gardenWidth: 2,
-        gardenLength: 2,
-        sizeArray: [
-          [1, 2],
-          [3, 4],
-        ],
+        gardenLength: 2
       },
+
+        sizeArray: [
+          {
+            plotNumber: 1,
+            gardenId: 0,
+            vegetableId: 0,
+          },
+          {
+            plotNumber: 2,
+            gardenId: 0,
+            vegetableId: 0,
+          },
+          {
+            plotNumber: 3,
+            gardenId: 0,
+            vegetableId: 0,
+          },
+          {
+            plotNumber: 4,
+            gardenId: 0,
+            vegetableId: 0,
+          }
+        ],
+      
     };
   },
+
+  computed: {
+    rowCount() {
+      return Math.ceil(this.sizeArray.length / this.newGarden.gardenWidth);
+    }
+  },
+
   methods: {
+    itemCountInRow(index) {
+      return this.sizeArray.slice(
+        (index - 1) * this.newGarden.gardenWidth,
+        index * this.newGarden.gardenWidth
+      );
+    },
     addNewGarden() {
       GardenService.addGarden(this.newGarden)
         .then((response) => {
           if (response.status == 200) {
             this.newGarden.gardenId = response.data.gardenId;
             this.$store.commit("ADD_GARDEN", response.data);
-            this.$router.push({ name: "garden", params: { gardenid: this.newGarden.gardenId } });
-
+            this.$router.push({
+              name: "garden",
+              params: { gardenid: this.newGarden.gardenId },
+            });
           }
         })
         .catch((error) => {
@@ -74,38 +119,34 @@ export default {
             this.invalidCredentials = true;
           }
         });
-
-
     },
     resetForm() {
-      this.newGarden.gardenName = '';
+      this.newGarden.gardenName = "";
       this.newGarden.gardenWidth = 2;
       this.newGarden.gardenLength = 2;
-      this.newGarden.sizeArray = [[1, 2], [3, 4],];
+      this.newGarden.sizeArray = [
+        [1, 2],
+        [3, 4],
+      ];
     },
     changeSize() {
       var x = 1;
-
-      // Create 1D array
-      this.newGarden.sizeArray = new Array(this.newGarden.gardenWidth);
-
-      // Loop to create 2D array using 1D array
-      for (var w = 0; w < this.newGarden.gardenWidth; w++) {
-        this.newGarden.sizeArray[w] = new Array(this.newGarden.gardenLength);
+      let plotsNum = this.newGarden.gardenWidth * this.newGarden.gardenLength;
+      this.sizeArray = new Array();
+      for (var i = 0; i < plotsNum; i++) {
+        let plot = {
+          plotNumber: x++,
+          gardenId: 0,
+          vegetableId: 0,
+        };
+        this.sizeArray.push(plot);
       }
-
-      // Loop to Fill In 2D array elements with Numbers.
-      for (var wi = 0; wi < this.newGarden.gardenWidth; wi++) {
-        for (var l = 0; l < this.newGarden.gardenLength; l++) {
-          this.newGarden.sizeArray[wi][l] = x++;
-        }
-      }
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style scoped>
+<style >
 form {
   display: flex;
   flex-direction: column;
@@ -114,7 +155,9 @@ form {
 }
 
 #gridView {
-  display: flex;
+display: flex;
+flex-direction: column;
+flex-grow: 1;
   width: fit-content;
   justify-content: center;
   align-items: center;
@@ -131,15 +174,13 @@ input {
   width: 20ch;
 }
 
-.width {
+.row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-items: center;
 }
 
-.squares {
+.squares  {
   display: flex;
+  flex-grow: 1;
   align-items: center;
   justify-content: center;
   min-height: 50px;
@@ -152,6 +193,4 @@ input {
   border-style: solid;
   border-color: #381c06;
 }
-
-
 </style>
