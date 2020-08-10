@@ -12,7 +12,7 @@ public class HZone {
 	private String avgFirstFrostMonth;
 	private int avgFirstFrostDay;
 	private int avgGrowingDays;
-	
+
 	public HZone() {
 	}
 	
@@ -91,4 +91,17 @@ public class HZone {
 		this.temperatureRange = temperatureRange;
 	}
 
+	
+	@Override
+	   public String toString() {
+	      return "HZone{" +
+	              "zoneName=" + zone +
+	              "avgLastFrostMonth=" + avgLastFrostMonth +
+	              "avgLastFrostDay=" + avgLastFrostDay +
+	              "avgFirstFrostMonth=" + avgFirstFrostMonth +
+	              "avgFirstFrostDay=" + avgFirstFrostDay +	    
+	              "avgGrowingDays=" + avgGrowingDays +
+	      		  '}';
+	   };
+	
 }

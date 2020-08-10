@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,10 +38,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = { "/zone"}, method = RequestMethod.GET)
-	public HZone getHZoneData() {
+	public HZone getHZoneData(@RequestBody String zipcode) {
 		HZone hzone = new HZone();
-		User user = new User();	
-		hzone = hDao.getHZoneDetails(user);
+		hzone = hDao.getHZoneDetails(zipcode);
 		return hzone;
 	}
 }

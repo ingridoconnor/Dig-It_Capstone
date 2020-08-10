@@ -6,8 +6,8 @@ const http = axios.create({
 
 export default {
 
-  getZoneInfo() {
-    return http.get('/zone');
+  getZoneInfo(user) {
+    return http.get('/zone', user);
   }
 
 }

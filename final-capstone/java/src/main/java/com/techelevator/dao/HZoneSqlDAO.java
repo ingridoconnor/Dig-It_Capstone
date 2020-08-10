@@ -25,13 +25,13 @@ public class HZoneSqlDAO implements HZoneDAO {
 	}
 
 	@Override
-	public HZone getHZoneDetails(User user) {
+	public HZone getHZoneDetails(String zipcode) {
 		HZone details = null;
 		String sql = "SELECT h.zone_name, h.avg_last_frost_month, h.avg_last_frost_day, h.avg_first_frost_month, h.avg_first_frost_day, h.avg_growing_days FROM hardiness " + 
 				"	JOIN user_data u ON u.region=h.zone_name " + 
 				"	WHERE u.zip = ? " + 
 				"	GROUP BY h.zone_name";
-		SqlRowSet results = template.queryForRowSet(sql, user.getZipcode());
+		SqlRowSet results = template.queryForRowSet(sql, zipcode);
 		if(results.next()) {
 			details = mapRowToZone(results);
 		}

@@ -103,7 +103,7 @@ const router = new Router({
       }
     },
     {
-      path: '/garden/:gardenid/editplot/:plotid/',
+      path: '/garden/:gardenid/editplot/:plotid',
       name: 'edit-plot',
       component: EditPlot,
       meta: {
@@ -111,7 +111,7 @@ const router = new Router({
       }
     },
     {
-      path: '/editprofile/:userid/',
+      path: '/editprofile/:userid',
       name: 'edit-profile',
       component: EditProfile,
       meta: {
@@ -119,7 +119,7 @@ const router = new Router({
       }
     },
     {
-      path: '/zone/',
+      path: '/zone',
       name: 'zone',
       component: Zone,
       meta: {
@@ -127,7 +127,7 @@ const router = new Router({
       }
     },
     {
-      path: '/editplant/',
+      path: '/editplant',
       name: 'edit-plant',
       component: EditPlant,
       meta: {

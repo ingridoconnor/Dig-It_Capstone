@@ -7,6 +7,6 @@ public interface HZoneDAO {
 
 	 void getHZoneByZip(User user, String hzone);
 	 
-	 HZone getHZoneDetails(User user);
+	 HZone getHZoneDetails(String zipcode);
 
 }

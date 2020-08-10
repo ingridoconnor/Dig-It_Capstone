@@ -43,13 +43,12 @@ export default new Vuex.Store({
     },
     zone: {
       zoneName: "",
-      lastFrostMonth: "",
-      lastFrostDay: "",
-      firstFrostMonth: "",
-      firstFrostDay: "",
+      avgLastFrostMonth: "",
+      avgLastFrostDay: "",
+      avgFirstFrostMonth: "",
+      avgFirstFrostDay: "",
       avgGrowingDays: ""
     },
-    mapValue: "5"
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {

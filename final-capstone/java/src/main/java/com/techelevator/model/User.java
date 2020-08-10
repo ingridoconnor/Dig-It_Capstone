@@ -192,6 +192,7 @@ public User() { }
       		  ", region=" + region +
       		  ", firstName=" + firstName +
       		  ", lastName=" + lastName +
+      		  ", zipcode=" + zipcode +
       		  '}';
    }
 }

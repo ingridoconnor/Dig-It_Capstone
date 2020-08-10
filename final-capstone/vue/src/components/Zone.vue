@@ -3,18 +3,18 @@
     
     <div class="map">
       <h1>Your Plant Hardiness Zone</h1>
-        <h1>Zone {{this.$store.state.userData.data.region}}</h1>
-        <img class="zonemap" src="../img/zonemaps/zone3.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '3a' || this.$store.state.userData.data.region == '3b'">
-        <img class="zonemap" src="../img/zonemaps/zone4.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '4a' || this.$store.state.userData.data.region == '4b'">
-        <img class="zonemap" src="../img/zonemaps/zone5.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '5a' || this.$store.state.userData.data.region == '5b'">
-        <img class="zonemap" src="../img/zonemaps/zone6.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '6a' || this.$store.state.userData.data.region == '6b'">
-        <img class="zonemap" src="../img/zonemaps/zone7.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '7a' || this.$store.state.userData.data.region == '7b'">
-        <img class="zonemap" src="../img/zonemaps/zone8.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '8a' || this.$store.state.userData.data.region == '8b'">
-        <img class="zonemap" src="../img/zonemaps/zone9.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '9a' || this.$store.state.userData.data.region == '9b'">
-        <img class="zonemap" src="../img/zonemaps/zone10.png" alt="grow zones map" v-if="this.$store.state.userData.data.region == '10a' || this.$store.state.userData.data.region == '10b'">
-      <h2>{{this.$store.state.userData.data.city}}, {{this.$store.state.userData.data.state}}, {{this.$store.state.userData.data.zipcode}}</h2>
-      <h3>Start of Growing Season: {{this.$store.state.zone.lastFrostMonth}} {{this.$store.state.zone.lastFrostDay}}</h3>
-      <h3>End of Growing Season: {{this.$store.state.zone.firstFrostMonth}} {{this.$store.state.zone.firstFrostDay}}</h3>
+        <h1>Zone {{this.$store.state.userData.region}}</h1>
+        <img class="zonemap" src="../img/zonemaps/zone3.png" alt="grow zones map" v-if="this.$store.state.userData.region == '3a' || this.$store.state.userData.region == '3b'">
+        <img class="zonemap" src="../img/zonemaps/zone4.png" alt="grow zones map" v-if="this.$store.state.userData.region == '4a' || this.$store.state.userData.region == '4b'">
+        <img class="zonemap" src="../img/zonemaps/zone5.png" alt="grow zones map" v-if="this.$store.state.userData.region == '5a' || this.$store.state.userData.region == '5b'">
+        <img class="zonemap" src="../img/zonemaps/zone6.png" alt="grow zones map" v-if="this.$store.state.userData.region == '6a' || this.$store.state.userData.region == '6b'">
+        <img class="zonemap" src="../img/zonemaps/zone7.png" alt="grow zones map" v-if="this.$store.state.userData.region == '7a' || this.$store.state.userData.region == '7b'">
+        <img class="zonemap" src="../img/zonemaps/zone8.png" alt="grow zones map" v-if="this.$store.state.userData.region == '8a' || this.$store.state.userData.region == '8b'">
+        <img class="zonemap" src="../img/zonemaps/zone9.png" alt="grow zones map" v-if="this.$store.state.userData.region == '9a' || this.$store.state.userData.region == '9b'">
+        <img class="zonemap" src="../img/zonemaps/zone10.png" alt="grow zones map" v-if="this.$store.state.userData.region == '10a' || this.$store.state.userData.region == '10b'">
+      <h2>{{this.$store.state.userData.city}}, {{this.$store.state.userData.state}}, {{this.$store.state.userData.zipcode}}</h2>
+      <h3>Start of Growing Season: {{this.$store.state.zone.avgLastFrostMonth}} {{this.$store.state.zone.avgLastFrostDay}}</h3>
+      <h3>End of Growing Season: {{this.$store.state.zone.avgFirstFrostMonth}} {{this.$store.state.zone.avgFirstFrostDay}}</h3>
       <h3>Average Annual Number of Growing Days: {{this.$store.state.zone.avgGrowingDays}}</h3>
     </div>
 
@@ -65,23 +65,12 @@
 
 
   import ZoneService from "../services/ZoneService";
-  import userService from "../services/UserService";
 
 export default {
   created() {
-    ZoneService.getZoneInfo(this.$store.state.user)
+    ZoneService.getZoneInfo(this.$store.state.userData.zipcode)
       .then((response) => {
-        this.$store.commit("SET_ZONE", response);
-      });
-    userService.getUserInfo(this.$store.state.user.id)
-      .then((response) => {
-        this.$store.commit("SET_USER_DATA", response);
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 404) {
-          alert("User Data not available.");
-          this.$router.push("/");
-        }
+        this.$store.commit("SET_ZONE", response.data);
       });
   },
 
