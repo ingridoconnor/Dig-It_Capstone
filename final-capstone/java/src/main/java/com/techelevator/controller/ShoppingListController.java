@@ -28,28 +28,29 @@ public class ShoppingListController {
 	@Autowired
 	PlantDAO thePlants;
 	
-	@RequestMapping(path = { "/myShoppingList"}, method = RequestMethod.GET)
-	public List<ShoppingList> listAllItems(@RequestBody Plant[] plant, @RequestBody Supplies[] supplies) {
-		List<ShoppingList> allItems = null;
-		List<Supplies> allSupplies = theSupplies.getAllSupplies();
-		for(Supplies s: supplies) {
-			allItems.add((ShoppingList) theSupplies.getAllSupplies());
-		}
-		List<Plant> allPlants = thePlants.getAllPlants();
-		for(Plant p: plant) {
-			allItems.add((ShoppingList) thePlants.getAllPlants());
-		}
-		return allItems;
-//		Plant[] plants = new Plant[allPlants.size()];
-//		plants = allPlants.toArray(plants);
-//		return ;
+//	@RequestMapping(path = { "/myShoppingList"}, method = RequestMethod.GET)
+//	public List<ShoppingList> listAllItems(@RequestBody ShoppingList[] list) {
+//		List<ShoppingList> allItems = null;
+//		List<Supplies> allSupplies = theSupplies.getAllSupplies();
+//		for(Supplies s: supplies) {
+//			allItems.add((ShoppingList) theSupplies.getAllSupplies());
+//		}
+//		List<Plant> allPlants = thePlants.getAllPlants();
+//		for(Plant p: plant) {
+//			allItems.add((ShoppingList) thePlants.getAllPlants());
+//		}
+//		return allItems;
 //		
-//		Supplies[] supply = new Supplies[allSupplies.size()];
-//		supply = allSupplies.toArray(supply);
-//		return allItems.addAll(allSupplies);
-		
-		
-	}
+////		Plant[] plants = new Plant[allPlants.size()];
+////		plants = allPlants.toArray(plants);
+////		return ;
+////		
+////		Supplies[] supply = new Supplies[allSupplies.size()];
+////		supply = allSupplies.toArray(supply);
+////		return allItems.addAll(allSupplies);
+////		
+//		
+//	}
 	@RequestMapping(path = { "/addToMyShoppingList"}, method = RequestMethod.POST)
 	public void addToList(@RequestParam String listItem, @RequestParam long gardenId, @RequestParam int quantity) {
 		

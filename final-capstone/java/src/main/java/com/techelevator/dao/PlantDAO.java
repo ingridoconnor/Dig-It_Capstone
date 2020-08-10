@@ -12,5 +12,6 @@ public interface PlantDAO {
 	Plant searchPlantByPlantName(String name);
 	Plant addNewPlant(Plant plant);
 	LineItem getPlantCostFromPlot(Plot plot);
+	void removePlant(int id);
 	
 }
