@@ -76,10 +76,7 @@ public class ShoppingListController {
 			seedling[i] = items.get(i);
 		}
 				
-		return seedling;
-		
-		
-		
+		return seedling;	
 		
 	}
 	
