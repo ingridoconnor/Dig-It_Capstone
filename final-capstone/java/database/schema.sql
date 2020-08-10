@@ -46,6 +46,7 @@ CREATE TABLE plant (
         CONSTRAINT PK_plant_id PRIMARY KEY (plant_id)     
 
 );
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('None', 'Dirty Dirt', '4', 'None', 'All', '0.00');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Arugula', 'Leafy green, with an herbaceous, peppery flavor, great for salads and sandwiches', '4', '3-4 hours', 'Mediterranean', '6.25');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Basil', 'Aromatic herb, great for cooking and in sauces', '3', '6-8 hours', 'Tropical', '3.75');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Beets', 'Colorful root vegetable', '9', '6 hours', 'Mediterranean', '4.50');
