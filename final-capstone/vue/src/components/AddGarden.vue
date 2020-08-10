@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       newGarden: {
-        userId: this.$store.state.userData.data.id,
+        userId: this.$store.state.userData.id,
         gardenId: 0,
         gardenName: "",
         gardenWidth: 2,
