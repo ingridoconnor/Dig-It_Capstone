@@ -37,10 +37,10 @@ public class UserController {
 		return newUser;
 	}
 	
-	@RequestMapping(path = { "/zone"}, method = RequestMethod.GET)
-	public HZone getHZoneData(@RequestBody String zipcode) {
+	@RequestMapping(path = { "/zone/{zoneName}"}, method = RequestMethod.GET)
+	public HZone getHZoneData(@PathVariable String zoneName) {
 		HZone hzone = new HZone();
-		hzone = hDao.getHZoneDetails(zipcode);
+		hzone = hDao.getHZoneDetails(zoneName);
 		return hzone;
 	}
 }

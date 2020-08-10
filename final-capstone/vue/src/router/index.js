@@ -119,7 +119,7 @@ const router = new Router({
       }
     },
     {
-      path: '/zone',
+      path: '/zone/:zonename',
       name: 'zone',
       component: Zone,
       meta: {

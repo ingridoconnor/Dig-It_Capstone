@@ -68,7 +68,7 @@
 
 export default {
   created() {
-    ZoneService.getZoneInfo(this.$store.state.userData.zipcode)
+    ZoneService.getZoneInfo(this.$route.params.zonename)
       .then((response) => {
         this.$store.commit("SET_ZONE", response.data);
       });
