@@ -35,10 +35,10 @@ public class SuppliesController {
 		return searchSupplyBySupplyNameResult;
 	}
 	
-	@RequestMapping(path = {"/supplyCostBySupply"}, method = RequestMethod.GET)
-	public LineItem getSuppliesFromSupplyCount() {
-		LineItem supplyCostSupply = theSupplies.getSuppliesFromSupplyCount();
-		return supplyCostSupply;
-	}
+//	@RequestMapping(path = {"/supplyCostBySupply"}, method = RequestMethod.GET)
+//	public LineItem getSuppliesFromSupplyCount() {
+//		LineItem supplyCostSupply = theSupplies.getSuppliesFromSupplyCount();
+//		return supplyCostSupply;
+//	}
 
 }
