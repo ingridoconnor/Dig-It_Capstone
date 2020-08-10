@@ -1,17 +1,22 @@
 <template>
   <form id="garden-grid-form">
-     <div id="gridView">
+    <div id="gridView">
       <div class="row" v-for="i in rowCount" v-bind:key="i">
-        <span class="squares" v-for="plot in itemCountInRow(i)" v-bind:key="plot.id">
-          <input
-            class="check"
-            type="checkbox"
-            v-bind:id="plot.plotNumber"
-            v-on:change="selectPlot($event)"
-            v-bind:checked="selectedPlots.includes(plot.plotNumber)"
-          />
-          {{plot.plotNumber}}_{{plot.plantId}}
-        </span>
+        <div class="squares" v-for="plot in itemCountInRow(i)" v-bind:key="plot.id">
+          
+          <div class="inner">
+            <input
+              class="check"
+              type="checkbox"
+              v-bind:id="plot.plotNumber"
+              v-on:change="selectPlot($event)"
+              v-bind:checked="selectedPlots.includes(plot.plotNumber)"
+            />
+            <p>{{plot.plotNumber}}</p>
+            <p>{{plot.plantId}}</p>
+          </div>
+
+        </div>
       </div>
     </div>
 
@@ -27,7 +32,6 @@
           class="the-directions"
           v-else-if="this.$store.state.vegetable.name != null"
         >Select at Least 1 Plot from the Grid Above to Start Assigning Plants</h3>
-       
       </div>
       <div class="center-it">
         <a
@@ -139,6 +143,10 @@ export default {
             this.plotArray = response.data;
             this.$store.commit("SET_PLOTS", response.data);
             //add router push potentially
+             this.$router.push({
+              name: "shopping",
+              params: { gardenid: this.$route.params.gardenid },
+            });
           }
         })
         .catch((error) => {
@@ -175,54 +183,57 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-    flex-grow: 1;
-  width: 100%;
 }
 
 #gridView {
-  display: flex;
-  flex-direction: column;
-  width: 95%;
-  height: 500px;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  margin: 0 auto;
+  font-size: 1rem;
   border-radius: 20px;
   background-color: #381c06;
 }
-
 .row {
   display: flex;
-  width: 100%;
-  height: 100%;
 }
-
 .squares {
-  display: flex;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: center;
-  max-width: 500px;
-  max-height: 500px;
-
-  text-align: center;
+  margin: 5px;
+  color: white;
+  font-weight: bold;
+  flex: 1 0 auto;
+  position: relative;
   background-color: rgb(165, 112, 42);
   border: 2px;
   border-style: solid;
   border-color: #381c06;
 }
+.squares::after {
+  content: "";
+  float: left;
+  display: block;
+  padding-top: 100%;
+}
+.squares .inner {
+  position: absolute;
+  left: 5px;
+  right: -15px;
+  bottom: -20px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .check {
-  display: inline-block;
+  position: absolute;
+   left: 0;
+  right: 25px;
+  bottom: 25px;
+  top: 0px;
   align-content: center;
   justify-content: center;
   width: 15px;
   height: 15px;
-}
-
-.temp {
-  color: red;
-}
+} 
 
 .button-container {
   display: flex;
@@ -262,7 +273,7 @@ export default {
 .btn-update:hover,
 .btn-save-garden:hover {
   background-color: #e48438;
-  border-color: #e48438
+  border-color: #e48438;
 }
 
 .btn-save-garden {

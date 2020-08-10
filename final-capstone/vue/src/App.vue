@@ -13,8 +13,6 @@
           <div id="main-view">
             <router-view />
           </div>
-
-        
     
   </div>
 </template>

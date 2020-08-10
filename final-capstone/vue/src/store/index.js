@@ -25,6 +25,7 @@ export default new Vuex.Store({
     vegetable: "",
     gardens: [],
     plots: [],
+    shoppingList: "",
     garden: {
       userId: "",
       gardenId: "",
@@ -96,6 +97,9 @@ export default new Vuex.Store({
     },
     SET_VEGETABLE(state, data) {
       state.vegetable = data;
+    },  
+    SET_SHOPPING_LIST(state, data) {
+      state.shoppingList = data;
     },  
     // ADD_GARDEN(state,garden) {
     //   const garden = this.state.gardens.find(p => p.id == review.id);

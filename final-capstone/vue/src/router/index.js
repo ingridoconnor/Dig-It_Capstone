@@ -15,6 +15,7 @@ import store from '../store/index'
 import EditProfile from '../views/EditProfile.vue'
 import EditPlant from '../views/EditPlant.vue'
 import AdminHome from '../views/AdminHome.vue'
+import Shopping from '../views/Shopping.vue'
 
 Vue.use(Router)
 
@@ -91,6 +92,14 @@ const router = new Router({
       path: '/addgarden',
       name: 'add-garden',
       component: AddGarden,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/garden/:gardenid/shopping',
+      name: 'shopping',
+      component: Shopping,
       meta: {
         requiresAuth: true
       }

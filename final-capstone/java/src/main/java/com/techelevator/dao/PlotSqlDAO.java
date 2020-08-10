@@ -45,15 +45,12 @@ public class PlotSqlDAO implements PlotDAO {
 		Plot[] plotsReturned = new Plot[plots.length];
 		
 		Plot[] existingPlots = getPlotsByGardenId(plots[0].getGardenId());
-		System.out.println(existingPlots.length);
 		
 		if (existingPlots.length > 0) {
 		String sqlDelete = "DELETE FROM plot WHERE garden_id = ?";
 		template.update(sqlDelete, plots[0].getGardenId());
 		}
-		
-		
-		
+				
 		String sql = "INSERT INTO plot (garden_id, plot_number, plant_id) VALUES (?, ?, ?) returning plot_id";
 		int counter = 0;
 		for (Plot p : plots) {
