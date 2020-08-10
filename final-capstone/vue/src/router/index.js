@@ -14,6 +14,7 @@ import Zone from '../views/Zone.vue'
 import store from '../store/index'
 import EditProfile from '../views/EditProfile.vue'
 import EditPlant from '../views/EditPlant.vue'
+import AdminHome from '../views/AdminHome.vue'
 
 Vue.use(Router)
 
@@ -122,6 +123,14 @@ const router = new Router({
       path: '/zone/:zonename',
       name: 'zone',
       component: Zone,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/adminhome',
+      name: 'adminhome',
+      component: AdminHome,
       meta: {
         requiresAuth: true
       }
