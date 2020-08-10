@@ -64,11 +64,15 @@
 
 
 
-// import ZoneService from "../services/ZoneService";
+  import ZoneService from "../services/ZoneService";
   import userService from "../services/UserService";
 
 export default {
   created() {
+    ZoneService.getZoneInfo(this.$store.state.user)
+      .then((response) => {
+        this.$store.commit("SET_ZONE", response);
+      });
     userService.getUserInfo(this.$store.state.user.id)
       .then((response) => {
         this.$store.commit("SET_USER_DATA", response);
@@ -87,6 +91,14 @@ export default {
   data() {
     return {
       mapValue: "",
+      zone: {
+        zoneName: "",
+        lastFrostMonth: "",
+        lastFrostDay: "",
+        firstFrostMonth: "",
+        firstFrostDay: "",
+        avgGrowingDays: ""
+    },
     };
 
   },

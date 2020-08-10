@@ -23,7 +23,7 @@ public class HZoneSqlDAO implements HZoneDAO {
 		String sql = "update user_data SET region = ? where user_id = ?";
 		template.update(sql, hzone, user.getId());
 	}
-	
+
 	@Override
 	public HZone getHZoneDetails(User user) {
 		HZone details = null;
