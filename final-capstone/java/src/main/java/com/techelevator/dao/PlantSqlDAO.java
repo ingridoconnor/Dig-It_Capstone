@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.data.relational.core.query.Update;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -64,6 +65,12 @@ public class PlantSqlDAO implements PlantDAO {
 		plant.setId(newPlantId);
 		return plant;
 	}
+	@Override
+	public void removePlant(int id) {
+		String sql = "DELETE FROM plant WHERE plant_id = ?";
+		 template.update(sql, id);
+		
+	}
 	private Plant mapRowToPlant(SqlRowSet results) {
 		Plant plant = new Plant();
 		plant.setId(results.getLong("plant_id"));
@@ -74,6 +81,8 @@ public class PlantSqlDAO implements PlantDAO {
 		plant.setSeedlingCost(results.getBigDecimal("seedling_cost"));
 		return plant;
 	}
+
+	
 
 
 }

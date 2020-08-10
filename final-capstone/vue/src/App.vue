@@ -39,7 +39,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   font-family: 'Raleway', sans-serif;
-
+  cursor:url("img/carrot.png"),auto;
 }
 
 #header {
