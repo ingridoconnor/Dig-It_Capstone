@@ -5,28 +5,28 @@
         <input
           type="checkbox"
           class="checkboxes"
-          v-bind:id="`Supply-${supply.id}`"
-          v-bind:value="supply.id"
-          v-on:change="selectVegetable($event)"
+          v-bind:id="`Supply-${supply.supplyId}`"
+          v-bind:value="supply.supplyId"
+          v-on:change="selectSupply($event)"
         />
-        <label v-bind:for="`supply-${supply.id}`">{{supply.name}}</label>
+        <label v-bind:for="`Supply-${supply.supplyId}`">{{supply.supplyName}} {{ supply.supplyCost | currency }}</label>
       </div>
     </div>
   </form>
 </template>
 
 <script>
-import PlantService from "../services/PlantService";
+import SupplyService from "../services/SupplyService";
 
 export default {
   created() {
-    PlantService.getAllPlants()
+    SupplyService.getAllSupplies()
       .then((response) => {
-        this.$store.commit("SET_PLANTS", response.data);
+        this.$store.commit("SET_SUPPLIES", response.data);
       })
       .catch((error) => {
         if (error.response && error.response.status === 404) {
-          alert("Plant data not available.");
+          alert("Supply data not available.");
           this.$router.push("/");
         }
       });
@@ -41,26 +41,23 @@ export default {
         supplyName: "",
         supplyCost: ""
        },
-       supplies: [],
-
+       selectedSupplies: [],
     };
   },
-  // methods: {
-  //   selectSupply(event) {
-  //     if (event.target.checked) {
-  //       this.vegetable.description = this.$store.state.plants.filter(
-  //         (plant) => {
-  //           if (plant.id == event.target.value) {
-  //             this.vegetable = plant;
-  //             this.$store.commit("SET_VEGETABLE", this.vegetable);
-  //           }
-  //         }
-  //       );
-  //     } else {
-  //       this.vegetable = null;
-  //     }
-  //   },
-  // },
+
+  methods: {
+    selectSupply(event) {
+      if (event.target.checked) {
+        this.selectedSupplies.add(this.$store.state.supplies.filter(
+          (supply) => {
+            if (supply.supplyId == event.target.value) {
+              return supply;
+            }
+          }
+        ));
+      }
+    },
+  },
 };
 </script>
 
@@ -75,8 +72,8 @@ export default {
 #supplies {
   display: flex;
   flex-direction: column;
-  height: 30vh;
-  width: 90%;
+  height: 40vh;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
@@ -84,7 +81,7 @@ export default {
 
 .supply {
   display: flex;
-  width: 18ch;
+  width: 40ch;
   align-items: center;
   /* margin: 3px 3px;
   background-color: #85a183;
