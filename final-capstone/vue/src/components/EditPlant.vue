@@ -4,10 +4,6 @@
   <form v-on:submit.prevent="submitForm" class="editplant">
     <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
     <div class="form-group">
-
-      <div v-for="plant in this.$store.state.plants" v-bind:key="plant">
-        <input type="radio" >  {{plant.name}} 
-      </div>
      
       <label for="plantname">Plant name: </label>
       <input id="plantname" type="text" class="form-control" v-model="plant.name" autocomplete="off" />
@@ -50,13 +46,13 @@ export default {
     return {
       plant: {
 
-        name: this.$store.state.plant.data.name,
-        description: this.$store.state.plant.data.description,
-        plantspersq: this.$store.state.plant.data.plantspersq,
-        sunrequirements: this.$store.state.plant.data.sunrequirements,
-        region: this.$store.state.plant.data.region,
-        cost: this.$store.state.plant.data.cost,
-        id: this.$store.state.plant.data.id
+        name: this.$store.state.vegetable.name,
+        description: this.$store.state.vegetable.description,
+        plantspersq: this.$store.state.vegetable.plantsPerSqFoot,
+        sunrequirements: this.$store.state.vegetable.sunRequirements,
+        region: this.$store.state.vegetable.region,
+        cost: this.$store.state.vegetable.seedlingCost,
+        id: this.$store.state.vegetable.id
 
       },
       
@@ -71,7 +67,7 @@ export default {
           .then(response => {
             if (response.status === 200) {
               this.$store.commit("SET_PLANT_DATA", response);
-              this.$router.push(`/editplant/`);
+              this.$router.push(`/admin/home`);
             }
           })
           .catch(error => {
@@ -91,24 +87,7 @@ export default {
       
     },
     cancelForm() {
-      this.$router.push(`/editplant/`);
-    }
-  },
-  created() {
-    if (this.id != 0) {
-      plantService
-        .getUserInfo(this.id)
-        .then(response => {
-          this.user = response.data;
-        })
-        .catch(error => {
-          if (error.response && error.response.status === 404) {
-            alert(
-              "Plant not available. This plant may have been deleted or you have entered invalid info."
-            );
-            this.$router.push("/");
-          }
-        });
+      this.$router.push(`/admin/home`);
     }
   }
 };
