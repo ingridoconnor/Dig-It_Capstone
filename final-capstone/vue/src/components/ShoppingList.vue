@@ -1,6 +1,6 @@
 <template>
   <div class="shopping-list-container">
-    <p>{{$store.state.shoppingLists}}</p>
+    <p>{{this.ShoppingLists}}</p>
 
     <p>{{$store.state.plots}}</p>
   </div>
@@ -16,8 +16,11 @@ export default {
   data() {
     return {
       PlotsLoaded: false,
-      plotList: [],
-      ShoppingLists: [],
+      plotList: this.$store.state.plots,
+      ShoppingLists: [{
+        cost: 0,
+        itemName: ''
+      }],
       String: "CODE REACHED",
     };
   },
@@ -29,15 +32,13 @@ export default {
         this.$store.commit("SET_PLOTS", response.data);
         this.PlotsLoaded = true;
 
-        for (var i = 0; i < 300; i++) {
-          console.log("*");
-        }
-
-        ShoppingService.generateSeedlingShoppingList(this.plotList)
+        ShoppingService.generateSeedlingShoppingList(this.$route.params.gardenid)
           .then((response) => {
             console.log("shopping service CODE REACHED");
+            console.log(response.data);
             this.ShoppingLists = response.data;
-            this.$store.commit("SET_SEEDLING_SHOPPING_LISTS", response.data);
+            console.log (this.ShoppingLists[0].cost);
+            this.$store.commit("SET_SEEDLING_SHOPPING_LISTS", this.ShoppingLists);
 
           })
           .catch((error) => {
@@ -47,6 +48,9 @@ export default {
               this.$router.push("/");
             }
           });
+          for (var i = 0; i < 300; i++) {
+              console.log("*");
+         }
       })
       .catch((error) => {
         if (error.response && error.response.status === 404) {

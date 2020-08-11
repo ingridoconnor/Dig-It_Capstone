@@ -7,8 +7,8 @@ const http = axios.create({
 export default {
 
 
-    generateSeedlingShoppingList(data) {
-        return http.get(`/generateSuggestedSeedlingList`, data);
+    generateSeedlingShoppingList(gardenId) {
+        return http.get(`/generateSuggestedSeedlingList/${gardenId}/`);
     },
 
     saveGardenPlots(plots, gardenID) {

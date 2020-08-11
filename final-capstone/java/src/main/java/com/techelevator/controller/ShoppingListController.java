@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.dao.PlantDAO;
+import com.techelevator.dao.PlotDAO;
 import com.techelevator.dao.SuppliesDAO;
 import com.techelevator.model.LineItem;
 import com.techelevator.model.Plant;
@@ -23,10 +25,13 @@ import com.techelevator.model.Supplies;
 @CrossOrigin
 @RequestMapping("/api")
 public class ShoppingListController {
+	
 	@Autowired
 	SuppliesDAO theSupplies;
 	@Autowired
 	PlantDAO thePlants;
+	@Autowired
+	PlotDAO thePlots;
 	
 //	@RequestMapping(path = { "/myShoppingList"}, method = RequestMethod.GET)
 //	public List<ShoppingList> listAllItems(@RequestBody ShoppingList[] list) {
@@ -73,12 +78,15 @@ public class ShoppingListController {
 		}
 		
 	}
-	@RequestMapping(path = {"/generateSuggestedSeedlingList"}, method = RequestMethod.GET)
-	public LineItem[] suggestedList(@RequestBody Plot[] plots) {
+	@RequestMapping(path = {"/generateSuggestedSeedlingList/{gardenid}"}, method = RequestMethod.GET)
+	public LineItem[] suggestedList(@PathVariable Long gardenid) {
+		System.out.println("in generateSuggestedSeedlingList");
 		List<LineItem> items = new ArrayList<>();
+		Plot[] plots = thePlots.getPlotsByGardenId(gardenid);
 		
 		for(Plot p: plots) {
 			items.add(thePlants.getPlantCostFromPlot(p));
+			System.out.println(p.getPlantId());
 			
 		}
 		LineItem[] seedling = new LineItem[items.size()];
