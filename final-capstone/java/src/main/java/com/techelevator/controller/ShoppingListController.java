@@ -76,9 +76,9 @@ public class ShoppingListController {
 	@RequestMapping(path = {"/generateSuggestedSeedlingList"}, method = RequestMethod.GET)
 	public LineItem[] suggestedList(@RequestBody Plot[] plots) {
 		List<LineItem> items = new ArrayList<>();
-		System.out.println(plots);
 		for(Plot p: plots) {
 			items.add(thePlants.getPlantCostFromPlot(p));
+			
 		}
 		LineItem[] seedling = new LineItem[items.size()];
 		for(int i = 0; i < items.size(); i++) {
