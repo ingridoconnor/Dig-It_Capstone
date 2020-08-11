@@ -47,7 +47,13 @@ public class PlantController {
 		thePlants.removePlant(id);
 	}
 	
-	
+	@RequestMapping(path = {"/zonePlants/{zoneName}"}, method = RequestMethod.GET)
+		public Plant[] getHZonePlants(@PathVariable String zoneName) {
+			List<Plant> zonePlants = thePlants.getHZonePlants(zoneName);
+			Plant[] plants = new Plant[zonePlants.size()];
+			plants = zonePlants.toArray(plants);
+			return plants;
+	}
 
 
 }
