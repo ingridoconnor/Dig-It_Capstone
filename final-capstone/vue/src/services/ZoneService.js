@@ -8,6 +8,10 @@ export default {
 
   getZoneInfo(zonename) {
     return http.get(`/zone/${zonename}`);
-  }
+  },
+
+  getZonePlants(zonename) {
+    return http.get(`/zonePlants/${zonename}`)
+}
 
 }

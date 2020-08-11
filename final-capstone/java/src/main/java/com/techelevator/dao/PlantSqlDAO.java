@@ -34,6 +34,23 @@ public class PlantSqlDAO implements PlantDAO {
 	    }
 	    return retrievedPlants;    
 	}
+	
+	@Override
+	public List<Plant> getHZonePlants(String zoneName) {
+		String sql = "SELECT p.plant_id, p.plant_name, p.description, p.plants_per_sq_foot, "
+				+ "p.sun_requirements, p.region, p.seedling_cost "
+				+ "FROM plant p "
+				+ "JOIN plant_hardiness ph ON p.plant_id=ph.plant_id "
+				+ "JOIN hardiness h ON ph.zone_name=h.zone_name "
+				+ "WHERE h.zone_name = ?";
+		SqlRowSet results = template.queryForRowSet(sql, zoneName);
+	    List<Plant> retrievedPlants = new ArrayList<>();
+	    while (results.next()) {
+	        retrievedPlants.add(mapRowToPlant(results));
+	    }
+	    return retrievedPlants;    
+	}
+	
 	@Override
 	public LineItem getPlantCostFromPlot(Plot plot) {
 		LineItem list = new LineItem();

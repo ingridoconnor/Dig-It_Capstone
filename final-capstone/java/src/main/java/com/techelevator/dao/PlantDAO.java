@@ -9,6 +9,7 @@ import com.techelevator.model.Plot;
 public interface PlantDAO {
 	
 	List<Plant> getAllPlants();
+	List<Plant> getHZonePlants(String zoneName);
 	Plant searchPlantByPlantName(String name);
 	Plant addNewPlant(Plant plant);
 	LineItem getPlantCostFromPlot(Plot plot);

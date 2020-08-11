@@ -32,6 +32,15 @@ export default {
 </script>
 
 <style>
+
+/* * {
+    cursor:url("img/carrot.png"),auto;
+}
+
+*:active {
+    cursor:url("img/carrotclick.png"),auto;
+} */
+
 #app {
   background-color: #c1c56d;
 

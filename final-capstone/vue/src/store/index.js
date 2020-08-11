@@ -36,8 +36,8 @@ export default new Vuex.Store({
       gardenLength: "",
     },
     plants: {
-      gardenId: "",
-      gardenName: "",
+      plantId: "",
+      plantName: "",
       description: "",
       plantsPerSqFoot: "",
       sunRequirements: "", 
@@ -52,6 +52,17 @@ export default new Vuex.Store({
       avgFirstFrostDay: "",
       avgGrowingDays: ""
     },
+
+    zonePlants: {
+      plantId: "",
+      plantName: "",
+      description: "",
+      plantsPerSqFoot: "",
+      sunRequirements: "", 
+      region: "", 
+      seedlingCost: ""
+    },
+
     supply: {
       supplyId: "",
       supplyName: "",
@@ -85,6 +96,9 @@ export default new Vuex.Store({
     },
     SET_ZONE(state, data) {
       state.zone = data;
+    },
+    SET_ZONE_PLANTS(state, data) {
+      state.zonePlants = data;
     },
     ADD_PLOT(state,plot) {
       const garden = this.state.gardens.find(p => p.id == plot.id);
