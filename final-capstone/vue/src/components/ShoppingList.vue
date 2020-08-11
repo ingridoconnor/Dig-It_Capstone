@@ -28,15 +28,9 @@ export default {
       PlotService.getPlotsByGardenId(this.$route.params.gardenid)
       .then((response) => {
         this.$store.commit("SET_PLOTS", response.data);
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 404) {
-          alert("Garden Data not available.");
-          this.$router.push("/");
-        }
-      });
 
-    ShoppingService.generateSeedlingShoppingList(JSON.stringify(this.$store.state.plots))
+
+    ShoppingService.generateSeedlingShoppingList(this.$store.state.plots)
       .then((response) => {
         this.$store.commit("SET_SHOPPING_LISTS", response.data);
       })
@@ -46,6 +40,16 @@ export default {
           this.$router.push("/");
         }
       });
+
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          alert("Garden Data not available.");
+          this.$router.push("/");
+        }
+      });
+
+
   },
 };
 </script>
