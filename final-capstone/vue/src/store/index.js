@@ -27,6 +27,7 @@ export default new Vuex.Store({
     gardens: [],
     plots: [],
     shoppingLists: [],
+    supplies: [],
     garden: {
       userId: "",
       gardenId: "",
@@ -51,6 +52,12 @@ export default new Vuex.Store({
       avgFirstFrostDay: "",
       avgGrowingDays: ""
     },
+    supply: {
+      supplyId: "",
+      supplyName: "",
+      supplyCost: ""
+     },
+
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -104,7 +111,13 @@ export default new Vuex.Store({
     },
     SET_SEEDLING_SHOPPING_LISTS(state, data) {
       state.seedlingShoppingLists = data;
-    } 
+    },
+    SET_SUPPLY(state, data) {
+      state.supply = data;
+    },
+    SET_SUPPLIES(state, data) {
+      state.supplies = data;
+    },   
     
   }
 })

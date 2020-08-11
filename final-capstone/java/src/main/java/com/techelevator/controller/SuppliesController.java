@@ -21,7 +21,7 @@ public class SuppliesController {
 	@Autowired
 	SuppliesDAO theSupplies;
 	
-	@RequestMapping(path = { "/allSupplies/"}, method = RequestMethod.GET)
+	@RequestMapping(path = { "/allSupplies"}, method = RequestMethod.GET)
 	public Supplies[] getAllSupplies() {
 		List<Supplies> allSupplies = theSupplies.getAllSupplies();
 		Supplies[] supplies = new Supplies[allSupplies.size()];
@@ -29,7 +29,7 @@ public class SuppliesController {
 		return supplies;
 	}
 	
-	@RequestMapping(path = { "/supplyNameSearch/"}, method = RequestMethod.GET)
+	@RequestMapping(path = { "/supplyNameSearch"}, method = RequestMethod.GET)
 	public Supplies searchSupplyBySupplyName(@RequestParam String name) {
 		Supplies searchSupplyBySupplyNameResult = theSupplies.searchSupplyBySupplyName(name);
 		return searchSupplyBySupplyNameResult;
