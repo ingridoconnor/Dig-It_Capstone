@@ -21,7 +21,7 @@
     </div>
     <div class="info">
           <h3>Suggested vegetables for Zone {{this.$store.state.userData.region}}:</h3>
-          <h3 v-for="zonePlant in $store.state.zonePlants" v-bind:key="zonePlant.plantName">{{zonePlant.plantName}}</h3>
+          <h3 v-for="zonePlant in $store.state.zonePlants" v-bind:key="zonePlant.name">{{zonePlant.name}}</h3>
 
 
     </div>

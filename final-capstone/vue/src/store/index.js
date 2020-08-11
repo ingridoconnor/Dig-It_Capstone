@@ -54,8 +54,8 @@ export default new Vuex.Store({
     },
 
     zonePlants: {
-      plantId: "",
-      plantName: "",
+      id: "",
+      name: "",
       description: "",
       plantsPerSqFoot: "",
       sunRequirements: "", 
