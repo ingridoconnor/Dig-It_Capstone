@@ -21,8 +21,12 @@
     </div>
     <div class="info">
           <h3>Suggested vegetables for Zone {{this.$store.state.userData.region}}:</h3>
-          <h3 v-for="zonePlant in $store.state.zonePlants" v-bind:key="zonePlant.name">{{zonePlant.name}}</h3>
 
+          <div class="zoneplants" v-for="zonePlant in $store.state.zonePlants" v-bind:key="zonePlant.name">
+            <img class="plantimg" v-bind:src="'../img/vegetables/' + zonePlant.name + '.png'"/>
+            <h3 id="plantname">{{zonePlant.name}}</h3>
+          </div>
+          <img class="plantimg" src="../img/vegetables/Corn.png"/>
 
     </div>
   </div>
@@ -68,7 +72,6 @@
 <script>
 
 
-
   import ZoneService from "../services/ZoneService";
 
 export default {
@@ -86,7 +89,6 @@ export default {
 
   name: "zone-data",
   components: {},
-
   data() {
     return {
       mapValue: "",
@@ -106,6 +108,19 @@ export default {
 </script>
 
 <style>
+
+  .plantimg {
+    width: 10%;
+  }
+
+  #plantname {
+    display: inline;
+  }
+
+  .zoneplants {
+    display: inline;
+    margin: 0px 50px;
+  }
 
   .description {
     padding: 0px 100px 0px 100px;
