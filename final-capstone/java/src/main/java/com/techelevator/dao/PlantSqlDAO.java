@@ -83,6 +83,17 @@ public class PlantSqlDAO implements PlantDAO {
 		plant.setId(newPlantId);
 		return plant;
 	}
+	
+	@Override
+	public Plant editPlant(Plant plant) {
+		String sql = "UPDATE plant SET "
+				+ "plant_name = ?, description = ?, plants_per_sq_foot = ?, "
+				+ "sun_requirements = ?, region = ?, seedling_cost = ? "
+				+ "WHERE plant_id = ?";
+		template.update(sql, plant.getName(), plant.getDescription(), plant.getPlantsPerSqFoot(), plant.getSunRequirements(), plant.getRegion(), plant.getSeedlingCost(), plant.getId());
+		return plant;
+	}
+	
 	@Override
 	public void removePlant(int id) {
 		String sql = "DELETE FROM plant WHERE plant_id = ?";
@@ -99,6 +110,8 @@ public class PlantSqlDAO implements PlantDAO {
 		plant.setSeedlingCost(results.getBigDecimal("seedling_cost"));
 		return plant;
 	}
+
+	
 
 	
 

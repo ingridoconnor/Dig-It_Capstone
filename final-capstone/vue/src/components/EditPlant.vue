@@ -1,6 +1,5 @@
 <template>
 
-
   <form v-on:submit.prevent="submitForm" class="editplant">
     <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
     <div class="form-group">
@@ -12,18 +11,18 @@
       <input id="description" type="text" class="form-control" v-model="plant.description" autocomplete="off" />
       
       <label for="plantspersq">Plants per square foot: </label>
-      <input id="plantspersq" type="text" class="form-control" v-model="plant.plantspersq" autocomplete="off" />  
+      <input id="plantspersq" type="text" class="form-control" v-model="plant.plantsPerSqFoot" autocomplete="off" />  
     
       <label for="sunrequirements">Sun Requirements: </label>
-      <input id="sunrequirements" type="text" class="form-control" v-model="plant.sunrequirements" autocomplete="off" />  
+      <input id="sunrequirements" type="text" class="form-control" v-model="plant.sunRequirements" autocomplete="off" />  
     
       <label for="region">Region: </label>
       <input id="region" type="text" class="form-control" v-model="plant.region" autocomplete="off" />  
     
       <label for="cost">Seedling cost: </label>
-      <input id="cost" type="text" class="form-control" v-model="plant.cost" autocomplete="off" />  
+      <input id="cost" type="text" class="form-control" v-model="plant.seedlingCost" autocomplete="off" />  
     
-    
+      <p>{{this.plant}}</p>
     </div>
     
     
@@ -48,10 +47,10 @@ export default {
 
         name: this.$store.state.vegetable.name,
         description: this.$store.state.vegetable.description,
-        plantspersq: this.$store.state.vegetable.plantsPerSqFoot,
-        sunrequirements: this.$store.state.vegetable.sunRequirements,
+        plantsPerSqFoot: this.$store.state.vegetable.plantsPerSqFoot,
+        sunRequirements: this.$store.state.vegetable.sunRequirements,
         region: this.$store.state.vegetable.region,
-        cost: this.$store.state.vegetable.seedlingCost,
+        seedlingCost: this.$store.state.vegetable.seedlingCost,
         id: this.$store.state.vegetable.id
 
       },
@@ -66,7 +65,7 @@ export default {
           .updatePlantInfo(this.plant)
           .then(response => {
             if (response.status === 200) {
-              this.$store.commit("SET_PLANT_DATA", response);
+              alert("Your changes have been made.");
               this.$router.push(`/admin/home`);
             }
           })

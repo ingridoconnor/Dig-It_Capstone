@@ -17,7 +17,7 @@
     <div>
       <button class="btn-edit btn-profile" v-on:click.prevent="addPlant" type="submit">Add New Plant</button>
       <button class="btn-edit btn-profile" v-if="this.vegetable.id > 0" v-on:click.prevent="editPlant" type="edit">Edit Plant</button>
-      <button class="btn-delete btn-profile" type="submit">Delete Plant</button>
+      <button class="btn-delete btn-profile" v-on:click.prevent="deletePlant">Delete Plant</button>
     </div>
   </form>
 </template>
@@ -70,14 +70,25 @@ export default {
       }
     },
     editPlant(){
-      
-
-
-
         this.$router.push({ name:"edit-plant", params: {plantid: this.vegetable.id}});
     },
     addPlant(){
         this.$router.push(`/admin/addplant`);
+    },
+    deletePlant(){
+      PlantService.deletePlant(this.vegetable.id)
+      .then((response) => {
+        if (response && response.status === 404){
+        alert("The plant has been deleted.");
+        }
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          alert("Unable to delete plant.");
+          this.$router.push("/");
+        }
+      });
+      
     }
   },
 };
