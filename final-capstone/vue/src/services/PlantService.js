@@ -8,12 +8,13 @@ export default {
     getAllPlants() {
         return http.get("/allPlants");
     },
+
     updatePlantInfo(plant) {
-        return http.put('/', plant);
+        return http.put(`/editplant/${plant.id}`, plant);
       },
       
-      addPlant(id) {
-        return http.post(`/plant/${id}`);
+      addPlant(plant) {
+        return http.post(`/addplant`, plant);
       },
     
       deletePlant(id) {

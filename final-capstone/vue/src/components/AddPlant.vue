@@ -1,6 +1,5 @@
 <template>
 
-
   <form v-on:submit.prevent="submitForm" class="addplant">
     <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
     <div class="form-group">
@@ -12,16 +11,16 @@
       <input id="description" type="text" class="form-control" v-model="plant.description" autocomplete="off" />
       
       <label for="plantspersq">Plants per square foot: </label>
-      <input id="plantspersq" type="text" class="form-control" v-model="plant.plantspersq" autocomplete="off" />  
+      <input id="plantspersq" type="text" class="form-control" v-model="plant.plantsPerSqFoot" autocomplete="off" />  
     
       <label for="sunrequirements">Sun Requirements: </label>
-      <input id="sunrequirements" type="text" class="form-control" v-model="plant.sunrequirements" autocomplete="off" />  
+      <input id="sunrequirements" type="text" class="form-control" v-model="plant.sunRequirements" autocomplete="off" />  
     
       <label for="region">Region: </label>
       <input id="region" type="text" class="form-control" v-model="plant.region" autocomplete="off" />  
     
       <label for="cost">Seedling cost: </label>
-      <input id="cost" type="text" class="form-control" v-model="plant.cost" autocomplete="off" />  
+      <input id="cost" type="text" class="form-control" v-model="plant.seedlingCost" autocomplete="off" />  
     
     
     </div>
@@ -46,13 +45,13 @@ export default {
     return {
       plant: {
 
-        name: this.$store.state.plant.data.name,
-        description: this.$store.state.plant.data.description,
-        plantspersqfoot: this.$store.state.plant.data.plantspersqfoot,
-        sunrequirements: this.$store.state.plant.data.sunrequirements,
-        region: this.$store.state.plant.data.region,
-        cost: this.$store.state.plant.data.cost,
-        id: this.$store.state.plant.data.id
+        name: "",
+        description: "",
+        plantsPerSqFoot: "",
+        sunRequirements: "",
+        region: "",
+        seedlingCost: "",
+        id: ""
 
       },
       
@@ -63,34 +62,33 @@ export default {
     submitForm() {
       
         plantService
-          .addPlantInfo(this.plant)
+          .addPlant(this.plant)
           .then(response => {
             if (response.status === 200) {
-              this.$store.commit("SET_PLANT_DATA", response);
-              this.$router.push(`/adminhome`);
+              alert("Your plant has been added.");
+              this.$router.push(`/admin/home`);
             }
           })
           .catch(error => {
             if (error.response) {
               this.errorMsg =
-                "Error updating info. Response received was '" +
+                "Error adding plant. Response received was '" +
                 error.response.statusText +
                 "'.";
             } else if (error.request) {
               this.errorMsg =
-                "Error updating info. Server could not be reached.";
+                "Error adding plant. Server could not be reached.";
             } else {
               this.errorMsg =
-                "Error updating info. Request could not be created.";
+                "Error adding plant. Request could not be created.";
             }
           });
       
     },
     cancelForm() {
-      this.$router.push(`/adminhome/`);
+      this.$router.push(`/admin/home`);
     }
   }
-
 };
 </script>
 

@@ -12,6 +12,7 @@ public interface PlantDAO {
 	List<Plant> getHZonePlants(String zoneName);
 	Plant searchPlantByPlantName(String name);
 	Plant addNewPlant(Plant plant);
+	Plant editPlant(Plant plant);
 	LineItem getPlantCostFromPlot(Plot plot);
 	void removePlant(int id);
 	

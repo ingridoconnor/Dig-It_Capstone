@@ -1,13 +1,8 @@
 <template>
 
-
   <form v-on:submit.prevent="submitForm" class="editplant">
     <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
     <div class="form-group">
-
-      <div v-for="plant in this.$store.state.plants" v-bind:key="plant">
-        <input type="radio" >  {{plant.name}} 
-      </div>
      
       <label for="plantname">Plant name: </label>
       <input id="plantname" type="text" class="form-control" v-model="plant.name" autocomplete="off" />
@@ -16,18 +11,18 @@
       <input id="description" type="text" class="form-control" v-model="plant.description" autocomplete="off" />
       
       <label for="plantspersq">Plants per square foot: </label>
-      <input id="plantspersq" type="text" class="form-control" v-model="plant.plantspersq" autocomplete="off" />  
+      <input id="plantspersq" type="text" class="form-control" v-model="plant.plantsPerSqFoot" autocomplete="off" />  
     
       <label for="sunrequirements">Sun Requirements: </label>
-      <input id="sunrequirements" type="text" class="form-control" v-model="plant.sunrequirements" autocomplete="off" />  
+      <input id="sunrequirements" type="text" class="form-control" v-model="plant.sunRequirements" autocomplete="off" />  
     
       <label for="region">Region: </label>
       <input id="region" type="text" class="form-control" v-model="plant.region" autocomplete="off" />  
     
       <label for="cost">Seedling cost: </label>
-      <input id="cost" type="text" class="form-control" v-model="plant.cost" autocomplete="off" />  
+      <input id="cost" type="text" class="form-control" v-model="plant.seedlingCost" autocomplete="off" />  
     
-    
+      <p>{{this.plant}}</p>
     </div>
     
     
@@ -50,13 +45,13 @@ export default {
     return {
       plant: {
 
-        name: this.$store.state.plant.data.name,
-        description: this.$store.state.plant.data.description,
-        plantspersq: this.$store.state.plant.data.plantspersq,
-        sunrequirements: this.$store.state.plant.data.sunrequirements,
-        region: this.$store.state.plant.data.region,
-        cost: this.$store.state.plant.data.cost,
-        id: this.$store.state.plant.data.id
+        name: this.$store.state.vegetable.name,
+        description: this.$store.state.vegetable.description,
+        plantsPerSqFoot: this.$store.state.vegetable.plantsPerSqFoot,
+        sunRequirements: this.$store.state.vegetable.sunRequirements,
+        region: this.$store.state.vegetable.region,
+        seedlingCost: this.$store.state.vegetable.seedlingCost,
+        id: this.$store.state.vegetable.id
 
       },
       
@@ -70,8 +65,8 @@ export default {
           .updatePlantInfo(this.plant)
           .then(response => {
             if (response.status === 200) {
-              this.$store.commit("SET_PLANT_DATA", response);
-              this.$router.push(`/editplant/`);
+              alert("Your changes have been made.");
+              this.$router.push(`/admin/home`);
             }
           })
           .catch(error => {
@@ -91,24 +86,7 @@ export default {
       
     },
     cancelForm() {
-      this.$router.push(`/editplant/`);
-    }
-  },
-  created() {
-    if (this.id != 0) {
-      plantService
-        .getUserInfo(this.id)
-        .then(response => {
-          this.user = response.data;
-        })
-        .catch(error => {
-          if (error.response && error.response.status === 404) {
-            alert(
-              "Plant not available. This plant may have been deleted or you have entered invalid info."
-            );
-            this.$router.push("/");
-          }
-        });
+      this.$router.push(`/admin/home`);
     }
   }
 };

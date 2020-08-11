@@ -138,7 +138,7 @@ const router = new Router({
       }
     },
     {
-      path: '/adminhome',
+      path: '/admin/home',
       name: 'adminhome',
       component: AdminHome,
       meta: {
@@ -146,7 +146,7 @@ const router = new Router({
       }
     },
     {
-      path: '/editplant',
+      path: '/admin/editplant/:plantid',
       name: 'edit-plant',
       component: EditPlant,
       meta: {
@@ -154,7 +154,7 @@ const router = new Router({
       }
     },
     {
-      path: '/addplant',
+      path: '/admin/addplant',
       name: 'add-plant',
       component: AddPlant,
       meta: {
