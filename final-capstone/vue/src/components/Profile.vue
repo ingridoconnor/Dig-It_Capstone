@@ -8,7 +8,7 @@
           class="garden-links"
           :to="{ name: 'garden', params: {gardenid: garden.gardenId} }"
           v-for="garden in this.$store.state.gardens"
-          v-bind:key="garden"
+          v-bind:key="garden.index"
         >{{garden.gardenName}}</router-link>
       </div>
             <div class="button-container">

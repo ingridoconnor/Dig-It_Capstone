@@ -57,15 +57,15 @@ public class Plot {
 		this.plantId = plantId;
 	}
 
-	@Override
-	   public String toString() {
-	      return "Plot{" +
-	              "plotId=" + plotId +
-	              "plotNumber=" + plotNumber +
-	              "gardenId=" + gardenId +
-	              "plantId=" + plantId +
-	      		  '}';
-	   }
+//	@Override
+//	   public String toString() {
+//	      return "Plot{" +
+//	              "plotId=" + plotId +
+//	              "plotNumber=" + plotNumber +
+//	              "gardenId=" + gardenId +
+//	              "plantId=" + plantId +
+//	      		  '}';
+//	   }
 
 
 }

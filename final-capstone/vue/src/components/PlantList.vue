@@ -1,7 +1,7 @@
 <template>
   <form id="plant-selector">
     <div id="plants">
-      <div class="plant" v-for="plant in this.$store.state.plants" v-bind:key="plant">
+      <div class="plant" v-for="plant in this.$store.state.plants" v-bind:key="plant.index">
         <input
           type="radio"
           name="veggie"

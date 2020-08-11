@@ -19,6 +19,7 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
+    seedlingShoppingLists: [],
     token: currentToken || '',
     user: currentUser || {},
     userData: currentUserData || {},
@@ -100,7 +101,10 @@ export default new Vuex.Store({
     },  
     SET_SHOPPING_LISTS(state, data) {
       state.shoppingLists = data;
-    }  
+    },
+    SET_SEEDLING_SHOPPING_LISTS(state, data) {
+      state.seedlingShoppingLists = data;
+    } 
     
   }
 })
