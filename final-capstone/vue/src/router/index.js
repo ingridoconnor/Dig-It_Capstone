@@ -16,6 +16,7 @@ import EditProfile from '../views/EditProfile.vue'
 import EditPlant from '../views/EditPlant.vue'
 import AdminHome from '../views/AdminHome.vue'
 import Shopping from '../views/Shopping.vue'
+import AddPlant from '../components/AddPlant.vue'
 
 Vue.use(Router)
 
@@ -149,7 +150,15 @@ const router = new Router({
       name: 'edit-plant',
       component: EditPlant,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/addplant',
+      name: 'add-plant',
+      component: AddPlant,
+      meta: {
+        requiresAuth: true
       }
     }
   ]

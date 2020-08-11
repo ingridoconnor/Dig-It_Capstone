@@ -100,10 +100,7 @@ export default new Vuex.Store({
     },  
     SET_SHOPPING_LISTS(state, data) {
       state.shoppingLists = data;
-    },  
-    // ADD_GARDEN(state,garden) {
-    //   const garden = this.state.gardens.find(p => p.id == review.id);
-    //   product.reviews.unshift(review);
-    // }
+    }  
+    
   }
 })

@@ -1,5 +1,6 @@
 <template>
-  <form id="plant-selector" class ="plant-container profile-details bubble-block">
+  <form id="plant-selector" class ="plant-container profile-details bubble-block"
+  v-on:submit.prevent="submitForm">
     <div id="plants">
       <div class="plant" v-for="plant in this.$store.state.plants" v-bind:key="plant">
         <input
@@ -14,8 +15,8 @@
       </div>
     </div>
     <div>
-      <button class="btn-edit btn-profile" type="submit">Add Plant</button>
-      <button class="btn-edit btn-profile" type="submit">Edit Plant</button>
+      <button class="btn-edit btn-profile" v-on:click.prevent="addPlant" type="submit">Add New Plant</button>
+      <button class="btn-edit btn-profile" v-on:click.prevent="editPlant" type="edit">Edit Plant</button>
       <button class="btn-delete btn-profile" type="submit">Delete Plant</button>
     </div>
   </form>
@@ -68,6 +69,12 @@ export default {
         this.vegetable = null;
       }
     },
+    editPlant(){
+        this.$router.push(`/editplant`);
+    },
+    addPlant(){
+        this.$router.push(`/addplant`);
+    }
   },
 };
 </script>
