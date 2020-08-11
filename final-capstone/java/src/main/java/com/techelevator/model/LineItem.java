@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 public class LineItem {
 	private BigDecimal cost;
 	private String itemName;
+	private int itemQuantity;
 	
 	
 	
@@ -21,6 +22,12 @@ public class LineItem {
 	}
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
+	}
+	public int getItemQuantity() {
+		return itemQuantity;
+	}
+	public void setItemQuantity(int itemQuantity) {
+		this.itemQuantity = itemQuantity;
 	}
 
 }

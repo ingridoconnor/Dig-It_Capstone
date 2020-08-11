@@ -1,17 +1,29 @@
 <template>
-  <form id="supply-selector">
+  <form id="mulch-supply-selector">
+    <h2>Mulch Calculator</h2>
+    <h3>Select a Mulch Type</h3>
     <div id="supplies">
-      <div class="supply" v-for="supply in this.FilteredSupplies" v-bind:key="supply.index">
+      <div class="supply" v-for="supply in this.Mulches" v-bind:key="supply.index">
         <input
-          type="checkbox"
+          type="radio"
           class="checkboxes"
+          name="mulch"
           v-bind:id="`Supply-${supply.supplyId}`"
           v-bind:value="supply.supplyId"
           v-on:change="selectSupply($event)"
         />
-        <label v-bind:for="`Supply-${supply.supplyId}`">{{supply.supplyName}} {{ supply.supplyCost | currency }}</label>
+        <label v-bind:for="`Supply-${supply.supplyId}`">{{supply.supplyName.substring(mulchFilter.length)}} <span class="mulch-cost">{{ supply.supplyCost | currency }}/sf</span></label>
       </div>
     </div>
+  <div id="supplies">
+    <h3>Desired Mulch Thickness in Inches</h3>
+    <input 
+    type="number"
+    min="1"
+    max="4"
+    v-model="mulchThickness">
+
+</div>
   </form>
 </template>
 
@@ -19,12 +31,12 @@
 import SupplyService from "../services/SupplyService";
 
 export default {
- created() {
+  created() {
     SupplyService.getAllSupplies()
       .then((response) => {
         this.Supplies = response.data;
-        this.FilteredSupplies = this.Supplies.filter((item) => {
-        return !item.supplyName.toLowerCase().includes(this.filterString.toLowerCase());
+        this.Mulches = this.Supplies.filter((item) => {
+        return item.supplyName.toLowerCase().includes(this.filterString.toLowerCase());
         });
       })
       .catch((error) => {
@@ -35,17 +47,22 @@ export default {
       });
   },
 
-  name: "supply-data",
+  name: "mulch-calculator",
   components: {},
   data() {
     return {
-      supply: {
+      ShoppingLists: [{
+        cost: 0,
+        itemName: '',
+        itemQuantity: '',
+      }],
+      Supplies: [{
         supplyId: "",
         supplyName: "",
         supplyCost: "",
         supplyQty: "",
-       },
-      FilteredSupplies: [{
+       }],
+       Mulches: [{
         supplyId: "",
         supplyName: "",
         supplyCost: "",
@@ -53,6 +70,8 @@ export default {
        }],
        selectedSupplies: [],
        filterString: "bagged",
+       mulchFilter: "2 cu ft. Bagged ",
+       mulchThickness: 2,
     };
   },
 
@@ -73,7 +92,7 @@ export default {
 </script>
 
 <style>
-#supply-selector {
+#mulch-supply-selector {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,29 +102,37 @@ export default {
 #supplies {
   display: flex;
   flex-direction: column;
-  height: 40vh;
   width: 100%;
-  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
 }
 
 .supply {
   display: flex;
-  width: 40ch;
+  width: 40ch; 
   align-items: center;
-  /* margin: 3px 3px;
-  background-color: #85a183;
-  border: 1px solid #85a183;
-  border-radius: 5px; */
+  margin: 3px 3px;
+  color: black;
+  font-weight: 700;
+  background-color: #c1c56d;
+  border: 1px solid #c1c56d;
+  border-radius: 5px;
 
 }
 
 .supply label {
   margin: 0px;
+  padding-left: 5px;
+  width: 50ch;
+  display: flex;
+  justify-content: space-between;
 }
 .checkboxes {
   width: 13px;
   margin-bottom: 5px;
+}
+
+.mulch-cost {
+  padding-right: 20px;  
 }
 </style>

@@ -1,8 +1,13 @@
 <template>
   <div class="shopping-list-container">
-    <p>{{this.ShoppingLists}}</p>
+    <div class="plant-list-items">
+        <h3>Plant Items:</h3>
+        <ul class="plant-costs">
+           <li class="field-headings"><span class="itemNameField">Item Name</span> <span class="itemQuantityField">Qty.</span> <span class="itemCostField">Each</span> <span class="itemCostField">Total</span></li>
+            <li class="line-items" v-for="list in this.ShoppingLists" v-bind:key="list.index"><span class="itemNameField">{{list.itemName}} Seedling</span> <span class="itemQuantityField">{{list.itemQuantity}}</span> <span class="itemCostField">{{ (list.cost/list.itemQuantity) | currency}}</span> <span class="itemCostField">{{list.cost | currency}}</span></li>
+          </ul>
+      </div>
 
-    <p>{{$store.state.plots}}</p>
   </div>
 </template>
 
@@ -12,16 +17,17 @@ import ShoppingService from "@/services/ShoppingService.js";
 import GardenService from "@/services/GardenService";
 
 export default {
-  name: "shopping-list",
+  name: "plant-shopping-list",
   data() {
     return {
       PlotsLoaded: false,
       plotList: this.$store.state.plots,
       ShoppingLists: [{
         cost: 0,
-        itemName: ''
+        itemName: '',
+        itemQuantity: '',
       }],
-      String: "CODE REACHED",
+
     };
   },
 
@@ -34,23 +40,16 @@ export default {
 
         ShoppingService.generateSeedlingShoppingList(this.$route.params.gardenid)
           .then((response) => {
-            console.log("shopping service CODE REACHED");
-            console.log(response.data);
             this.ShoppingLists = response.data;
-            console.log (this.ShoppingLists[0].cost);
             this.$store.commit("SET_SEEDLING_SHOPPING_LISTS", this.ShoppingLists);
-
           })
           .catch((error) => {
-            console.log("SHOPPING ERROR REACHED");
             if (error.response && error.response.status === 404) {
               alert("Shopping List Data not available.");
               this.$router.push("/");
             }
           });
-          for (var i = 0; i < 300; i++) {
-              console.log("*");
-         }
+
       })
       .catch((error) => {
         if (error.response && error.response.status === 404) {
@@ -75,4 +74,44 @@ export default {
 </script>
 
 <style>
+#plant-list-items, h3 {
+display: flex;
+justify-content: flex-start;
+text-justify: left;
+margin-bottom: 0px;
+}
+
+.plant-costs {
+  margin-top: 3px;
+}
+
+.field-headings {
+  font-family: 'Kameron', serif;
+  font-weight: 700;
+  display: flex;
+  margin-top: 0px;
+}
+
+.line-items {
+  font-family: 'Kameron', serif;
+  font-weight: 100;
+  display: flex;
+}
+
+.itemNameField {
+  width: 200px;
+  text-align: left;
+  word-wrap: none;
+
+}
+.itemQuantityField {
+  width: 70px;
+  text-align: right;
+}
+.itemCostField {
+  width: 120px;
+  text-align: right;
+}
+
+
 </style>
