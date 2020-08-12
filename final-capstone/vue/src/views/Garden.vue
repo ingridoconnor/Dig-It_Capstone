@@ -1,6 +1,17 @@
 <template>
   <div id="main-garden-container">
-         <h1 id="garden-name">{{this.$store.state.garden.gardenName}}</h1>
+         <div id="garden-title-button-container">
+           <h1 id="garden-name">{{this.$store.state.garden.gardenName}}</h1>
+          <a
+          class="btn-garden btn-shopping-list"
+          href="#"
+          v-on:click.prevent="goToShopping()"
+        >Go to {{this.$store.state.garden.gardenName}}'s Shopping List</a>
+           </div>
+
+
+
+
         <div class="plant-garden-container">
           <plant-details class="plant-details" />
           <garden-details class="garden-details" />
@@ -21,22 +32,41 @@ export default {
     GardenDetails,
     PlantList,
     PlantDetails
-  }
-};
+  },
+
+methods: {
+    goToShopping() {
+          this.$router.push({
+              name: "shopping",
+              params: { gardenid: this.$route.params.gardenid }
+            });
+          }
+},
+}
 </script>
 
 <style>
-#garden-name {
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-}
 #main-garden-container {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   align-content: center;
 }
+
+#garden-title-button-container {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+#garden-name {
+  display: flex;
+  width: 75%;
+  flex-grow: 1;
+  justify-content: flex-start;
+}
+
 .plant-garden-container {
   display: flex;
   flex-grow: 1;
@@ -48,6 +78,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-content: center;
+  margin-right: 20px;
   width: 25%;
   color: white;
   background-color: #307c55;
@@ -65,6 +96,26 @@ export default {
   border: 1px solid #85a183;
   border-radius: 25px;
   padding: 20px;
+}
+
+.btn-shopping-list {
+  display: flex;
+  color: white;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+  line-height: 1.7em;
+  font-size: 1.1em;
+  font-weight: 700;
+  text-decoration: none;
+  border-style: solid;
+  padding: 0 40px;
+  background-color: #307c55;
+  border-color: #307c55;
+}
+
+.btn-garden {
+    box-shadow: 2px 2px 4px black;
 }
 
 </style>

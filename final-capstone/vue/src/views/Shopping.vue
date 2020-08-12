@@ -33,8 +33,6 @@ export default {
 #main-shopping-container {
   display: flex;
   flex-grow: 1;
-
-
 }
 
 #shopping-list-plants {
@@ -42,7 +40,6 @@ export default {
   flex-direction: column;
   align-content: center;
   min-height: 65vh;
-  max-height: 80vh;
   color: black;
   background-color: white;
   border: 1px solid white;
@@ -57,7 +54,6 @@ export default {
   justify-content: flex-start;
   align-content: center;
   min-height: 65vh;
-  max-height: 80vh;
   color: white;
   background-color: black;
   border: 1px solid black;
@@ -66,6 +62,22 @@ export default {
   margin-right: 20px;
 }
 
-
+#supply-selections {
+  display: flex;
+  flex-grow: 1;
+  width: 1fr;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  min-height: 65vh;
+  height: 70vh;
+  max-height: 100vh;
+  color: white;
+  background-color: #e48438;
+  border: 1px solid #e48438;
+  border-radius: 25px;
+  padding: 20px;
+  margin-right: 20px;
+}
 
 </style>

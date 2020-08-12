@@ -21,26 +21,35 @@
     </div>
 
     <div class="button-container">
-      <div class="center-it">
+      
         <a
+          class="btn-update btn-garden"
           v-if="this.$store.state.vegetable.name != null && this.selectedPlots != ''"
           href="#"
-          class="btn-update btn-garden"
           v-on:click.prevent="assignVegetableToPlots()"
         >Assign {{this.$store.state.vegetable.name}} to the Selected Plot{{this.selectedPlots.length > 1 ? 's' : ''}}</a>
-        <h3
-          class="the-directions"
-          v-else-if="this.$store.state.vegetable.name != null"
-        >Select at Least 1 Plot from the Grid Above to Start Assigning Plants</h3>
-      </div>
-      <div class="center-it">
+        
         <a
+          class="btn-update btn-garden dead-button"
+          v-else
           href="#"
+        >Select Plot(s) and Plant to Activate this Button</a>
+
+        <a
           class="btn-save-garden btn-garden"
-          v-if="updatesMade"
+          v-if="this.$store.state.vegetable.name != null && this.selectedPlots != ''"
+          href="#"
           v-on:click.prevent="saveUpdates()"
-        >Save Changes to Garden</a>
-      </div>
+        >Save Changes to Garden and Generate Shopping List</a>
+
+        <a
+          class="btn-save-garden btn-garden dead-button"
+          v-else
+          href="#"
+
+        >Save Changes to Garden and Generate Shopping List</a>        
+
+      
     </div>
       </form>
 </template>
@@ -137,6 +146,8 @@ export default {
     },
 
     saveUpdates() {
+      this.assignVegetableToPlots;
+      
       PlotService.saveGardenPlots(this.plotArray, this.$route.params.gardenid)
         .then((response) => {
           if (response.status == 200) {
@@ -237,36 +248,35 @@ export default {
 
 .button-container {
   display: flex;
-  flex-direction: column;
   flex-grow: 1;
-  justify-content: center;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
   height: 2em;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 20px;
 }
 
-.center-it,
-.the-directions {
-  display: flex;
-  justify-content: center;
-  text-justify: center;
-  flex-grow: 1;
-}
-
 .btn-garden {
-  color: #fff;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+
   text-align: center;
+  text-justify: center;
   width: 150px;
   border-radius: 15px;
   line-height: 1.7em;
+  width: 300px;
+  height: 4em;
+  color: #fff;
   font-size: 1.1em;
+  margin: 20px;
   text-decoration: none;
   border-style: solid;
-  margin: 0px 10px;
 }
 
 .btn-update {
-  width: 370px;
   background-color: #e48438;
   border-color: #e48438;
 }
@@ -277,8 +287,15 @@ export default {
 }
 
 .btn-save-garden {
-  width: 370px;
   background-color: #307c55;
   border-color: #307c55;
 }
+
+.dead-button,.dead-button:hover {
+  padding: 0 15px;
+  background-color: #696866;
+  border-color: #696866;
+    box-shadow: none;
+}
+
 </style>

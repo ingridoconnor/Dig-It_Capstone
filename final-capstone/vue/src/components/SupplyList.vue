@@ -1,7 +1,9 @@
 <template>
   <form id="supply-selector">
-    <div id="supplies">
-      <div class="supply" v-for="supply in this.FilteredSupplies" v-bind:key="supply.index">
+    <h2>Supplies and Tools</h2>
+    <h3>Select Items to Add to Your List</h3>
+    <div id="supplies-items">
+      <div class="supply-item" v-for="supply in this.FilteredSupplies" v-bind:key="supply.index">
         <input
           type="checkbox"
           class="checkboxes"
@@ -9,8 +11,21 @@
           v-bind:value="supply.supplyId"
           v-on:change="selectSupply($event)"
         />
-        <label v-bind:for="`Supply-${supply.supplyId}`">{{supply.supplyName}} {{ supply.supplyCost | currency }}</label>
+        <label v-bind:for="`Supply-${supply.supplyId}`">
+          {{supply.supplyName}}
+          <span class="mulch-cost">{{ supply.supplyCost | currency }}</span>
+        </label>
       </div>
+    </div>
+
+    <div class="center-it">
+      <a
+        href="#"
+        class="btn-add-item-to-list"
+        v-if="selectionMade"
+        v-on:click.prevent="addItemsToShoppingList()"
+      >Add Selections to Shopping List</a>
+      <a href="#" class="btn-add-item-to-list-dead" v-else>Add Selection to Activate</a>
     </div>
   </form>
 </template>
@@ -19,12 +34,14 @@
 import SupplyService from "../services/SupplyService";
 
 export default {
- created() {
+  created() {
     SupplyService.getAllSupplies()
       .then((response) => {
         this.Supplies = response.data;
         this.FilteredSupplies = this.Supplies.filter((item) => {
-        return !item.supplyName.toLowerCase().includes(this.filterString.toLowerCase());
+          return !item.supplyName
+            .toLowerCase()
+            .includes(this.filterString.toLowerCase());
         });
       })
       .catch((error) => {
@@ -44,29 +61,32 @@ export default {
         supplyName: "",
         supplyCost: "",
         supplyQty: "",
-       },
-      FilteredSupplies: [{
-        supplyId: "",
-        supplyName: "",
-        supplyCost: "",
-        supplyQty: "",
-       }],
-       selectedSupplies: [],
-       filterString: "bagged",
+      },
+      FilteredSupplies: [
+        {
+          supplyId: "",
+          supplyName: "",
+          supplyCost: "",
+          supplyQty: "",
+        },
+      ],
+      selectionMade: false,
+      selectedSupplies: [],
+      filterString: "bagged",
     };
   },
-  
 
   methods: {
     selectSupply(event) {
       if (event.target.checked) {
-        this.selectedSupplies.add(this.$store.state.supplies.filter(
-          (supply) => {
+        this.selectionMade = true;
+        this.selectedSupplies.add(
+          this.$store.state.supplies.filter((supply) => {
             if (supply.supplyId == event.target.value) {
               return supply;
             }
-          }
-        ));
+          })
+        );
       }
     },
   },
@@ -79,34 +99,77 @@ export default {
   flex-direction: column;
   align-items: center;
   margin-top: 25px;
+  flex-grow: 1;
+  height: fit-content;
 }
 
-#supplies {
+#supplies-items {
   display: flex;
   flex-direction: column;
-  height: 40vh;
-  width: 100%;
   flex-wrap: wrap;
+  min-height: 80%;
+  width: 100%;
+  max-width: 100%;
   justify-content: flex-start;
   align-items: center;
 }
 
-.supply {
+.supply-item {
   display: flex;
-  width: 40ch;
+  width: 45%;
   align-items: center;
   margin: 3px 3px;
-  background-color: #85a183;
-  border: 1px solid #85a183;
+  color: #307c55;
+  font-weight: 700;
+  background-color: white;
+  border: 1px solid white;
   border-radius: 5px;
-
 }
 
-.supply label {
+.supply-item label {
   margin: 0px;
+  padding-left: 5px;
+  width: 50ch;
+  display: flex;
+  justify-content: space-between;
 }
-.checkboxes {
-  width: 13px;
+.supply .checkboxes {
+  width: 20px;
   margin-bottom: 5px;
+}
+
+.btn-add-item-to-list {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 2em;
+  background-color: #307c55;
+  border-color: #307c55;
+  color: #fff;
+  text-align: center;
+  border-radius: 15px;
+  line-height: 1.7em;
+  font-size: 1.2em;
+  text-decoration: none;
+  border-style: solid;
+  margin: 0px 10px;
+  padding: 15px;
+}
+.btn-add-item-to-list-dead {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 2em;
+  background-color: #696866;
+  border-color: #696866;
+  color: #fff;
+  text-align: center;
+  border-radius: 15px;
+  line-height: 1.7em;
+  font-size: 1.2em;
+  text-decoration: none;
+  border-style: solid;
+  margin: 0px 10px;
+  padding: 15px;
 }
 </style>

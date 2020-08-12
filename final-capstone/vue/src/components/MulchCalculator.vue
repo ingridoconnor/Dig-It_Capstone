@@ -1,8 +1,9 @@
 <template>
   <form id="mulch-supply-selector">
-    <h2>Mulch Calculator</h2>
-    <h3>Select a Mulch Type</h3>
+
     <div id="supplies">
+          <h2>Mulch Calculator</h2>
+    <h3>Select a Mulch Type</h3>
       <div class="supply" v-for="supply in this.Mulches" v-bind:key="supply.index">
         <input
           type="radio"
@@ -39,10 +40,12 @@
           v-if="selectionMade"
           v-on:click.prevent="addMulchToShoppingList()"
         >Add Mulch to Shopping List</a>
+        <a
+          href="#"
+          class="btn-add-mulch-to-list-dead"
+          v-else
+        >Add Mulch to Activate</a>
       </div>
-      <h3>{{this.selectedMulch}}</h3>
-      <h3>{{this.ShoppingList}}</h3>
-
   </form>
 </template>
 
@@ -122,16 +125,8 @@ export default {
       this.selectedMulch.forEach(element => this.ShoppingList.itemName = element.supplyName);
       this.ShoppingList.itemQuantity = this.mulchRequired;
 
-      this.$store.commit("SET_SHOPPING_LISTS", { cost: 10, itemName: 'Stuff', itemQuantity: 10 });
-
-      this.$router.push({
-              name: "shopping",
-              params: { gardenid: this.$route.params.gardenid },
-            });
-
+      this.$store.commit("SET_SHOPPING_LISTS", this.ShoppingList);
       }
-    
- 
 
     }
 }
@@ -142,20 +137,24 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-items: space-between;
+  flex-grow: 1;
   margin-top: 25px;
 }
 
-.mulch-thickness-box {
-  font-size: 2em;
+#mulch-thickness-box {
+  font-size: 1.5em;
   font-weight: 700;
+  margin-bottom: 40px;
 }
 
 #supplies {
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 .supply {
@@ -189,6 +188,7 @@ export default {
 .center-it {
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   text-justify: center;
   width: 100%;
   flex-grow: 1;
@@ -200,6 +200,24 @@ export default {
   height: 2em;
   background-color: #e48438;
   border-color: #e48438;
+  color: #fff;
+  text-align: center;
+  border-radius: 15px;
+  line-height: 1.7em;
+  font-size: 1.2em;
+  text-decoration: none;
+  border-style: solid;
+  margin: 0px 10px;
+  padding: 15px;
+}
+
+.btn-add-mulch-to-list-dead {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 2em;
+  background-color: #696866;
+  border-color: #696866;
   color: #fff;
   text-align: center;
   border-radius: 15px;
