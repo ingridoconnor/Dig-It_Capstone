@@ -3,10 +3,10 @@
           <div id="header">
               <a href="/"><img v-bind:class="isHome ? '' : 'shrink-nav' " class="logo" src="./img/digit.png" alt="digit logo"></a>
               <div id="nav">
-                  <router-link class="button" v-bind:to="{ name: 'home' }" v-if="!isHome">Home</router-link>
-                  <router-link class="button" v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''" v-show="!isLogin">Login</router-link>
-                  <router-link class="button" v-bind:to="{ name: 'profile' }" v-if="$store.state.token != '' && $route.name != 'profile'">Profile</router-link>
-                  <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+                  <router-link class="button  btn-main-nav" v-bind:to="{ name: 'home' }" v-if="!isHome">Home</router-link>
+                  <router-link class="button  btn-main-nav" v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''" v-show="!isLogin">Login</router-link>
+                  <router-link class="button  btn-main-nav" v-bind:to="{ name: 'profile' }" v-if="$store.state.token != '' && $route.name != 'profile'">Profile</router-link>
+                  <router-link class="button  btn-main-nav" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
               </div>
           </div>
 
@@ -76,7 +76,7 @@ export default {
   align-items: center;
 }
 
-.button {
+.btn-main-nav {
   padding: 20px;
   height: 28px;
   border-radius: 28px;
@@ -92,7 +92,7 @@ export default {
 }
 
 .btn-lg {
-  margin: 20px 0px;
+  margin: 20px 15px;
   width: 250px;
   font-size: 1.4em;
   display: flex;

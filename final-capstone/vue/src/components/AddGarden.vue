@@ -40,8 +40,8 @@
     </div>
 
     <div class="actions">
-      <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
-      <button>Submit</button>
+      <a href="#" class="btn-garden btn-cancel btn-x-btn" v-on:click.prevent="resetForm" type="cancel">Cancel</a>
+      <a v-on:click.prevent="addNewGarden" class="btn-garden btn-submit btn-x-btn" type="submit" >Submit</a>
     </div>
   </form>
 </template>
@@ -193,4 +193,40 @@ input {
   border-style: solid;
   border-color: #381c06;
 }
+
+.actions {
+  display: flex;
+  flex-grow: 1;
+  width: 40%;
+  justify-content: space-between;
+}
+
+.btn-x-btn {
+  display: flex;
+  flex-grow: 1;
+  color: white;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+  line-height: 1.7em;
+  height: 2em;
+  font-size: 1.1em;
+  font-weight: 700;
+  text-decoration: none;
+  border-style: solid;
+  padding: 0 40px;
+  background-color: #307c55;
+  border-color: #307c55;
+  box-shadow: 2px 2px 4px black;
+  margin: 20px;
+}
+.btn-cancel {
+  background-color: #e48438;
+}
+.btn-submit {
+  background-color: #307c55;
+}
+
+
+
 </style>

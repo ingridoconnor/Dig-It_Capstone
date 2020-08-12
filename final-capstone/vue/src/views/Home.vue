@@ -12,7 +12,7 @@
 
   <div class="links">
 
-    <router-link  class="button create btn-lg" v-bind:to="{ name: 'register' }" v-if="$store.state.token === ''">
+    <router-link  class="button create btn-lg btn-garden" v-bind:to="{ name: 'register' }" v-if="$store.state.token === ''">
       Create an Account
     </router-link>
   </div>

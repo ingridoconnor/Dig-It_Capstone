@@ -121,7 +121,7 @@ export default new Vuex.Store({
       state.vegetable = data;
     },  
     SET_SHOPPING_LISTS(state, data) {
-      state.shoppingLists.add(data);
+      state.shoppingLists.unshift(data);
     },
     SET_SEEDLING_SHOPPING_LISTS(state, data) {
       state.seedlingShoppingLists = data;

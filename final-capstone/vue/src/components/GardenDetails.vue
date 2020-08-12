@@ -38,7 +38,7 @@
 
         <a
           class="btn-save-garden btn-garden"
-          v-if="this.$store.state.vegetable.name != null && this.selectedPlots != ''"
+          v-if="this.updatesMade"
           href="#"
           v-on:click.prevent="saveUpdates()"
         >Save Changes to Garden and Generate Shopping List</a>
@@ -267,7 +267,6 @@ export default {
   display: flex;
   flex-grow: 1;
   align-items: center;
-
   text-align: center;
   text-justify: center;
   width: 150px;

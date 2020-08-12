@@ -5,10 +5,8 @@
         <ul class="plant-costs">
            <li class="field-headings"><span class="itemNameField">Item Name</span> <span class="itemQuantityField">Qty.</span> <span class="itemCostField">Each</span> <span class="itemCostField">Total</span></li>
             <li class="line-items" v-for="list in this.ShoppingLists" v-bind:key="list.index"><span class="itemNameField">{{list.itemName}}</span> <span class="itemQuantityField">{{list.itemQuantity}}</span> <span class="itemCostField">{{ (list.cost/list.itemQuantity) | currency}}</span> <span class="itemCostField">{{list.cost | currency}}</span></li>
-          </ul>
-          {{this.$store.state.shoppingLists}}
+        </ul>
       </div>
-
   </div>
 </template>
 
@@ -17,19 +15,15 @@
 // import GardenService from "@/services/GardenService";
 
 export default {
-   created() {
-     this.ShoppingLists = this.$store.state.shoppingLists;
-   },
+  //  created() {
+  //    this.ShoppingLists = this.$store.state.shoppingLists;
+  //  },
   name: "supply-shopping-list",
   data() {
     return {
       PlotsLoaded: false,
       plotList: this.$store.state.plots,
-      ShoppingLists: [{
-        cost: 0,
-        itemName: '',
-        itemQuantity: '',
-      }],
+      ShoppingLists: this.$store.state.shoppingLists,
 
     };
   },

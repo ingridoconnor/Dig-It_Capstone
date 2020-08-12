@@ -16,6 +16,7 @@
           <span class="mulch-cost">{{ supply.supplyCost | currency }}</span>
         </label>
       </div>
+
     </div>
 
     <div class="center-it">
@@ -27,6 +28,7 @@
       >Add Selections to Shopping List</a>
       <a href="#" class="btn-add-item-to-list-dead" v-else>Add Selection to Activate</a>
     </div>
+    <p>{{this.selectedSupplies}}</p>
   </form>
 </template>
 
@@ -77,20 +79,27 @@ export default {
   },
 
   methods: {
-    selectSupply(event) {
-      if (event.target.checked) {
-        this.selectionMade = true;
-        this.selectedSupplies.add(
-          this.$store.state.supplies.filter((supply) => {
+     selectSupply(event) {
+      this.selectionMade = true;
+      this.FilteredSupplies.forEach(
+          (supply) => {
             if (supply.supplyId == event.target.value) {
-              return supply;
+              this.selectedSupplies.unshift(supply);
             }
-          })
-        );
-      }
-    },
-  },
-};
+          });
+      }, 
+    
+    
+    addItemsToShoppingList() {
+      this.selectedSupplies.forEach((supply) => {
+                supply.supplyQty = 1;
+                this.$store.commit("SET_SHOPPING_LISTS", supply);
+      });
+      this.selectedSupplies = [];
+     },
+  }
+
+ };
 </script>
 
 <style>
