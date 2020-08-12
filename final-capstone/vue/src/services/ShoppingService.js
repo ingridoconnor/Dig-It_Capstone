@@ -11,8 +11,13 @@ export default {
         return http.get(`/generateSuggestedSeedlingList/${gardenId}/`);
     },
 
-    saveGardenPlots(plots, gardenID) {
-      return http.post(`/garden/${gardenID}/plots`, plots)
-  }
+    saveGardenPlots(plots, gardenId) {
+      return http.post(`/garden/${gardenId}/plots`, plots)
+  },
+  
+  addItemToList(shoppingList) {
+    return http.post('/addSupplyToShoppingList', shoppingList)
+},
+ 
     
 }

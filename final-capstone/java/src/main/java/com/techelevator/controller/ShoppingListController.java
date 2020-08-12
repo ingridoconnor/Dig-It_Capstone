@@ -78,6 +78,16 @@ public class ShoppingListController {
 		}
 		
 	}
+	
+	@RequestMapping(path = { "addSupplyToShoppingList"}, method = RequestMethod.POST)
+	public void addLineItemToList(@RequestBody ShoppingList shoppingList) {
+		
+		
+		
+	}
+	
+	
+	
 	@RequestMapping(path = {"/generateSuggestedSeedlingList/{gardenid}"}, method = RequestMethod.GET)
 	public LineItem[] suggestedList(@PathVariable Long gardenid) {
 		System.out.println("in generateSuggestedSeedlingList");

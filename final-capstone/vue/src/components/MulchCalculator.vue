@@ -8,7 +8,7 @@
           type="radio"
           class="checkboxes"
           name="mulch"
-          v-bind:id="`Supply-${supply.supplyId}`"
+          v-bind:id="supply.supplyId"
           v-bind:value="supply.supplyId"
           v-on:change="selectSupply($event)"
         />
@@ -16,14 +16,33 @@
       </div>
     </div>
   <div id="supplies">
-    <h3>Desired Mulch Thickness in Inches</h3>
+    <h3>Set Desired Mulch Thickness (Inches)</h3>
     <input 
+    id="mulch-thickness-box"
     type="number"
     min="1"
     max="4"
     v-model="mulchThickness">
 
 </div>
+ <div id="supplies">
+    <h3>Mulch Required</h3>
+    <h3>{{mulchRequired}} Bags</h3>
+    <h3>{{mulchCost | currency}} Total</h3>
+</div>
+
+
+<div class="center-it">
+        <a
+          href="#"
+          class="btn-add-mulch-to-list"
+          v-if="selectionMade"
+          v-on:click.prevent="addMulchToShoppingList()"
+        >Add Mulch to Shopping List</a>
+      </div>
+      <h3>{{this.selectedMulch}}</h3>
+      <h3>{{this.ShoppingList}}</h3>
+
   </form>
 </template>
 
@@ -51,11 +70,11 @@ export default {
   components: {},
   data() {
     return {
-      ShoppingLists: [{
+      ShoppingList: {
         cost: 0,
         itemName: '',
         itemQuantity: '',
-      }],
+      },
       Supplies: [{
         supplyId: "",
         supplyName: "",
@@ -68,17 +87,27 @@ export default {
         supplyCost: "",
         supplyQty: "",
        }],
-       selectedSupplies: [],
+       selectionMade: false,
+       selectedMulch: "",
        filterString: "bagged",
        mulchFilter: "2 cu ft. Bagged ",
        mulchThickness: 2,
     };
   },
-
+  computed: {
+      mulchRequired() {
+          return Math.ceil(((this.mulchThickness/12) * (this.$store.state.garden.gardenWidth * this.$store.state.garden.gardenLength))/2);
+      },
+      mulchCost() {
+          return this.mulchRequired * 4.5;
+          
+      }
+  },
   methods: {
     selectSupply(event) {
+      this.selectionMade = true;
       if (event.target.checked) {
-        this.selectedSupplies.add(this.$store.state.supplies.filter(
+      this.selectedMulch = (this.Mulches.filter(
           (supply) => {
             if (supply.supplyId == event.target.value) {
               return supply;
@@ -87,16 +116,38 @@ export default {
         ));
       }
     },
-  },
-};
+ 
+    addMulchToShoppingList() {
+      this.ShoppingList.cost = this.mulchCost;
+      this.selectedMulch.forEach(element => this.ShoppingList.itemName = element.supplyName);
+      this.ShoppingList.itemQuantity = this.mulchRequired;
+
+      this.$store.commit("SET_SHOPPING_LISTS", { cost: 10, itemName: 'Stuff', itemQuantity: 10 });
+
+      this.$router.push({
+              name: "shopping",
+              params: { gardenid: this.$route.params.gardenid },
+            });
+
+      }
+    
+ 
+
+    }
+}
 </script>
 
-<style>
+<style local>
 #mulch-supply-selector {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 25px;
+}
+
+.mulch-thickness-box {
+  font-size: 2em;
+  font-weight: 700;
 }
 
 #supplies {
@@ -135,4 +186,30 @@ export default {
 .mulch-cost {
   padding-right: 20px;  
 }
+.center-it {
+  display: flex;
+  justify-content: center;
+  text-justify: center;
+  width: 100%;
+  flex-grow: 1;
+}
+.btn-add-mulch-to-list {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 2em;
+  background-color: #e48438;
+  border-color: #e48438;
+  color: #fff;
+  text-align: center;
+  border-radius: 15px;
+  line-height: 1.7em;
+  font-size: 1.2em;
+  text-decoration: none;
+  border-style: solid;
+  margin: 0px 10px;
+  padding: 15px;
+}
+
+
 </style>

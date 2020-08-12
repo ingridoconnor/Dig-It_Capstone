@@ -55,6 +55,7 @@ export default {
        filterString: "bagged",
     };
   },
+  
 
   methods: {
     selectSupply(event) {
@@ -94,10 +95,10 @@ export default {
   display: flex;
   width: 40ch;
   align-items: center;
-  /* margin: 3px 3px;
+  margin: 3px 3px;
   background-color: #85a183;
   border: 1px solid #85a183;
-  border-radius: 5px; */
+  border-radius: 5px;
 
 }
 

@@ -8,7 +8,7 @@
 
         <mulch-calculator id="mulch" />
         <supply-list  id="supply-selections" />
-
+      
   </div>
 </template>
 
@@ -24,7 +24,8 @@ export default {
         SupplyShoppingList,
         MulchCalculator,
         SupplyList
-    }
+    },
+
 }
 </script>
 
