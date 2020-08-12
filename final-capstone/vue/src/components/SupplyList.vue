@@ -1,7 +1,7 @@
 <template>
   <form id="supply-selector">
     <div id="supplies">
-      <div class="supply" v-for="supply in this.$store.state.supplies" v-bind:key="supply.index">
+      <div class="supply" v-for="supply in this.FilteredSupplies" v-bind:key="supply.index">
         <input
           type="checkbox"
           class="checkboxes"
@@ -19,10 +19,13 @@
 import SupplyService from "../services/SupplyService";
 
 export default {
-  created() {
+ created() {
     SupplyService.getAllSupplies()
       .then((response) => {
-        this.$store.commit("SET_SUPPLIES", response.data);
+        this.Supplies = response.data;
+        this.FilteredSupplies = this.Supplies.filter((item) => {
+        return !item.supplyName.toLowerCase().includes(this.filterString.toLowerCase());
+        });
       })
       .catch((error) => {
         if (error.response && error.response.status === 404) {
@@ -39,11 +42,20 @@ export default {
       supply: {
         supplyId: "",
         supplyName: "",
-        supplyCost: ""
+        supplyCost: "",
+        supplyQty: "",
        },
+      FilteredSupplies: [{
+        supplyId: "",
+        supplyName: "",
+        supplyCost: "",
+        supplyQty: "",
+       }],
        selectedSupplies: [],
+       filterString: "bagged",
     };
   },
+  
 
   methods: {
     selectSupply(event) {
@@ -83,10 +95,10 @@ export default {
   display: flex;
   width: 40ch;
   align-items: center;
-  /* margin: 3px 3px;
+  margin: 3px 3px;
   background-color: #85a183;
   border: 1px solid #85a183;
-  border-radius: 5px; */
+  border-radius: 5px;
 
 }
 

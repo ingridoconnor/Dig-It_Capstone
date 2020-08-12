@@ -14,7 +14,7 @@
         <label v-bind:for="`Plant-${plant.id}`">{{plant.name}}</label>
       </div>
     </div>
-    <div>
+    <div class="plant-button-container">
       <button class="btn-edit btn-profile" v-on:click.prevent="addPlant" type="submit">Add New Plant</button>
       <button class="btn-edit btn-profile" v-if="this.vegetable.id > 0" v-on:click.prevent="editPlant" type="edit">Edit Plant</button>
       <button class="btn-delete btn-profile" v-on:click.prevent="deletePlant">Delete Plant</button>
@@ -78,7 +78,7 @@ export default {
     deletePlant(){
       PlantService.deletePlant(this.vegetable.id)
       .then((response) => {
-        if (response && response.status === 404){
+         if (response && response.status === 404){
         alert("The plant has been deleted.");
         }
       })
@@ -104,7 +104,7 @@ export default {
 
 #plants {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 30vh;
   width: 90%;
   flex-wrap: wrap;
@@ -214,6 +214,12 @@ h2 {
 
 .plant-container {
     background-color: #307C55;
+}
+
+.plant-button-container {
+  margin-top: 100px;
+  
+  
 }
 
 </style>
