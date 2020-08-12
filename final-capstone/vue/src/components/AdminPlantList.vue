@@ -75,20 +75,35 @@ export default {
     addPlant(){
         this.$router.push(`/admin/addplant`);
     },
-    deletePlant(){
-      PlantService.deletePlant(this.vegetable.id)
-      .then((response) => {
-         if (response && response.status === 404){
-        alert("The plant has been deleted.");
-        }
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 404) {
-          alert("Unable to delete plant.");
-          this.$router.push("/");
-        }
-      });
-      
+        deletePlant() {
+      if (
+        confirm(
+          "Are you sure you want to delete this plant? This action cannot be undone."
+        )
+      ) {
+        PlantService
+          .deletePlant(this.vegetable.id)
+          .then(response => {
+            if (response.status === 200) {
+              alert("Plant successfully deleted");
+              this.$router.push(`/admin/home`);
+            }
+          })
+          .catch(error => {
+            if (error.response) {
+              this.errorMsg =
+                "Error deleting plant. Response received was '" +
+                error.response.statusText +
+                "'.";
+            } else if (error.request) {
+              this.errorMsg =
+                "Error deleting plant. Server could not be reached.";
+            } else {
+              this.errorMsg =
+                "Error deleting plant. Request could not be created.";
+            }
+          });
+      }
     }
   },
 };

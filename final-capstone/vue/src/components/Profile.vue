@@ -45,7 +45,7 @@
           class="btn-edit btn-profile"
         >Edit Profile</router-link>
 
-        <a href="#" class="btn-delete btn-profile" v-on:click="deleteUser">Delete Profile</a>
+        <a class="btn-delete btn-profile" v-on:click="deleteUser">Delete Profile</a>
       </div>
     </div>
 
