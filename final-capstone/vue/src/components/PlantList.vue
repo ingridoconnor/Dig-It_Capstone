@@ -10,6 +10,7 @@
           v-bind:value="plant.id"
           v-on:change="selectVegetable($event)"
         />
+        <img class="plantimg" v-bind:src="require('../img/vegetables/' + plant.name + '.png')"/>        
         <label v-bind:for="`Plant-${plant.id}`">{{plant.name}}</label>
       </div>
     </div>
@@ -68,6 +69,7 @@ export default {
 </script>
 
 <style>
+
 #plant-selector {
   display: flex;
   flex-direction: column;
