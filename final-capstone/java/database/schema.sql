@@ -47,44 +47,35 @@ CREATE TABLE plant (
 
 );
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('None', 'Dirty Dirt', '4', 'None', 'All', '0.00');
-        INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Artichoke', '', '', '', '', '');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Arugula', 'Leafy green, with an herbaceous, peppery flavor, great for salads and sandwiches', '4', '3-4 hours', 'Mediterranean', '6.25');
-        INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Asparagus', '', '', '', '', '');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Basil', 'Aromatic herb, great for cooking and in sauces', '3', '6-8 hours', 'Tropical', '3.75');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Beets', 'Colorful root vegetable', '9', '6 hours', 'Mediterranean', '4.50');
+        
+
+       
+
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Bok Choy', 'Leafy grren vegetable in the cabbage family, great for cooking', '9', '3-5 hours', 'Asia', '2.50');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Broccoli', 'Cruciferous vegetable with many health benefits and cooking uses', '1', 'Partial Shade', 'Southwestern United States', '2.75');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Brussel Sprout', 'Mini cabbages, they taste great when roasted', '1', 'Minimum of 6 hours', 'Mediterranean', '3.75');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Cabbage', 'Leafy green, red, purple or white crop in the broccoli family', '1', 'Minimum of 6 hours', 'Europe', '5.00');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Carrot', 'Delicious, orange root vegetable, great for cooking or eating raw', '16', 'Minimum of 6 hours', 'Africa', '3.00');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Cauliflower', 'Crucerferous vegetable with versitle cooking properties', '1', 'Minimum of 6 hours', 'Asia', '7.75');
-        INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Chili Pepper', '', '', '', '', '');
+        
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Corn', 'Sweet yellow grain, great for cooking', '4', 'Minimum of 6 hours', 'United States', '6.25');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Collards', 'Deep leafy grren member of the cabbage family', '1', '4-5 hours', 'Mediterranean', '2.95');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Cucumber', 'Refreshing vine fruit, great for salads', '2', 'Minimum of 8 hours', 'India', '3.75');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Eggplant', 'Herbaceous perennial, related to the tomato, great for cooking', '1', 'Minimum of 6 hours', 'India', '7.50');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Garlic', 'Herbaceous, pungent, flowering bulb, often used in cooking, keeps the vampires away!', '9', 'Minimum of 8 hours', 'Middle Asia', '3.25');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Green Onions', 'Also known as scallions, often used for cooking', '16', '6-7 hours', 'Asia', '1.75');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Kale', 'Leafy herbaceous biennial plant, great for cooking or eating raw', '1', 'Minimum of 6 hours', 'Mediterranean', '5.00');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Lettuce (leaf)', 'Perfect for salads!', '6', '10-12 hours', 'Egypt', '4.95');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Lettuce (head)', 'Perfect for salads!', '2', '10-12 hours', 'Egypt', '4.95');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Mint', 'Perfect for teas, cooking, and garnishing', '4', '4-6 hours', 'South America', '2.25');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Onion', 'Pungent biennial, great for cooking', '9', '13-16 hours', 'Central Asia', '2.50');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Zucchini', 'Dark green summer squash, great for cooking', '1', '6-8 hours', 'Central America', '8.00');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Thyme', 'Wiry, stemmed, herbaceous perennial, often used as a seasoning', '4', '6 hours', 'Southern Europe', '6.25');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Turnips', 'Hardy biennia plant in the mustard family', '9', 'Minimum of 6 hours', 'Europe', '5.50');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Tomato', 'Acidic nightshade, often used for cooking', '1', 'Minimum of 8 hours', 'Central America', '6.00');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Spinach', 'Iron-rich leafy grren, Popeye would be proud!', '9', 'Minimum of 6 hours', 'Southwestern Asia', '3.50');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Squash', 'Great for fall dishes', '1', '6 hours', 'Mexico', '2.95');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Sage', 'Evergreen herb in the mint family', '1', '6-8 hours', 'Mediterranean', '2.50');
-        INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Sweet Potato', '', '', '', '', '');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Rosemary', 'Evergreen shrub, with purple flowers and a lovely scent', '1', '6-8 hours', 'Mediterranean', '5.50');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Rhubarb', 'Perfect for pies, jellies, and more, should not be eaten raw', '1', 'Minimum of 6 hours', 'Central Asia', '1.50');
+       
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Radishes', 'Bitter root vegetable, great for salads and garnishes', '16', 'Minimum of 6 hours', 'Mediterranean', '2.75');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Potato', 'Versitile, starchy root vegetable', '4', 'Minimum of 6 hours', 'Peru', '3.50');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Bell Pepper', 'Perfect for salads and stir-fry dishes', '1', '6-8 hours', 'South America', '6.25');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Peas', 'Classic garden veggie, great for novice gardeners', '9', '6-8 hours', 'Mediterranean', '4.00');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Parsley', 'Great for garnishing', '4', '5 hours', 'Mediterranean', '6.25');
 
 
 COMMIT TRANSACTION;
@@ -145,23 +136,23 @@ INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('3', '2 cu ft
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('4', '2 cu ft. Bagged Cypress Mulch Blend', '4.50');
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('5', '2 cu ft. Bagged Pine Bark Nuggets', '4.50');
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('6', '16-Tine Rake', '20.00');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('7', '24-Tine Steel Rake', '20.00');
+
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('8', 'Hand Trowel', '9.00');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('9', 'Steel Hand Trowel', '11.50');
+
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('10', 'Bypass Pruner', '10.75');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('11', 'Stainless Steel Micro Tip Pruner', '13.25');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('12', '46 in. Long Handle Steel Round Point Shovel', '8.25');
+
+
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('13', '48 in. Round Point Shovel', '26.00');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('14', '23.5 in. Wood D-Handle Square Point Shovel', '24.75');
+
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('15', 'Firm Grip Grain Pigskin Gloves', '12.25');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('16', 'Digz Gardener Glove', '14.50');
+
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('17', 'Rose Embroidered mid-length Gloves', '14.75');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('18', 'Multi-Purpose Heavy Duty Dig It! Garden Cart', '100.00');
+
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('19', 'Plastic Wheelbarrow', '80.00');
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('20', '4-tined basic green cultivator', '18.75');
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('21', '4- tined green hand rake', '9.50');
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('22', 'Dig it! Watering can', '45.00');
-INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('23', 'Dit It! Copper Logo Watering can', '60.00');
+
 INSERT INTO supplies (supply_id, supply_name, supply_cost) VALUES ('24', 'Dig It! Tomato Cage', '20.00');
 
 
@@ -242,118 +233,106 @@ CREATE TABLE plant_hardiness (
         CONSTRAINT PK_plant_hardiness PRIMARY KEY (zone_name, plant_id)
 );
 
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '25');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '19');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '17');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '6');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '26');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '14');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '34');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '27');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '32');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '25');
+
+
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '19');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '17');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '6');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '26');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '14');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '34');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '27');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '32');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '25');
+
+
+
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '19');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '17');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '6');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '26');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '14');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '34');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '27');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '32');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '25');
+
+
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '19');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '17');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '6');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '26');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '14');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '34');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '27');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '32');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5a', '25');
+
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5a', '11');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5a', '27');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5a', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5a', '19');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5b', '25');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5b', '11');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5b', '27');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5b', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5b', '19');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6a', '25');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6a', '11');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6a', '27');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6a', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6a', '19');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6b', '25');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6b', '11');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6b', '27');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6b', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6b', '19');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7a', '11');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7a', '25');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7a', '27');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7a', '12');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7a', '9');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7b', '11');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7b', '25');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7b', '27');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7b', '12');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7b', '9');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8a', '11');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8a', '25');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8a', '27');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8a', '12');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8a', '9');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8b', '11');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8b', '25');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8b', '27');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8b', '12');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8b', '9');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '25');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '27');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '11');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '33');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '19');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '34');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '26');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '25');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '27');
+
+
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '11');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '33');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '19');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '34');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '26');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '25');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '27');
+
+
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '11');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '33');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '19');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '34');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '26');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '25');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '27');
+
+
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '11');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '33');
+
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '19');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '34');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '26');
+
+
 COMMIT TRANSACTION;
 
 
