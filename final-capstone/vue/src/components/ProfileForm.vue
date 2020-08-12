@@ -25,9 +25,10 @@
     
     </div>
     
-    
+    <div>
     <button class="btn-submit" type="submit">Submit</button>
     <button class="btn-cancel" v-on:click.prevent="cancelForm" type="cancel">Cancel</button>
+    </div>
   </form>
 
 </template>
@@ -155,15 +156,17 @@ select.form-control {
   background-color: #e48438;
   border-color: #e48438;
   width: 150px;
-  margin-right: 5px;
+  margin-right: 15px;
   border-radius: 5px; 
+  margin-top: 15px;
 }
 .btn-cancel {
   color: #fff;
   background-color: #307C55;
   border-color: #307C55;
   width: 150px;
-  border-radius: 5px; 
+  border-radius: 5px;
+  margin-left: 10px; 
 }
 
 .status-message {

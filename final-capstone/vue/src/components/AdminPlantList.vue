@@ -14,7 +14,7 @@
         <label v-bind:for="`Plant-${plant.id}`">{{plant.name}}</label>
       </div>
     </div>
-    <div>
+    <div class="plant-button-container">
       <button class="btn-edit btn-profile" v-on:click.prevent="addPlant" type="submit">Add New Plant</button>
       <button class="btn-edit btn-profile" v-if="this.vegetable.id > 0" v-on:click.prevent="editPlant" type="edit">Edit Plant</button>
       <button class="btn-delete btn-profile" v-on:click.prevent="deletePlant">Delete Plant</button>
@@ -75,20 +75,35 @@ export default {
     addPlant(){
         this.$router.push(`/admin/addplant`);
     },
-    deletePlant(){
-      PlantService.deletePlant(this.vegetable.id)
-      .then((response) => {
-        if (response && response.status === 404){
-        alert("The plant has been deleted.");
-        }
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 404) {
-          alert("Unable to delete plant.");
-          this.$router.push("/");
-        }
-      });
-      
+        deletePlant() {
+      if (
+        confirm(
+          "Are you sure you want to delete this plant? This action cannot be undone."
+        )
+      ) {
+        PlantService
+          .deletePlant(this.vegetable.id)
+          .then(response => {
+            if (response.status === 200) {
+              alert("Plant successfully deleted");
+              this.$router.push(`/admin/home`);
+            }
+          })
+          .catch(error => {
+            if (error.response) {
+              this.errorMsg =
+                "Error deleting plant. Response received was '" +
+                error.response.statusText +
+                "'.";
+            } else if (error.request) {
+              this.errorMsg =
+                "Error deleting plant. Server could not be reached.";
+            } else {
+              this.errorMsg =
+                "Error deleting plant. Request could not be created.";
+            }
+          });
+      }
     }
   },
 };
@@ -104,7 +119,7 @@ export default {
 
 #plants {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 30vh;
   width: 90%;
   flex-wrap: wrap;
@@ -214,6 +229,12 @@ h2 {
 
 .plant-container {
     background-color: #307C55;
+}
+
+.plant-button-container {
+  margin-top: 100px;
+  
+  
 }
 
 </style>

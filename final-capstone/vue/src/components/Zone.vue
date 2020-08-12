@@ -20,9 +20,12 @@
       <h3>On average, there are {{this.$store.state.zone.avgGrowingDays}} growing days per year</h3>
     </div>
     <div class="info">
-          <h3>Suggested vegetables for Zone {{this.$store.state.userData.region}}:</h3>
-          <h3 v-for="zonePlant in $store.state.zonePlants" v-bind:key="zonePlant.plantName">{{zonePlant.plantName}}</h3>
+          <h2>Suggested vegetables for Zone {{this.$store.state.userData.region}}:</h2>
 
+          <div class="zoneplants" v-for="zonePlant in $store.state.zonePlants" v-bind:key="zonePlant.name">
+            <img class="plantimg" v-bind:src="require('../img/vegetables/' + zonePlant.name + '.png')"/>
+            <h3 id="plantname">{{zonePlant.name}}</h3>
+          </div>
 
     </div>
   </div>
@@ -68,7 +71,6 @@
 <script>
 
 
-
   import ZoneService from "../services/ZoneService";
 
 export default {
@@ -86,7 +88,6 @@ export default {
 
   name: "zone-data",
   components: {},
-
   data() {
     return {
       mapValue: "",
@@ -106,6 +107,29 @@ export default {
 </script>
 
 <style>
+
+.info {
+
+  margin: 20px 30px;
+  padding: 10px 0px 30px 0px;
+  border-radius: 20px;
+  
+}
+  .plantimg {
+    width: 10%;
+  }
+
+  #plantname {
+    text-align: center;
+  }
+
+  .zoneplants {
+    border-color: aliceblue;
+    border-radius: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
 
   .description {
     padding: 0px 100px 0px 100px;
@@ -188,10 +212,6 @@ export default {
       font-size: 45px;
       color: #E48028;
       text-shadow: 3px 3px 3px #5f5f5f;
-    }
-
-    .otherzones {
-      background-color: #c1d8bf;
     }
 
 </style>
