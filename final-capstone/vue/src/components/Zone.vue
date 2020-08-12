@@ -23,10 +23,9 @@
           <h3>Suggested vegetables for Zone {{this.$store.state.userData.region}}:</h3>
 
           <div class="zoneplants" v-for="zonePlant in $store.state.zonePlants" v-bind:key="zonePlant.name">
-            <img class="plantimg" v-bind:src="'../img/vegetables/' + zonePlant.name + '.png'"/>
+            <img class="plantimg" v-bind:src="require('../img/vegetables/' + zonePlant.name + '.png')"/>
             <h3 id="plantname">{{zonePlant.name}}</h3>
           </div>
-          <img class="plantimg" src="../img/vegetables/Corn.png"/>
 
     </div>
   </div>
