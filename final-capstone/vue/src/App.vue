@@ -144,7 +144,9 @@ font-family: 'Kameron', serif;
 }
 
 #main-view {
-  min-height: 70vh;
+  display: flex;
+  flex-grow: 1;
+  min-height: 60vh;
   margin: 40px 100px 40px 100px;
   /* background-color: #c1c56d; */
   background-color: rgba(193,197,109, 0.8);

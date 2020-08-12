@@ -20,13 +20,13 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     seedlingShoppingLists: [],
+    shoppingLists: [],
     token: currentToken || '',
     user: currentUser || {},
     userData: currentUserData || {},
     vegetable: "",
     gardens: [],
     plots: [],
-    shoppingLists: [],
     supplies: [],
     garden: {
       userId: "",
@@ -124,7 +124,7 @@ export default new Vuex.Store({
       state.shoppingLists.unshift(data);
     },
     SET_SEEDLING_SHOPPING_LISTS(state, data) {
-      state.seedlingShoppingLists = data;
+      state.seedlingShoppingLists.unshift(data);
     },
     SET_SUPPLY(state, data) {
       state.supply = data;

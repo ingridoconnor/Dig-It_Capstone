@@ -125,7 +125,7 @@ export default {
       this.selectedMulch.forEach(element => this.ShoppingList.itemName = element.supplyName);
       this.ShoppingList.itemQuantity = this.mulchRequired;
 
-      this.$store.commit("SET_SHOPPING_LISTS", this.ShoppingList);
+      this.$store.commit('SET_SHOPPING_LISTS', this.ShoppingList);
       }
 
     }

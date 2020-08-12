@@ -4,8 +4,9 @@
         <h3>Plant Items:</h3>
         <ul class="plant-costs">
            <li class="field-headings"><span class="itemNameField">Item Name</span> <span class="itemQuantityField">Qty.</span> <span class="itemCostField">Each</span> <span class="itemCostField">Total</span></li>
-            <li class="line-items" v-for="list in this.ShoppingLists" v-bind:key="list.index"><span class="itemNameField">{{list.itemName}} Seedling</span> <span class="itemQuantityField">{{list.itemQuantity}}</span> <span class="itemCostField">{{ (list.cost/list.itemQuantity) | currency}}</span> <span class="itemCostField">{{list.cost | currency}}</span></li>
-          </ul>
+            <li class="line-items" v-for="list in this.$store.state.seedlingShoppingLists" v-bind:key="list.index"><span class="itemNameField">{{list.itemName}} Seedling</span> <span class="itemQuantityField">{{list.itemQuantity}}</span> <span class="itemCostField">{{ (list.cost/list.itemQuantity) | currency}}</span> <span class="itemCostField">{{list.cost | currency}}</span></li>
+                     <li class="field-headings total-line"><span class="itemNameField">Plant Total</span> <span class="itemQuantityField"></span> <span class="itemCostField"></span> <span class="itemCostField">{{totalSupplyCost | currency}}</span></li>
+        </ul>
       </div>
 
   </div>
@@ -15,6 +16,7 @@
 import PlotService from "@/services/PlotService";
 import ShoppingService from "@/services/ShoppingService.js";
 import GardenService from "@/services/GardenService";
+import PlantService from '../services/PlantService';
 
 export default {
   name: "plant-shopping-list",
@@ -27,7 +29,6 @@ export default {
         itemName: '',
         itemQuantity: '',
       }],
-
     };
   },
 
@@ -41,7 +42,10 @@ export default {
         ShoppingService.generateSeedlingShoppingList(this.$route.params.gardenid)
           .then((response) => {
             this.ShoppingLists = response.data;
-            this.$store.commit("SET_SEEDLING_SHOPPING_LISTS", this.ShoppingLists);
+            this.ShoppingLists.forEach((plant) => {
+                 this.$store.commit("SET_SEEDLING_SHOPPING_LISTS", plant);
+          });
+
           })
           .catch((error) => {
             if (error.response && error.response.status === 404) {
@@ -70,7 +74,17 @@ export default {
         }
       });
   },
-};
+
+computed: {
+ totalSupplyCost() {
+          var total = 0;
+          this.$store.state.seedlingShoppingLists.forEach(item => {
+            total += item.cost;
+          });
+          return total;
+      },
+}
+}
 </script>
 
 <style>

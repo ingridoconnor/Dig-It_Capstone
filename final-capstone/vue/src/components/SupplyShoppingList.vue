@@ -4,27 +4,50 @@
         <h3>Supply/Tool Items:</h3>
         <ul class="plant-costs">
            <li class="field-headings"><span class="itemNameField">Item Name</span> <span class="itemQuantityField">Qty.</span> <span class="itemCostField">Each</span> <span class="itemCostField">Total</span></li>
-            <li class="line-items" v-for="list in this.ShoppingLists" v-bind:key="list.index"><span class="itemNameField">{{list.itemName}}</span> <span class="itemQuantityField">{{list.itemQuantity}}</span> <span class="itemCostField">{{ (list.cost/list.itemQuantity) | currency}}</span> <span class="itemCostField">{{list.cost | currency}}</span></li>
+            <li class="line-items" v-for="list in this.$store.state.shoppingLists" v-bind:key="list.id"><span class="itemNameField">{{list.itemName}}</span> <span class="itemQuantityField">{{list.itemQuantity}}</span> <span class="itemCostField">{{ (list.cost/list.itemQuantity) | currency}}</span> <span class="itemCostField">{{list.cost | currency}}</span></li>
+            <li class="field-headings total-line"><span class="itemNameField">Supply/Tool Total</span> <span class="itemQuantityField"></span> <span class="itemCostField"></span> <span class="itemCostField">{{totalSupplyCost | currency}}</span></li>
         </ul>
+        <h3 class="grandTotalHeading">Grand Total:<span class="grandTotalCostField">{{grandTotalCost | currency}}</span></h3>
       </div>
   </div>
 </template>
 
 <script>
-// import ShoppingService from "@/services/ShoppingService.js";
-// import GardenService from "@/services/GardenService";
+
 
 export default {
-  //  created() {
-  //    this.ShoppingLists = this.$store.state.shoppingLists;
-  //  },
+   created() {
+     this.ShoppingLists = this.$store.state.shoppingLists;
+   },
   name: "supply-shopping-list",
+  
+  computed: {
+      totalSupplyCost() {
+          var total = 0;
+          this.$store.state.shoppingLists.forEach(item => {
+            total += item.cost;
+          });
+          return total;
+      },
+
+      grandTotalCost() {
+          var total = 0;
+          this.$store.state.seedlingShoppingLists.forEach(item => {
+            total += item.cost;
+          });
+          this.$store.state.shoppingLists.forEach(item => {
+            total += item.cost;
+          });
+          return total;
+      },
+
+
+  },
   data() {
     return {
       PlotsLoaded: false,
       plotList: this.$store.state.plots,
-      ShoppingLists: this.$store.state.shoppingLists,
-
+      ShoppingLists: '',
     };
   },
 }
@@ -35,6 +58,7 @@ export default {
 display: flex;
 justify-content: flex-start;
 text-justify: left;
+width: 100%;
 margin-bottom: 0px;
 }
 
@@ -55,6 +79,10 @@ margin-bottom: 0px;
   display: flex;
 }
 
+.total-line {
+  margin-top: 10px;
+}
+
 .itemNameField {
   width: 200px;
   text-align: left;
@@ -68,6 +96,20 @@ margin-bottom: 0px;
 .itemCostField {
   width: 120px;
   text-align: right;
+}
+
+.grandTotalCostField {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  text-justify: right;
+  color: black;
+  
+}
+.grandTotalHeading {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
 }
 
 

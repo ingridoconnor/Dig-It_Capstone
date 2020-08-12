@@ -28,8 +28,7 @@
       >Add Selections to Shopping List</a>
       <a href="#" class="btn-add-item-to-list-dead" v-else>Add Selection to Activate</a>
     </div>
-    <p>{{this.selectedSupplies}}</p>
-  </form>
+   </form>
 </template>
 
 <script>
@@ -64,6 +63,8 @@ export default {
         supplyCost: "",
         supplyQty: "",
       },
+      ShoppingLists: [],
+     
       FilteredSupplies: [
         {
           supplyId: "",
@@ -91,10 +92,14 @@ export default {
     
     
     addItemsToShoppingList() {
-      this.selectedSupplies.forEach((supply) => {
-                supply.supplyQty = 1;
-                this.$store.commit("SET_SHOPPING_LISTS", supply);
-      });
+      this.selectedSupplies.forEach((item) => {
+            let shoppingListItem = {cost: '', itemName: '', itemQuantity: '' };
+                shoppingListItem.cost = item.supplyCost;
+                shoppingListItem.itemName = item.supplyName;
+                shoppingListItem.itemQuantity = 1;
+                this.$store.commit("SET_SHOPPING_LISTS", shoppingListItem);
+          });
+
       this.selectedSupplies = [];
      },
   }
@@ -125,7 +130,7 @@ export default {
 
 .supply-item {
   display: flex;
-  width: 45%;
+  width: 48%;
   align-items: center;
   margin: 3px 3px;
   color: #307c55;
