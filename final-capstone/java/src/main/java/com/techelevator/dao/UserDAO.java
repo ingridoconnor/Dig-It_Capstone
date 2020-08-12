@@ -17,4 +17,6 @@ public interface UserDAO {
     boolean create(String username, String password, String role);
     
     long getId(User user);
+    
+    void removeUser(int id);
 }

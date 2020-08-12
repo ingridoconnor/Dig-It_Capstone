@@ -94,6 +94,12 @@ public class UserSqlDAO implements UserDAO {
 
         return userCreated;
     }
+    
+    @Override
+    public void removeUser(int id) {
+    	String sql = "DELETE FROM users WHERE user_id = ?";
+    	jdbcTemplate.update(sql, id);
+    }
 
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
