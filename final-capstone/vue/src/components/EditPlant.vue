@@ -22,12 +22,12 @@
       <label for="cost">Seedling cost: </label>
       <input id="cost" type="text" class="form-control" v-model="plant.seedlingCost" autocomplete="off" />  
     
-      <p>{{this.plant}}</p>
     </div>
     
-    
+    <div>
     <button class="btn-submit" type="submit">Submit</button>
     <button class="btn-cancel" v-on:click.prevent="cancelForm" type="cancel">Cancel</button>
+    </div>
   </form>
 
 </template>

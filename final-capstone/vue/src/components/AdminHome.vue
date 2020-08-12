@@ -1,20 +1,6 @@
 <template>
   <div>
     
-    <div class="garden-listing bubble-block">
-      <h2>{{this.$store.state.userData.firstName}}'s Gardens:</h2>
-      <div class="garden-list">
-        <router-link
-          class="garden-links"
-          :to="{ name: 'garden', params: {gardenid: garden.gardenId} }"
-          v-for="garden in this.$store.state.gardens"
-          v-bind:key="garden"
-        >{{garden.gardenName}}</router-link>
-      </div>
-            <div class="button-container">
-      <router-link class="btn-add-garden btn-profile" :to="{name: 'add-garden'}">Add a Garden</router-link>
-    </div>
-        </div>
 
 <div class="profile-details bubble-block">
       <h2>Profile Details:</h2>
