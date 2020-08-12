@@ -46,6 +46,13 @@ public class UserDataSqlDAO implements UserDataDAO{
 		return user;
 	}
 	
+	@Override
+	public void deleteProfile(int id) {
+		String sql = "DELETE FROM user_data WHERE user_id = ?";
+		template.update(sql, id);
+			
+	}
+	
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getLong("user_id"));

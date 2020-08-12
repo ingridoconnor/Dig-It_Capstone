@@ -8,5 +8,7 @@ public interface UserDataDAO {
 	User getUserDataFromID(User user);
 	
 	User editProfile(User user);
+	
+	void deleteProfile(int id);
 
 }
