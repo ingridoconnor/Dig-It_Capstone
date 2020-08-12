@@ -46,14 +46,14 @@ public class ShoppingListController {
 //		}
 //		return allItems;
 //		
-////		Plant[] plants = new Plant[allPlants.size()];
-////		plants = allPlants.toArray(plants);
-////		return ;
-////		
-////		Supplies[] supply = new Supplies[allSupplies.size()];
-////		supply = allSupplies.toArray(supply);
-////		return allItems.addAll(allSupplies);
-////		
+//		Plant[] plants = new Plant[allPlants.size()];
+//		plants = allPlants.toArray(plants);
+//		return ;
+//		
+//		Supplies[] supply = new Supplies[allSupplies.size()];
+//		supply = allSupplies.toArray(supply);
+//		return allItems.addAll(allSupplies);
+//		
 //		
 //	}
 	@RequestMapping(path = { "/addToMyShoppingList"}, method = RequestMethod.POST)
@@ -79,13 +79,13 @@ public class ShoppingListController {
 		
 	}
 	
-	@RequestMapping(path = { "addSupplyToShoppingList"}, method = RequestMethod.POST)
-	public void addLineItemToList(@RequestBody ShoppingList shoppingList) {
-		
-		
-		
-	}
-	
+//	@RequestMapping(path = { "addSupplyToShoppingList"}, method = RequestMethod.POST)
+//	public void addLineItemToList(@RequestBody ShoppingList shoppingList) {
+//		
+//		
+//		
+//	}
+//	
 	
 	
 	@RequestMapping(path = {"/generateSuggestedSeedlingList/{gardenid}"}, method = RequestMethod.GET)
