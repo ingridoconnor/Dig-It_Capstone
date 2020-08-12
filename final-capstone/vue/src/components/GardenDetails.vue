@@ -42,8 +42,7 @@
         >Save Changes to Garden</a>
       </div>
     </div>
-    <p>{{this.plotArray}} </p>
-  </form>
+      </form>
 </template>
 
 <script>
