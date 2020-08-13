@@ -8,7 +8,7 @@
   </div>
   <div class="home-title-bar" v-else>
     <h1>Let's get digging!</h1>
-    <h2>Dig It! is an online gardening app that helps you create a vegateble garden.</h2>
+    <h2>Dig It! is an online gardening app that helps you create a vegetable garden.</h2>
   </div>
     <user-steps class="user-steps"/>
   
@@ -75,6 +75,25 @@ export default {
   flex-grow: 1;
   justify-content: space-between;
 }
+
+.btn-create-account {
+  display: flex;
+  color: white;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+  height: 2em;
+  font-size: 1.2em;
+  font-weight: 400;
+  text-decoration: none;
+  border-style: solid;
+  padding: 10px 40px;
+  background-color: #307c55;
+  border-color: #307c55;
+  box-shadow: 2px 2px 4px black;
+  margin: 15px;
+}
+
 
 
 </style>

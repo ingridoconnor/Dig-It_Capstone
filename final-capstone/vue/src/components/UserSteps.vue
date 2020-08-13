@@ -38,6 +38,10 @@ export default {
 
     .step {
         /* background-color: #c1c56d; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         background-color: rgba(193,197,109, 0.7);
         border-style: solid;
         border-color: #c1c56d;
