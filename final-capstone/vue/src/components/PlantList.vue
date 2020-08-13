@@ -102,7 +102,7 @@ export default {
 .plantimg-garden {
   display: flex;
   width: 35px;
-   align-items: center;
+  align-items: center;
   margin: 3px 3px;
 
 }

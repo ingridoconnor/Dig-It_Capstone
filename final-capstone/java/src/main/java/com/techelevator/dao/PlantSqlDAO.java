@@ -106,6 +106,7 @@ public class PlantSqlDAO implements PlantDAO {
 		plant.setDescription(results.getString("description"));
 		plant.setName(results.getString("plant_name"));
 		plant.setPlantsPerSqFoot(results.getInt("plants_per_sq_foot"));
+		plant.setSunRequirements(results.getString("sun_requirements"));
 		plant.setRegion(results.getString("region"));
 		plant.setSeedlingCost(results.getBigDecimal("seedling_cost"));
 		return plant;

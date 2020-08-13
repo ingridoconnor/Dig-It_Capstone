@@ -32,6 +32,9 @@
         class="plants-details"
       >$ {{this.$store.state.vegetable.seedlingCost}} / $ {{this.$store.state.vegetable.seedlingCost * this.$store.state.vegetable.plantsPerSqFoot}}</p>
     </div>
+    <div class="attribute">
+      <img id="plant-details-image" v-bind:src="require('../img/vegetables/' + this.$store.state.vegetable.name + '.png')"/>
+    </div>
   </div>
 
   <div id="main-plant-details" v-else>
@@ -72,6 +75,10 @@ export default {
   text-align: center;
   margin: 0px;
   font-size: 1.5em;
+}
+
+#plant-details-image {
+  width: 40%;
 }
 
 .attribute {

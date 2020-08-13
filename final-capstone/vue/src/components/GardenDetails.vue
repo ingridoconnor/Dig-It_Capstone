@@ -12,7 +12,7 @@
               v-on:change="selectPlot($event)"
               v-bind:checked="selectedPlots.includes(plot.plotNumber)"
             />
-            <!-- <img class="plantimg" v-bind:src="require('../img/vegetables/' + plot.plantName + '.png')"/>         -->
+            <img class="plot-plant-image" v-bind:src="require('../img/vegetables/' + plot.plantId + '.png')"/>
             <p>{{plot.plotNumber}}</p>
             <p>{{plot.plantId}}</p>
           </div>
@@ -191,8 +191,8 @@ export default {
 
 <style scoped>
 
-.plantimg {
-  width: 10px;
+.plot-plant-image {
+  width: 30px;
 }
 
 .garden-grid-form {
