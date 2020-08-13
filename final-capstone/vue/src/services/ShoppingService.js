@@ -15,8 +15,8 @@ export default {
       return http.post(`/garden/${gardenId}/plots`, plots)
   },
   
-  addItemToList(shoppingList) {
-    return http.post('/addSupplyToShoppingList', shoppingList)
+  addItemToList(shoppingList, gardenId) {
+    return http.post(`/addToMyShoppingList/${gardenId}`, shoppingList)
 },
  
     

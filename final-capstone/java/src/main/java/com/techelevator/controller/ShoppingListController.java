@@ -56,27 +56,10 @@ public class ShoppingListController {
 //		
 //		
 //	}
-	@RequestMapping(path = { "/addToMyShoppingList"}, method = RequestMethod.POST)
-	public void addToList(@RequestParam String listItem, @RequestParam long gardenId, @RequestParam int quantity) {
-		
-		Plant plant = thePlants.searchPlantByPlantName(listItem);
-		
-		Supplies supply = theSupplies.searchSupplyBySupplyName(listItem);
-		if(plant != null) {
-			ShoppingList item = new ShoppingList();
-			item.setGardenId(gardenId);
-			item.setSupplyId(plant.getId());
-			item.setSupplyQty(quantity);
-			theSupplies.addToShoppingListGardenSupplies(item);
-		}
-		if(supply != null) {
-			ShoppingList item = new ShoppingList();
-			item.setGardenId(gardenId);
-			item.setSupplyId(supply.getSupplyId());
-			item.setSupplyQty(quantity);
-			theSupplies.addToShoppingListGardenSupplies(item);
-		}
-		
+	@RequestMapping(path = { "/addToMyShoppingList/{id}"}, method = RequestMethod.POST)
+	public void addToList(@PathVariable Long id, @RequestBody ShoppingList list) {
+			list.setGardenId(id);
+			theSupplies.addToShoppingListGardenSupplies(list);
 	}
 	
 //	@RequestMapping(path = { "addSupplyToShoppingList"}, method = RequestMethod.POST)

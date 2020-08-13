@@ -4,7 +4,7 @@
         <h3>Supply/Tool Items:</h3>
         <ul class="plant-costs">
            <li class="field-headings"><span class="itemNameField">Item Name</span> <span class="itemQuantityField">Qty.</span> <span class="itemCostField">Each</span> <span class="itemCostField">Total</span></li>
-            <li class="line-items" v-for="list in this.$store.state.shoppingLists" v-bind:key="list.id"><span class="itemNameField">{{list.itemName}}</span> <span class="itemQuantityField">{{list.itemQuantity}}</span> <span class="itemCostField">{{ (list.cost/list.itemQuantity) | currency}}</span> <span class="itemCostField">{{list.cost | currency}}</span></li>
+            <li class="line-items" v-for="list in this.$store.state.shoppingLists" v-bind:key="list.id"><span class="itemNameField">{{list.itemName}}</span> <span class="itemQuantityField">{{list.itemQuantity}}</span> <span class="itemCostField">{{ (list.cost/list.supplyQty) | currency}}</span> <span class="itemCostField">{{list.cost | currency}}</span></li>
             <li class="field-headings total-line"><span class="itemNameField">Supply/Tool Total</span> <span class="itemQuantityField"></span> <span class="itemCostField"></span> <span class="itemCostField">{{totalSupplyCost | currency}}</span></li>
         </ul>
         <h3 class="grandTotalHeading">Grand Total:<span class="grandTotalCostField">{{grandTotalCost | currency}}</span></h3>

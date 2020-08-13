@@ -33,6 +33,7 @@
 
 <script>
 import SupplyService from "../services/SupplyService";
+import ShoppingService from "../services/ShoppingService";
 
 export default {
   created() {
@@ -85,7 +86,7 @@ export default {
       this.FilteredSupplies.forEach(
           (supply) => {
             if (supply.supplyId == event.target.value) {
-              this.selectedSupplies.unshift(supply);
+              this.selectedSupplies.push(supply);
             }
           });
       }, 
@@ -93,13 +94,24 @@ export default {
     
     addItemsToShoppingList() {
       this.selectedSupplies.forEach((item) => {
-            let shoppingListItem = {cost: '', itemName: '', itemQuantity: '' };
+            let shoppingListItem = {cost: '', itemName: '', supplyQty: '', supplyId: '' };
                 shoppingListItem.cost = item.supplyCost;
                 shoppingListItem.itemName = item.supplyName;
-                shoppingListItem.itemQuantity = 1;
+                shoppingListItem.supplyId = item.supplyId
+                shoppingListItem.supplyQty = 1;
                 this.$store.commit("SET_SHOPPING_LISTS", shoppingListItem);
-          });
 
+             
+                    ShoppingService.addItemToList(shoppingListItem, this.$route.params.gardenid)
+                      .then()
+                      .catch((error) => {
+                        const response = error.response;
+
+                        if (response.status === 401) {
+                          this.invalidCredentials = true;
+                        }
+                      });
+          });
       this.selectedSupplies = [];
      },
   }
