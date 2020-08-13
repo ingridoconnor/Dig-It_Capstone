@@ -44,19 +44,30 @@ public class SuppliesSqlDAO implements SuppliesDAO{
 		return supply;
 	}
 	@Override
-	public LineItem getSuppliesFromSupplyCount() {
-		LineItem supply = new LineItem();
-		String sql = "SELECT (supply_cost * garden_supplies.supply_qty) AS line_cost, supplies.supply_name "
+	public ShoppingList[] getShoppingListsFromGardenId(int gardenId) {
+		List<ShoppingList> shoppingLists = new ArrayList<>();
+
+		
+		String sql = "SELECT (supplies.supply_cost * garden_supplies.supply_qty) AS line_cost, supplies.supply_name, garden_supplies.supply_qty, garden_supplies.supply_id "
 				+ "FROM supplies "
-				+ "INNER JOIN garden_supplies"
-				+ "ON supplies.supply_cost = garden_supplies.supply_qty"
-				+ "WHERE garden_supplies.supply_id = ?";
-			SqlRowSet results = template.queryForRowSet(sql);
-			if(results.next()) {
-				supply.setCost(results.getBigDecimal("line_cost"));
-				supply.setItemName(results.getString("supply_name"));
+				+ "INNER JOIN garden_supplies "
+				+ "ON supplies.supply_id = garden_supplies.supply_id "
+				+ "WHERE garden_supplies.garden_id = ? ";
+			SqlRowSet results = template.queryForRowSet(sql, gardenId);
+			while(results.next()) {
+				ShoppingList newList = new ShoppingList();
+				
+				newList.setCost(results.getBigDecimal("line_cost"));
+				newList.setSupplyName(results.getString("supply_name"));
+				newList.setSupplyId(results.getLong("supply_id"));
+				newList.setSupplyQty(results.getInt("supply_qty"));
+				shoppingLists.add(newList);
+				}
+			ShoppingList[] listArray = new ShoppingList[shoppingLists.size()];
+			for (int i = 0; i < shoppingLists.size(); i++) {
+				listArray[i] = shoppingLists.get(i);
 			}
-		return supply;
+			return listArray;
 	}
 	
 	@Override

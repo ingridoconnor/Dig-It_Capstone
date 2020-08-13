@@ -4,7 +4,7 @@
         <h3>Supply/Tool Items:</h3>
         <ul class="plant-costs">
            <li class="field-headings"><span class="itemNameField">Item Name</span> <span class="itemQuantityField">Qty.</span> <span class="itemCostField">Each</span> <span class="itemCostField">Total</span></li>
-            <li class="line-items" v-for="list in this.$store.state.shoppingLists" v-bind:key="list.id"><span class="itemNameField">{{list.itemName}}</span> <span class="itemQuantityField">{{list.itemQuantity}}</span> <span class="itemCostField">{{ (list.cost/list.supplyQty) | currency}}</span> <span class="itemCostField">{{list.cost | currency}}</span></li>
+            <li class="line-items" v-for="list in this.$store.state.shoppingLists" v-bind:key="list.supplyId"><span class="itemNameField">{{list.supplyName}}</span> <span class="itemQuantityField">{{list.supplyQty}}</span> <span class="itemCostField">{{ (list.cost/list.supplyQty) | currency}}</span> <span class="itemCostField">{{list.cost | currency}}</span></li>
             <li class="field-headings total-line"><span class="itemNameField">Supply/Tool Total</span> <span class="itemQuantityField"></span> <span class="itemCostField"></span> <span class="itemCostField">{{totalSupplyCost | currency}}</span></li>
         </ul>
         <h3 class="grandTotalHeading">Grand Total:<span class="grandTotalCostField">{{grandTotalCost | currency}}</span></h3>
@@ -13,11 +13,28 @@
 </template>
 
 <script>
-
+import ShoppingService from "@/services/ShoppingService";
 
 export default {
    created() {
-     this.ShoppingLists = this.$store.state.shoppingLists;
+  
+    ShoppingService.getShoppingLists(this.$route.params.gardenid)
+      .then((response) => {
+        response.data.forEach(list => {
+           this.$store.commit("SET_SHOPPING_LISTS", list);
+        })
+       
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          alert("Shopping List Data not available.");
+          this.$router.push("/");
+        }
+      });
+
+
+
+
    },
   name: "supply-shopping-list",
   

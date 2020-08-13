@@ -51,6 +51,7 @@
 
 <script>
 import SupplyService from "../services/SupplyService";
+import ShoppingService from "@/services/ShoppingService";
 
 export default {
   created() {
@@ -75,8 +76,9 @@ export default {
     return {
       ShoppingList: {
         cost: 0,
-        itemName: '',
-        itemQuantity: '',
+        supplyName: '',
+        supplyQty: '',
+        supplyId: "",
       },
       Supplies: [{
         supplyId: "",
@@ -122,14 +124,36 @@ export default {
  
     addMulchToShoppingList() {
       this.ShoppingList.cost = this.mulchCost;
-      this.selectedMulch.forEach(element => this.ShoppingList.itemName = element.supplyName);
-      this.ShoppingList.itemQuantity = this.mulchRequired;
-
+      this.selectedMulch.forEach(element => {
+        this.ShoppingList.supplyName = element.supplyName;
+        this.ShoppingList.supplyId = element.supplyId;
+        });
+      this.ShoppingList.supplyQty = this.mulchRequired;
       this.$store.commit('SET_SHOPPING_LISTS', this.ShoppingList);
+                    ShoppingService.addItemToList(this.ShoppingList, this.$route.params.gardenid)
+                      .then()
+                      .catch((error) => {
+                        const response = error.response;
+
+                        if (response.status === 401) {
+                          this.invalidCredentials = true;
+                        }
+                      });
+
+
+
       }
 
-    }
+
+  }
+
+
+
+
+
+
 }
+
 </script>
 
 <style local>

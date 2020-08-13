@@ -1,9 +1,13 @@
 package com.techelevator.model;
 
+import java.math.BigDecimal;
+
 public class ShoppingList {
 	private long gardenId;
 	private long supplyId;
 	private int supplyQty;
+	private String supplyName;
+	private BigDecimal cost;
 	
 	
 	
@@ -42,6 +46,18 @@ public class ShoppingList {
 	}
 	public void setSupplyQty(int supplyQty) {
 		this.supplyQty = supplyQty;
+	}
+	public String getSupplyName() {
+		return supplyName;
+	}
+	public void setSupplyName(String supplyName) {
+		this.supplyName = supplyName;
+	}
+	public BigDecimal getCost() {
+		return cost;
+	}
+	public void setCost(BigDecimal cost) {
+		this.cost = cost;
 	}
 	
 	

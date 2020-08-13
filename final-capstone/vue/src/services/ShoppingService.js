@@ -18,6 +18,10 @@ export default {
   addItemToList(shoppingList, gardenId) {
     return http.post(`/addToMyShoppingList/${gardenId}`, shoppingList)
 },
+
+getShoppingLists(gardenId) {
+    return http.get(`/myShoppingList/${gardenId}`)
+}
  
     
 }
