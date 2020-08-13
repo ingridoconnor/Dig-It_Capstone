@@ -96,7 +96,7 @@ export default {
       this.selectedSupplies.forEach((item) => {
             let shoppingListItem = {cost: '', itemName: '', supplyQty: '', supplyId: '' };
                 shoppingListItem.cost = item.supplyCost;
-                shoppingListItem.itemName = item.supplyName;
+                shoppingListItem.supplyName = item.supplyName;
                 shoppingListItem.supplyId = item.supplyId
                 shoppingListItem.supplyQty = 1;
                 this.$store.commit("SET_SHOPPING_LISTS", shoppingListItem);

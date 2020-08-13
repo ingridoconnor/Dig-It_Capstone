@@ -10,7 +10,7 @@ public interface SuppliesDAO {
 	
 	List<Supplies> getAllSupplies();
 	Supplies searchSupplyBySupplyName(String name);
-	LineItem getSuppliesFromSupplyCount();
+	ShoppingList[] getShoppingListsFromGardenId(int gardenId);
 	public void addToShoppingListGardenSupplies(ShoppingList item);
 	
 	

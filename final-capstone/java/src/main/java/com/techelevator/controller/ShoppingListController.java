@@ -1,7 +1,10 @@
 package com.techelevator.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,17 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.dao.PlantDAO;
 import com.techelevator.dao.PlotDAO;
 import com.techelevator.dao.SuppliesDAO;
 import com.techelevator.model.LineItem;
-import com.techelevator.model.Plant;
 import com.techelevator.model.Plot;
 import com.techelevator.model.ShoppingList;
-import com.techelevator.model.Supplies;
 
 @RestController
 @CrossOrigin
@@ -33,68 +33,50 @@ public class ShoppingListController {
 	@Autowired
 	PlotDAO thePlots;
 	
-//	@RequestMapping(path = { "/myShoppingList"}, method = RequestMethod.GET)
-//	public List<ShoppingList> listAllItems(@RequestBody ShoppingList[] list) {
-//		List<ShoppingList> allItems = null;
-//		List<Supplies> allSupplies = theSupplies.getAllSupplies();
-//		for(Supplies s: supplies) {
-//			allItems.add((ShoppingList) theSupplies.getAllSupplies());
-//		}
-//		List<Plant> allPlants = thePlants.getAllPlants();
-//		for(Plant p: plant) {
-//			allItems.add((ShoppingList) thePlants.getAllPlants());
-//		}
-//		return allItems;
-//		
-//		Plant[] plants = new Plant[allPlants.size()];
-//		plants = allPlants.toArray(plants);
-//		return ;
-//		
-//		Supplies[] supply = new Supplies[allSupplies.size()];
-//		supply = allSupplies.toArray(supply);
-//		return allItems.addAll(allSupplies);
-//		
-//		
-//	}
+	@RequestMapping(path = { "/myShoppingList/{id}"}, method = RequestMethod.GET)
+	public ShoppingList[] listAllItems(@PathVariable int id) {
+		return theSupplies.getShoppingListsFromGardenId(id);
+	}
+	
+	
+	
 	@RequestMapping(path = { "/addToMyShoppingList/{id}"}, method = RequestMethod.POST)
 	public void addToList(@PathVariable Long id, @RequestBody ShoppingList list) {
 			list.setGardenId(id);
 			theSupplies.addToShoppingListGardenSupplies(list);
 	}
 	
-//	@RequestMapping(path = { "addSupplyToShoppingList"}, method = RequestMethod.POST)
-//	public void addLineItemToList(@RequestBody ShoppingList shoppingList) {
-//		
-//		
-//		
-//	}
-//	
-	
-	
+
 	@RequestMapping(path = {"/generateSuggestedSeedlingList/{gardenid}"}, method = RequestMethod.GET)
 	public LineItem[] suggestedList(@PathVariable Long gardenid) {
-		System.out.println("in generateSuggestedSeedlingList");
 		List<LineItem> items = new ArrayList<>();
 		Plot[] plots = thePlots.getPlotsByGardenId(gardenid);
 		
 		for(Plot p: plots) {
 			items.add(thePlants.getPlantCostFromPlot(p));
-			System.out.println(p.getPlantId());
-			
 		}
-		LineItem[] seedling = new LineItem[items.size()];
-		for(int i = 0; i < items.size(); i++) {
-			seedling[i] = items.get(i);
+	
+		Map <String, Integer> consolidated = new LinkedHashMap<>();
+		Map <String, BigDecimal> consolidatedCost = new LinkedHashMap<>();
+		for (LineItem n : items) {
+			int count = consolidated.containsKey(n.getItemName()) ? consolidated.get(n.getItemName()) : 0;
+			consolidated.put(n.getItemName(), count + 1);
+			consolidatedCost.put(n.getItemName(), n.getCost());
+		}
+		
+		LineItem[] seedling = new LineItem[consolidated.size()];
+		for (int i = 0; i < consolidated.size(); i++) {
+			LineItem temp = new LineItem();
+			Object[] keys = consolidated.keySet().toArray();
+			Object[] keysCost = consolidated.keySet().toArray();
+			temp.setItemName(keys[i].toString());
+			temp.setItemQuantity(consolidated.get(keys[i]));
+			temp.setCost(consolidatedCost.get(keysCost[i]).multiply(BigDecimal.valueOf(temp.getItemQuantity())));
+			seedling[i] = temp;
 		}
 		return seedling;	
 	}
 	
-	
-	@RequestMapping(path = {"/supplyCostByItemCount"}, method = RequestMethod.GET)
-	public LineItem supplyCost(@RequestBody Supplies supply) {
-		LineItem supplyCost = theSupplies.getSuppliesFromSupplyCount();
-		return supplyCost;
-	}
 	
 
 }
