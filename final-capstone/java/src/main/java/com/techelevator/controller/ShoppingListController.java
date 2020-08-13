@@ -63,6 +63,7 @@ public class ShoppingListController {
 			consolidated.put(n.getItemName(), count + 1);
 			consolidatedCost.put(n.getItemName(), n.getCost());
 		}
+
 		
 		LineItem[] seedling = new LineItem[consolidated.size()];
 		for (int i = 0; i < consolidated.size(); i++) {
@@ -70,8 +71,8 @@ public class ShoppingListController {
 			Object[] keys = consolidated.keySet().toArray();
 			Object[] keysCost = consolidated.keySet().toArray();
 			temp.setItemName(keys[i].toString());
-			temp.setItemQuantity(consolidated.get(keys[i]));
-			temp.setCost(consolidatedCost.get(keysCost[i]).multiply(BigDecimal.valueOf(temp.getItemQuantity())));
+			temp.setItemQuantity(consolidated.get(keys[i]) * thePlants.searchPlantByPlantName(keys[i].toString()).getPlantsPerSqFoot());
+			temp.setCost(consolidatedCost.get(keysCost[i]).multiply(BigDecimal.valueOf(consolidated.get(keys[i]))));
 			seedling[i] = temp;
 		}
 		return seedling;	
