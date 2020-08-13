@@ -173,7 +173,7 @@ h4 {
   flex-grow: 1;
   justify-content: center;
   align-content: center;
-  min-height: 75vh;
+  min-height: 80vh;
   width: 100%;
 }
 </style>
