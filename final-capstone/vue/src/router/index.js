@@ -6,8 +6,6 @@ import Profile from '../views/Profile.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import AddGarden from '../views/AddGarden.vue'
-import AddPlot from '../views/AddPlot.vue'
-import EditPlot from '../views/EditPlot.vue'
 import Garden from '../views/Garden.vue'
 import Plot from '../views/Plot.vue'
 import Zone from '../views/Zone.vue'
@@ -101,22 +99,6 @@ const router = new Router({
       path: '/garden/:gardenid/shopping',
       name: 'shopping',
       component: Shopping,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/garden/:gardenid/addplot',
-      name: 'add-plot',
-      component: AddPlot,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/garden/:gardenid/editplot/:plotid',
-      name: 'edit-plot',
-      component: EditPlot,
       meta: {
         requiresAuth: true
       }
