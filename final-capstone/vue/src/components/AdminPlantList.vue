@@ -86,7 +86,7 @@ export default {
           .then(response => {
             if (response.status === 200) {
               alert("Plant successfully deleted");
-              this.$router.push(`/admin/home`);
+              this.$router.go();
             }
           })
           .catch(error => {
