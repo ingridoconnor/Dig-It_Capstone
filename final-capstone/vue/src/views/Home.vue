@@ -1,19 +1,19 @@
 <template>
-  <div>
+  <div class="home-container-home">
 
-  <div class="home logged" v-if="$store.state.token != ''">
+  <div class="home-title-bar logged" v-if="$store.state.token != ''">
     <h1>Hey {{$store.state.userData.firstName}}, let's get digging!</h1>
     <h2>Your profile is always a great place to start.</h2>
 
   </div>
-  <div class="home" v-else>
+  <div class="home-title-bar" v-else>
     <h1>Let's get digging!</h1>
     <h2>Dig It! is an online gardening app that helps you create a vegateble garden.</h2>
   </div>
     <user-steps class="user-steps"/>
-  <div class="links">
-
-    <router-link  class="button create btn-lg btn-garden" v-bind:to="{ name: 'register' }" v-if="$store.state.token === ''">
+  
+  <div class="home-links-container">
+    <router-link  class="btn-garden btn-create-account" v-bind:to="{ name: 'register' }" v-if="$store.state.token === ''">
       Create an Account
     </router-link>
   </div>
@@ -35,18 +35,35 @@ export default {
 
 <style>
 
-.home {
+.home-container-home {
   display: flex;
+  width: 85%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background-image: url("../img/HomePic.jpg");
-  background-repeat: no-repeat;
-  background-size: 200vh;
-  background-position: center; */
+  margin: 20px 0px;
+  background-color: rgba(193, 197, 109, 0.8);
+  border-radius: 20px;
+
+}
+.home-title-bar {
+  display: flex;
+  width: 60%;
+  padding-top: 15px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.links {
+.home-title-bar h1, .home-title-bar h2 {
+  display: flex;
+  text-justify: center;
+  margin: 0 0 10px 0;
+
+}
+
+
+.home-links-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -55,7 +72,8 @@ export default {
 
 .user-steps {
   display: flex;
-  justify-content: center;
+  flex-grow: 1;
+  justify-content: space-between;
 }
 
 

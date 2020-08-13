@@ -16,7 +16,7 @@
 import PlotService from "@/services/PlotService";
 import ShoppingService from "@/services/ShoppingService.js";
 import GardenService from "@/services/GardenService";
-import PlantService from '../services/PlantService';
+
 
 export default {
   name: "plant-shopping-list",

@@ -1,38 +1,76 @@
 <template>
   <div id="app">
     <div id="app-home" v-if="isHome">
-        <div id="header">
-      <a href="/"><img v-bind:class="isHome ? '' : 'shrink-nav' " class="logo" src="./img/digit.png" alt="digit logo"></a>
-      <div id="nav">
-          <router-link class="button" v-bind:to="{ name: 'home' }" v-if="!isHome">Home</router-link>
-          <router-link class="button" v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''" v-show="!isLogin">Login</router-link>
-          <router-link class="button" v-bind:to="{ name: 'profile' }" v-if="$store.state.token != '' && $route.name != 'profile'">Profile</router-link>
-          <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <div id="header">
+        <a href="/">
+          <img
+            v-bind:class="isHome ? '' : 'shrink-nav' "
+            class="logo"
+            src="./img/digit.png"
+            alt="digit logo"
+          />
+        </a>
+        <div id="nav">
+          <router-link class=" btn-main-nav" v-bind:to="{ name: 'home' }" v-if="!isHome">Home</router-link>
+          <router-link
+            class=" btn-main-nav"
+            v-bind:to="{ name: 'login' }"
+            v-if="$store.state.token === ''"
+            v-show="!isLogin"
+          >Login</router-link>
+          <router-link
+            class=" btn-main-nav"
+            v-bind:to="{ name: 'profile' }"
+            v-if="$store.state.token != '' && $route.name != 'profile'"
+          >Profile</router-link>
+          <router-link
+            class=" btn-main-nav"
+            v-bind:to="{ name: 'logout' }"
+            v-if="$store.state.token != ''"
+          >Logout</router-link>
+        </div>
       </div>
-  </div>
 
-  <div id="main-view">
-    <router-view />
-  </div>
+      <div id="main-view">
+        <router-view />
+      </div>
     </div>
 
     <div id="not-home" v-else>
-          <div id="header">
-              <a href="/"><img v-bind:class="isHome ? '' : 'shrink-nav' " class="logo" src="./img/digit.png" alt="digit logo"></a>
-              <div id="nav">
-                  <router-link class="button  btn-main-nav" v-bind:to="{ name: 'home' }" v-if="!isHome">Home</router-link>
-                  <router-link class="button  btn-main-nav" v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''" v-show="!isLogin">Login</router-link>
-                  <router-link class="button  btn-main-nav" v-bind:to="{ name: 'profile' }" v-if="$store.state.token != '' && $route.name != 'profile'">Profile</router-link>
-                  <router-link class="button  btn-main-nav" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-              </div>
-          </div>
+      <div id="header">
+        <a href="/">
+          <img
+            v-bind:class="isHome ? '' : 'shrink-nav' "
+            class="logo"
+            src="./img/digit.png"
+            alt="digit logo"
+          />
+        </a>
+        <div id="nav">
+          <router-link class=" btn-main-nav" v-bind:to="{ name: 'home' }" v-if="!isHome">Home</router-link>
+          <router-link
+            class=" btn-main-nav"
+            v-bind:to="{ name: 'login' }"
+            v-if="$store.state.token === ''"
+            v-show="!isLogin"
+          >Login</router-link>
+          <router-link
+            class=" btn-main-nav"
+            v-bind:to="{ name: 'profile' }"
+            v-if="$store.state.token != '' && $route.name != 'profile'"
+          >Profile</router-link>
+          <router-link
+            class=" btn-main-nav"
+            v-bind:to="{ name: 'logout' }"
+            v-if="$store.state.token != ''"
+          >Logout</router-link>
+        </div>
+      </div>
 
-          <div id="main-view">
-            <router-view />
-          </div>
+      <div id="main-view">
+        <router-view />
+      </div>
     </div>
-
-    
   </div>
 </template>
 
@@ -40,31 +78,23 @@
 export default {
   computed: {
     isHome() {
-      return this.$route.name === 'home';
+      return this.$route.name === "home";
     },
     isLogin() {
-      return this.$route.name === 'login';
-    }
-  }
-
+      return this.$route.name === "login";
+    },
+  },
 };
 </script>
 
 <style>
 
-/* * {
-    cursor:url("img/carrot.png"),auto;
-}
-
-*:active {
-    cursor:url("img/carrotclick.png"),auto;
-} */
-
-#app-home{
-    background-image: url("img/HomePic.jpg");
-      background-repeat: no-repeat;
+#app-home {
+  background-image: url("img/HomePic.jpg");
+  background-repeat: no-repeat;
   background-size: 200vh;
   background-position: center;
+
 }
 
 #app {
@@ -72,27 +102,19 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: 'Raleway', sans-serif;
-  /* cursor:url("img/carrot.png"),auto; */
-  /* background-image: url("img/HomePic.jpg"); */
-  /* background-repeat: no-repeat;
-  background-size: 200vh;
-  background-position: center; */
-}
+  font-family: "Raleway", sans-serif;
+ }
 
 #header {
-  /* margin: 30px 40px 20px 40px; */
-  margin: 0px 0px 20px 0px;
   background-color: #c1c56d;
   display: flex;
   flex-grow: 1;
   align-items: center;
-  max-height: 15%;
 }
 
 .logo {
-  margin: 0px 0px 20px 60px;
-  width: 250px;
+  margin: 20px 0px 20px 60px;
+  width: 200px;
 }
 
 .shrink-nav {
@@ -100,7 +122,7 @@ export default {
 }
 
 #nav {
-  margin-left: 40px;
+  padding-right: 60px;
   display: flex;
   flex-grow: 1;
   justify-content: flex-end;
@@ -111,16 +133,16 @@ export default {
   padding: 20px;
   height: 28px;
   border-radius: 28px;
-  width: 80px;
+  width: 16ch;
   margin-left: 20px;
-  margin-right: 60px;
   color: white;
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-weight: 200;
   text-align: center;
   text-decoration: none;
   align-items: center;
-  background-color: #e48438 ;
+  background-color: #e48438;
+  box-shadow: 2px 2px 4px black;
 }
 
 .btn-lg {
@@ -134,31 +156,24 @@ export default {
   border: none;
 }
 
-#NeedAn, #AlreadyHave {
+#NeedAn,
+#AlreadyHave {
   margin: 20px 0px;
 }
 
-
-h1, h2, h3, h4 {
-font-family: 'Kameron', serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Kameron", serif;
 }
 
 #main-view {
   display: flex;
   flex-grow: 1;
-  min-height: 60vh;
-  margin: 40px 100px 40px 100px;
-  /* background-color: #c1c56d; */
-  background-color: rgba(193,197,109, 0.8);
-  border-radius: 20px;
+  justify-content: center;
+  align-content: center;
+  min-height: 75vh;
+  width: 100%;
 }
-
-
-
-
-
-
-
-
-
 </style>

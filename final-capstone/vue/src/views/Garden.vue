@@ -49,7 +49,7 @@ methods: {
 #main-garden-container {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  width: 100%;
   align-content: center;
 }
 
@@ -57,7 +57,10 @@ methods: {
   display: flex;
   flex-grow: 1;
   justify-content: center;
-  margin-bottom: 25px;
+  align-items: baseline;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 3px;
 }
 
 #garden-name {
@@ -70,7 +73,7 @@ methods: {
 .plant-garden-container {
   display: flex;
   flex-grow: 1;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -104,7 +107,7 @@ methods: {
   text-align: center;
   align-items: center;
   border-radius: 15px;
-  line-height: 1.7em;
+  height: 2em;
   font-size: 1.1em;
   font-weight: 700;
   text-decoration: none;

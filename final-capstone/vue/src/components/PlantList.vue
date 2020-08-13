@@ -1,7 +1,7 @@
 <template>
-  <form id="plant-selector">
-    <div id="plants">
-      <div class="plant" v-for="plant in this.$store.state.plants" v-bind:key="plant.index">
+  <form id="plant-selector-garden">
+    <div id="plants-garden">
+      <div class="plant-garden" v-for="plant in this.$store.state.plants" v-bind:key="plant.index">
         <input
           type="radio"
           name="veggie"
@@ -10,7 +10,7 @@
           v-bind:value="plant.id"
           v-on:change="selectVegetable($event)"
         />
-        <img class="plantimg" v-bind:src="require('../img/vegetables/' + plant.name + '.png')"/>        
+        <img class="plantimg-garden" v-bind:src="require('../img/vegetables/' + plant.name + '.png')"/>        
         <label v-bind:for="`Plant-${plant.id}`">{{plant.name}}</label>
       </div>
     </div>
@@ -70,31 +70,40 @@ export default {
 
 <style>
 
-#plant-selector {
+#plant-selector-garden {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 25px;
 }
 
-#plants {
+#plants-garden {
   display: flex;
   flex-direction: column;
-  height: 30vh;
+  flex-grow: 1;
+  height: 25vh;
   width: 90%;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
 }
 
-.plant {
+.plant-garden {
   display: flex;
-  width: 18ch;
+  width: 19ch;
   align-items: center;
-  /* margin: 3px 3px;
-  background-color: #85a183;
-  border: 1px solid #85a183;
-  border-radius: 5px; */
+  margin: 3px 3px;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+
+}
+
+.plantimg-garden {
+  display: flex;
+  width: 35px;
+   align-items: center;
+  margin: 3px 3px;
 
 }
 
