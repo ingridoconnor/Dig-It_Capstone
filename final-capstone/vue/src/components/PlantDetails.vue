@@ -30,7 +30,13 @@
       <p
         id="plant-description"
         class="plants-details"
-      >$ {{this.$store.state.vegetable.seedlingCost}} / $ {{this.$store.state.vegetable.seedlingCost * this.$store.state.vegetable.plantsPerSqFoot}}</p>
+        v-if="this.$store.state.vegetable.plantsPerSqFoot == 1"
+      >{{this.$store.state.vegetable.seedlingCost | currency}}</p>
+       <p
+        id="plant-description"
+        class="plants-details"
+        v-else
+      >{{this.$store.state.vegetable.seedlingCost | currency}} / {{this.$store.state.vegetable.seedlingCost * this.$store.state.vegetable.plantsPerSqFoot | currency}}</p>
     </div>
     <div class="attribute">
       <img id="plant-details-image" v-bind:src="require('../img/vegetables/' + this.$store.state.vegetable.name + '.png')"/>

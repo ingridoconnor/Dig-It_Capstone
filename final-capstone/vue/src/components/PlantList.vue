@@ -52,7 +52,7 @@ export default {
   methods: {
     selectVegetable(event) {
       if (event.target.checked) {
-        this.vegetable.description = this.$store.state.plants.filter(
+        this.vegetable = this.$store.state.plants.filter(
           (plant) => {
             if (plant.id == event.target.value) {
               this.vegetable = plant;

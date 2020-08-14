@@ -1,8 +1,8 @@
 <template>
-  <form id="plant-selector" class ="plant-container profile-details bubble-block"
+  <form id="plant-selector" class ="plant-container bubble-block"
   v-on:submit.prevent="submitForm">
-    <div id="plants">
-      <div class="plant" v-for="plant in this.$store.state.plants" v-bind:key="plant">
+    <div id="plants-admin-page">
+      <div class="plant-admin-plant" v-for="plant in this.$store.state.plants" v-bind:key="plant">
         <input
           type="radio"
           name="veggie"
@@ -114,6 +114,11 @@ export default {
 
 #admin-plant-image {
 width: 60px;
+display: flex;
+flex-grow: 1;
+align-items: center;
+align-content: center;
+margin-bottom: 13px;
 }
 
 #plant-selector {
@@ -123,31 +128,39 @@ width: 60px;
   margin-top: 25px;
 }
 
-#plants {
+#plants-admin-page {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 30vh;
-  width: 90%;
+  width: 95%;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
+   border: 1px solid#307c55;
 }
 
-.plant {
+.plant-admin-plant {
   display: flex;
-  width: 18ch;
+  flex-grow: 1;
+  width: 19ch;
+  height: 5em;
   align-items: center;
-  /* margin: 3px 3px;
-  background-color: #85a183;
-  border: 1px solid #85a183;
-  border-radius: 5px; */
+  align-content: center;
+  margin: 3px 3px;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 5px;
 
 }
 
 .plant label {
+  display: flex;
+  flex-grow: 1;
   margin: 0px;
 }
 .radios {
+    display: flex;
+  flex-grow: 1;
   width: 13px;
   margin-bottom: 5px;
 }

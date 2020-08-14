@@ -37,7 +37,7 @@ export default {
 
 .home-container-home {
   display: flex;
-  width: 85%;
+  width: 90%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -55,13 +55,23 @@ export default {
   justify-content: center;
 }
 
-.home-title-bar h1, .home-title-bar h2 {
+.home-title-bar > h1 {
   display: flex;
   text-justify: center;
+  color: #307c55;
+  font-size: 3em;
   margin: 0 0 10px 0;
 
 }
+.home-title-bar > h2 {
+  display: flex;
+  text-align: center;
+  text-justify: center;
+  color: white;
+  font-size: 2em;
+  margin: 0 0 10px 0;
 
+}
 
 .home-links-container {
   display: flex;

@@ -145,6 +145,12 @@ export default {
   box-shadow: 2px 2px 4px black;
 }
 
+.btn-main-nav:hover {
+  background-color: #307c55;
+
+}
+
+
 .btn-lg {
   margin: 20px 15px;
   width: 250px;

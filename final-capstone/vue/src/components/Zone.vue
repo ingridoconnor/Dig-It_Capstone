@@ -1,10 +1,21 @@
 <template>
   <div class="page">
     
+      <div class="zone-container-vegetable">      <h2>Suggested vegetables for Zone {{this.$store.state.userData.region}}:</h2>
+      <div class="info">
+
+        <div class="zoneplant" v-for="zonePlant in $store.state.zonePlants" v-bind:key="zonePlant.name">
+          <img class="zoneplantimg" v-bind:src="require('../img/vegetables/' + zonePlant.name + '.png')"/>
+          <h3 id="zoneplantname">{{zonePlant.name}}</h3>
+        </div>
+
+      </div>
+      </div>
+
     <div class="map">
       <div>
           <h3 class="description">The Plant Hardiness Zone is a standard that gardeners use to determine which plants are most likely to thrive at a given location.    The hardiness zone of your region is determined by the average annual extreme minimum temperature</h3>
-          <h3 class="description">It's important to know which zone your garden is in before deciding which vegetables to grow.  Use the guide below to see which plants are best suited for your Hardiness Zone.</h3>
+          <!-- <h3 class="description">It's important to know which zone your garden is in before deciding which vegetables to grow.  Use the guide below to see which plants are best suited for your Hardiness Zone.</h3> -->
         <h1>Your Plant Hardiness Zone</h1>
           <img class="zonemap" src="../img/zonemaps/zone3.png" alt="grow zones map" v-if="this.$store.state.userData.region == '3a' || this.$store.state.userData.region == '3b'">
           <img class="zonemap" src="../img/zonemaps/zone4.png" alt="grow zones map" v-if="this.$store.state.userData.region == '4a' || this.$store.state.userData.region == '4b'">
@@ -20,19 +31,14 @@
           <h3 class="growing-info">The Growing Season starts {{this.$store.state.zone.avgLastFrostMonth}} {{this.$store.state.zone.avgLastFrostDay}} and ends {{this.$store.state.zone.avgFirstFrostMonth}} {{this.$store.state.zone.avgFirstFrostDay}}</h3>
       <h3 class="growing-info">On average, there are {{this.$store.state.zone.avgGrowingDays}} growing days per year</h3>
       <br>
-      <h2>Suggested vegetables for Zone {{this.$store.state.userData.region}}:</h2>
-      <div class="info">
+      
+      
 
-        <div class="zoneplant" v-for="zonePlant in $store.state.zonePlants" v-bind:key="zonePlant.name">
-          <img class="zoneplantimg" v-bind:src="require('../img/vegetables/' + zonePlant.name + '.png')"/>
-          <h3 id="zoneplantname">{{zonePlant.name}}</h3>
-        </div>
 
-      </div>
   </div>
-<br>
 
-    <div class="otherzones-start">
+
+    <div class="otherzones-start otherzones-selected">
         <h2>See other Hardiness Zones</h2>
         <select name="mapValue" id="hzones-select" v-on:change="myFunction()" v-model="mapValue">
           <option selected default value="1">Choose Zone</option>
@@ -112,10 +118,10 @@ export default {
   },
 
   methods: {
-     myFunction() {
-      let element = document.querySelector(".otherzones-start");
-      element.classList.add("otherzones-selected");
-  }
+  //    myFunction() {
+  //     let element = document.querySelector(".otherzones-start");
+  //     element.classList.add("otherzones-selected");
+  // }
   },
   name: "zone-data",
   components: {},
@@ -164,20 +170,20 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0px 5px;
-    padding: 3px 3px;
+    margin: 5px 0px;
     background-image: url("../img/vegetables/None.png");
     background-size: 350px;
     max-width: 180px;
   }
 
   .zoneplantimg {
-    width: 70%;
+    margin: 10px 0px 0px;
+    width: 40%;
   }
 
   #zoneplantname {
     justify-content: center;
-    margin-bottom: 15px;
+    margin: 5px 0px 10px;
     color: white;
     text-shadow: 5px 5px 3px #3b3b3b;
   }
@@ -186,6 +192,8 @@ export default {
 
   .page {
     display: flex;
+    flex-grow: 1;
+    padding-bottom: 40px;
   }
 
   .zonemap {
@@ -195,29 +203,52 @@ export default {
     display: inline-block;
   }
 
-  .map {
+.zone-container-vegetable {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     background-color: #85A183;
     border-radius: 50px;
-    padding: 50px 30px 50px 30px;
+    padding: 20px 30px 0px 30px;
     margin-left: 30px;
+
+    width: 10%;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .map {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 45%;
+    text-align: center;
+    background-color: #85A183;
+    border-radius: 50px;
+    padding: 20px 30px 50px 30px;
+    margin-left: 30px;
+    margin-right: 30px;
   }
 
   .otherzones-start {
     text-align: center;
-    width: 500px;
+    width: 30%;
     border-radius: 50px;
-    margin: 0px 10px 0px 10px;
-    padding: 50px 50px 50px 50px;
+        margin-right: 30px;
+
+    padding: 20px 50px 50px 50px;
   }
 
   .otherzones-selected {
     text-align: center;
     background-color: #c1d8bf;
     border-radius: 50px;
-    margin: 0px 50px 0px 50px;
-    padding: 0px 20px 0px 20px;
-    height: 700px;
+        margin-right: 30px;
+
+    padding: 20px 20px 0px 20px;
   }
 
   #hzones-select {

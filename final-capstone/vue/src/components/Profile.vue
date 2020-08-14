@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="profile-main-container">
     
     <div class="garden-listing bubble-block">
       <h2>{{this.$store.state.userData.firstName}}'s Gardens:</h2>
@@ -133,6 +133,7 @@ export default {
 </script>
 
 <style local>
+
 h2 {
   margin-bottom: 10px;
 }
@@ -158,10 +159,12 @@ h2 {
 .profile-field {
   display: flex;
   margin: 3px 0px;
+    font-size: 1.2em;
 }
 
 .label-field {
   width: 14ch;
+  font-size: 1.2em;
 }
 .button-container {
   display: flex;
@@ -187,33 +190,40 @@ h2 {
   text-decoration: none;
   border-style: solid;
   margin: 0px 10px;
+    box-shadow: 2px 2px 4px black;
 }
 
 .btn-edit, .btn-add-garden:hover {
   background-color: #85a183;
   border-color: #85a183;
+    box-shadow: 2px 2px 4px black;
 
 }
 .btn-delete {
   background-color: #e48438;
   border-color: #e48438;
+    box-shadow: 2px 2px 4px black;
 }
 .btn-delete:hover {
   background-color: black;
   border-color: black;
+    box-shadow: 2px 2px 4px black;
 }
 
 .btn-add-garden, .btn-edit:hover, .garden-links:hover {
   color: white;
   background-color: #307c55;
   border-color: #307c55;
+    box-shadow: 2px 2px 4px black;
 }
 
 .garden-links {
-  display: inline-block;
+  display: flex;
+  flex-grow: 1;
   color: black;
   text-decoration: none;
-  padding: 2px 10px;
+  font-size: 1.2em;
+  padding: 15px 25px;
   margin: 3px 6px;
   background-color: #c1c65d;
   border: 1px solid #c1c65d;
