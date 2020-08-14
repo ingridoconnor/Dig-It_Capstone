@@ -112,9 +112,9 @@
      </div>
 
       <router-link :to="{ name: 'login' }" id="AlreadyHave">Already have an account?</router-link>
-      <button  type="submit" class="button btn btn-lg btn-primary btn-block">
-        Submit
-      </button>
+      
+      <a href="#" @click.prevent="register" class="btn-submit-profile">Submit</a>
+
     </form>
   </div>
 </template>
@@ -222,4 +222,30 @@ input {
   width: 50ch;
   height: 2em;
 }
+
+.btn-submit-profile {
+  display: flex;
+  color: white;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+  height: 2em;
+  font-size: 1.2em;
+  font-weight: 400;
+  text-decoration: none;
+  border-style: solid;
+  padding: 10px 40px;
+  background-color: #307c55;
+  border-color: #307c55;
+  box-shadow: 2px 2px 4px black;
+  margin: 15px;
+}
+
+.btn-submit-profile:hover {
+  background-color: #e48438;
+  border-color: #e48438;
+
+}
+
+
 </style>

@@ -57,8 +57,8 @@ export default {
   align-content: center;
   min-height: 60vh;
   color: white;
-  background-color: black;
-  border: 1px solid black;
+  background-color: #307c55;
+  border: 1px solid #307c55;
   border-radius: 25px;
   padding: 20px;
   margin-right: 20px;

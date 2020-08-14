@@ -232,6 +232,8 @@ export default {
   text-decoration: none;
   border-style: solid;
   margin: 0px 10px;
+  box-shadow: 2px 2px 4px black;
+
   padding: 15px;
 }
 

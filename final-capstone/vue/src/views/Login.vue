@@ -1,7 +1,7 @@
 <template>
   <div id="login-login" class="text-center">
     <form class="form-signin-logon" >
-      <h1 class="h3 mb-3 font-weight-normal">DIG IT!</h1>
+      <img id="login-logo" src="@/img/digit.png" alt="Dig It Logo" >
       <div
         class="alert alert-danger"
         role="alert"
@@ -37,7 +37,7 @@
       /></div>
       
       <router-link :to="{ name: 'register' }" id="NeedAn">Need an account?</router-link>
-      <a href="#" @click.prevent="login" class="button btn btn-lg btn-primary btn-block btn-login-login">Sign in</a>
+      <a href="#" @click.prevent="login" class="btn-login-login">Sign in</a>
     </form>
   </div>
 </template>
@@ -94,6 +94,10 @@ export default {
   border-radius: 25px;
 }
 
+#login-logo {
+  margin: 60px 0px 100px;
+}
+
 .form-signin-logon {
   display: flex;
   flex-direction: column;
@@ -129,11 +133,17 @@ input {
   font-weight: 400;
   text-decoration: none;
   border-style: solid;
-  padding: 10px 80px;
-  background-color: #e48438;
-  border-color: #e48438;
+  padding: 10px 40px;
+  background-color: #307c55;
+  border-color: #307c55;
   box-shadow: 2px 2px 4px black;
   margin: 15px;
+}
+
+.btn-login-login:hover {
+  background-color: #e48438;
+  border-color: #e48438;
+
 }
 
 </style>

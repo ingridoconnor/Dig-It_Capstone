@@ -65,8 +65,10 @@
     </div>
 
     <div id="btn-container-profileform">
-      <button class="btn-submit" type="submit">Submit</button>
-      <button class="btn-cancel" v-on:click.prevent="cancelForm" type="cancel">Cancel</button>
+            <a href="#" @click.prevent="submitForm" class="btn-submit-profile">Submit</a>
+          <a href="#" v-on:click.prevent="cancelForm" class="btn-submit-profile-cancel">Cancel</a>
+      
+     
     </div>
   </form>
 </template>
@@ -193,23 +195,42 @@ select.form-control {
   margin: 10px 20px 10px 10px;
 }
 
-.btn-submit {
-  color: #fff;
-  background-color: #e48438;
-  border-color: #e48438;
-  width: 150px;
-  margin-right: 15px;
-  border-radius: 5px;
-  margin-top: 15px;
-}
-.btn-cancel {
-  color: #fff;
+.btn-submit-profile, .btn-submit-profile-cancel:hover {
+  display: flex;
+  color: white;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+  height: 2em;
+  font-size: 1.2em;
+  font-weight: 400;
+  text-decoration: none;
+  border-style: solid;
+  padding: 10px 40px;
   background-color: #307c55;
   border-color: #307c55;
-  width: 150px;
-  border-radius: 5px;
-  margin-left: 10px;
+  box-shadow: 2px 2px 4px black;
+  margin: 15px;
 }
+
+.btn-submit-profile-cancel, .btn-submit-profile:hover {
+  display: flex;
+  color: white;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+  height: 2em;
+  font-size: 1.2em;
+  font-weight: 400;
+  text-decoration: none;
+  border-style: solid;
+  padding: 10px 40px;
+  background-color: #e48438;
+  border-color: #e48438;
+  box-shadow: 2px 2px 4px black;
+  margin: 15px;
+}
+
 
 .status-message {
   display: block;
