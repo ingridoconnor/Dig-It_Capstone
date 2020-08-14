@@ -260,8 +260,8 @@ export default {
 .button-container {
   display: flex;
   flex-grow: 1;
-  width: 90%;
-  justify-content: space-between;
+  width: 100%;
+  justify-content: center;
   align-items: center;
   height: 2em;
   margin-top: 40px;
@@ -273,8 +273,6 @@ export default {
   flex-grow: 1;
   align-items: center;
   text-align: center;
-  text-justify: center;
-  width: 150px;
   border-radius: 15px;
   line-height: 1.7em;
   width: 300px;
@@ -282,6 +280,7 @@ export default {
   color: #fff;
   font-size: 1.1em;
   margin: 20px;
+  padding: 0px 20px;
   text-decoration: none;
   border-style: solid;
 }
@@ -289,16 +288,19 @@ export default {
 .btn-update {
   background-color: #e48438;
   border-color: #e48438;
+
 }
 .btn-update:hover,
 .btn-save-garden:hover {
   background-color: #e48438;
   border-color: #e48438;
+
 }
 
 .btn-save-garden {
   background-color: #307c55;
   border-color: #307c55;
+
 }
 
 .dead-button,.dead-button:hover {
@@ -306,6 +308,7 @@ export default {
   background-color: #696866;
   border-color: #696866;
     box-shadow: none;
+
 }
 
 </style>

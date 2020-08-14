@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="admin-home-page">
       <h1> Administrative Settings</h1>
     <admin-home />
     <admin-plant-list />
@@ -23,3 +23,11 @@ export default {
   }
 };
 </script>
+
+<style>
+
+#admin-home-page {
+  width: 90%;
+}
+
+</style>

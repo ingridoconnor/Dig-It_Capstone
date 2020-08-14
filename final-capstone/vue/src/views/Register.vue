@@ -182,26 +182,40 @@ export default {
   justify-content: flex-start; 
   align-items: center;
   background-color: #85A183;
-  margin: 0px 30% 0px 30%;
+  margin: 0px 0 20px 0;
+  width: 60%;
+  border: 2px;
+  border-style: solid;
+  border-color: #85A183;
+  border-radius: 25px;
 }
 
 .form-register {
   display: flex;
   flex-direction: column;
   align-items: center;
+    flex-grow: 1;
+  width: 100%;
 
 }
 
 .field {
   display: flex;
+  flex-grow: 1;
   justify-content: flex-end;
   align-items: center;
+  width: 100%;
 }
 
 label {
+  display: flex;
+  justify-items: flex-end;
+  flex-grow: 1;
   margin-right: 15px;
   line-height: 2em;
   margin-bottom: 2px;
+  width: 20ch;
+  text-align: right;
 }
 
 input {

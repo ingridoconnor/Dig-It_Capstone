@@ -1,5 +1,5 @@
 <template>
-  <form v-on:submit.prevent="addNewGarden">
+  <form id="garden-add-garden" v-on:submit.prevent="addNewGarden">
     <h1>Add New Garden</h1>
 
     <div class="form-element">
@@ -30,7 +30,7 @@
     </div>
 
     <div id="gridView">
-      <div class="row" v-for="i in rowCount" v-bind:key="i">
+      <div class="rowz" v-for="i in rowCount" v-bind:key="i">
         <span
           class="squares"
           v-for="plot in itemCountInRow(i)"
@@ -39,9 +39,9 @@
       </div>
     </div>
 
-    <div class="actions">
-      <a href="#" class="btn-garden btn-cancel btn-x-btn" v-on:click.prevent="resetForm" type="cancel">Cancel</a>
-      <a v-on:click.prevent="addNewGarden" class="btn-garden btn-submit btn-x-btn" type="submit" >Submit</a>
+    <div class="actions-buttons-x">
+      <a href="#" class=" btn-cancel-x btn-x-btn" v-on:click.prevent="resetForm" type="cancel">Cancel</a>
+      <a v-on:click.prevent="addNewGarden" class=" btn-submit-x btn-x-btn" type="submit" >Submit</a>
     </div>
   </form>
 </template>
@@ -147,11 +147,12 @@ export default {
 </script>
 
 <style >
-form {
+#garden-add-garden {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-grow: 1;
 }
 
 #gridView {
@@ -164,18 +165,23 @@ flex-grow: 1;
   padding: 20px;
   border-radius: 20px;
   background-color: #381c06;
+  margin: 20px;
 }
 
 input {
   width: 5ch;
+  font-size: 1.1em;
 }
 
 #name {
   width: 20ch;
 }
 
-.row {
+.rowz {
   display: flex;
+  flex-grow: 1;
+  width: 100%;
+  justify-content: center;
 }
 
 .squares  {
@@ -194,10 +200,10 @@ input {
   border-color: #381c06;
 }
 
-.actions {
+.actions-buttons-x {
   display: flex;
   flex-grow: 1;
-  width: 40%;
+  width: 100%;
   justify-content: space-between;
 }
 
@@ -220,10 +226,11 @@ input {
   box-shadow: 2px 2px 4px black;
   margin: 20px;
 }
-.btn-cancel {
+.btn-cancel-x {
   background-color: #e48438;
+    border-color: #e48438;
 }
-.btn-submit {
+.btn-submit-x {
   background-color: #307c55;
 }
 

@@ -49,7 +49,7 @@ methods: {
 #main-garden-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
   align-content: center;
 }
 

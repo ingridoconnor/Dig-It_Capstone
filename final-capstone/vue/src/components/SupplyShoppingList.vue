@@ -87,12 +87,14 @@ margin-bottom: 0px;
   font-family: 'Kameron', serif;
   font-weight: 700;
   display: flex;
+    font-size: 1.2em;
   margin-top: 0px;
 }
 
 .line-items {
   font-family: 'Kameron', serif;
   font-weight: 100;
+  font-size: 1.2em;
   display: flex;
 }
 

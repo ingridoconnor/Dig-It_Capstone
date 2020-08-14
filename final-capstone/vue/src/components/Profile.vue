@@ -49,6 +49,16 @@
       </div>
     </div>
 
+ <div class="button-container-admin">
+        <router-link
+          :to="{ name: 'adminhome'}"
+          class="btn-edit btn-profile"
+        >Admin Page</router-link>
+
+        
+      </div>
+
+
   </div>
 </template>
 
@@ -160,6 +170,13 @@ h2 {
   margin-top: 20px;
 }
 
+.button-container-admin {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .btn-profile {
   color: #fff;
   text-align: center;
@@ -202,4 +219,8 @@ h2 {
   border: 1px solid #c1c65d;
   border-radius: 5px;
 }
+
+
+
+
 </style>

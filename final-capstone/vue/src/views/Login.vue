@@ -1,6 +1,6 @@
 <template>
-  <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="login">
+  <div id="login-login" class="text-center">
+    <form class="form-signin-logon" >
       <h1 class="h3 mb-3 font-weight-normal">DIG IT!</h1>
       <div
         class="alert alert-danger"
@@ -37,7 +37,7 @@
       /></div>
       
       <router-link :to="{ name: 'register' }" id="NeedAn">Need an account?</router-link>
-      <button type="submit" class="button btn btn-lg btn-primary btn-block">Sign in</button>
+      <a href="#" @click.prevent="login" class="button btn btn-lg btn-primary btn-block btn-login-login">Sign in</a>
     </form>
   </div>
 </template>
@@ -80,19 +80,25 @@ export default {
 };
 </script>
 <style>
-#login {
+#login-login {
   display: flex;
   flex-direction: column;
   justify-content: flex-start; 
   align-items: center;
   background-color: #85A183;
-  margin: 0px 30% 0px 30%;
+  margin: 0px 0 20px 0;
+  width: 40%;
+  border: 2px;
+  border-style: solid;
+  border-color: #85A183;
+  border-radius: 25px;
 }
 
-.form-signin {
+.form-signin-logon {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 80%;
 
 }
 
@@ -110,6 +116,24 @@ label {
 input {
   width: 50ch;
   margin-top: 5px;
+}
+
+.btn-login-login {
+  display: flex;
+  color: white;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+  height: 2em;
+  font-size: 1.2em;
+  font-weight: 400;
+  text-decoration: none;
+  border-style: solid;
+  padding: 10px 80px;
+  background-color: #e48438;
+  border-color: #e48438;
+  box-shadow: 2px 2px 4px black;
+  margin: 15px;
 }
 
 </style>

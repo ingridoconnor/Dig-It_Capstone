@@ -58,6 +58,7 @@ export default {
   align-content: center;
   justify-content: center;
   padding: 25px 0px;
+  font-size: 1.3em;
 }
 
 .disclaimer {
@@ -85,6 +86,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 8px;
 }
 .plants-detail-categories,
 .plants-details {

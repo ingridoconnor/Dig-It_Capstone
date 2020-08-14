@@ -124,6 +124,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: 25px;
   flex-grow: 1;
   height: fit-content;
@@ -132,12 +133,15 @@ export default {
 #supplies-items {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   flex-wrap: wrap;
-  min-height: 80%;
+  height: 50%;
   width: 100%;
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  margin: 50px 0 0 0;
+
 }
 
 .supply-item {
@@ -152,14 +156,15 @@ export default {
   border-radius: 5px;
 }
 
-.supply-item label {
+.supply-item > label {
   margin: 0px;
   padding-left: 5px;
   width: 50ch;
   display: flex;
   justify-content: space-between;
+  text-align: left;
 }
-.supply .checkboxes {
+.supply > .checkboxes {
   width: 20px;
   margin-bottom: 5px;
 }

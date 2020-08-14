@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="edit-profile-page">
     <h1>Edit Profile</h1>
     <profile-form v-bind:userID="parseInt($route.params.userID)" />
   </div>
@@ -15,3 +15,9 @@ export default {
   }
 };
 </script>
+
+<style>
+#edit-profile-page {
+  width: 60%;
+}
+</style>
