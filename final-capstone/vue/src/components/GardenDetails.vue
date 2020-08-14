@@ -13,8 +13,8 @@
               v-bind:checked="selectedPlots.includes(plot.plotNumber)"
             />
             <img class="plot-plant-image" v-bind:src="require('../img/vegetables/' + plot.plantId + '.png')"/>
-            <p>{{plot.plotNumber}}</p>
-            <p>{{plot.plantId}}</p>
+            <p class="garden-plot-numbers">{{plot.plotNumber}}</p>
+            <p class="garden-plot-numbers">{{plot.plantId}}</p>
           </div>
 
         </div>
@@ -191,8 +191,13 @@ export default {
 
 <style scoped>
 
+.garden-plot-numbers {
+  display: none;
+}
+
 .plot-plant-image {
-  width: 30px;
+  width: 50px;
+  margin: 0px 10px 20px 0px;
 }
 
 .garden-grid-form {
