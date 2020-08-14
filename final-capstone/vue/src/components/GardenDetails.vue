@@ -217,6 +217,7 @@ export default {
   display: flex;
 }
 .squares {
+  width: 150px;
   margin: 5px;
   color: white;
   font-weight: bold;

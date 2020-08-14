@@ -185,6 +185,8 @@ input {
 }
 
 .squares  {
+  width: 100px;
+  height: 100px;
   display: flex;
   flex-grow: 1;
   align-items: center;
