@@ -76,7 +76,7 @@ INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Potato', 'Versitile, starchy root vegetable', '4', 'Minimum of 6 hours', 'Peru', '3.50');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Bell Pepper', 'Perfect for salads and stir-fry dishes', '1', '6-8 hours', 'South America', '6.25');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Peas', 'Classic garden veggie, great for novice gardeners', '9', '6-8 hours', 'Mediterranean', '4.00');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Green Seeds', 'Those who eat the fruit of this seed gains ultimate knowledge.  Has a nutty taste', '1', '14 weeks', 'Detroit and Philadelphia', '15000.00');
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Green Seeds', 'Those who eat the fruit of this seed gains ultimate knowledge.  Has a slightly nutty flavor', '1', '14 weeks', 'Detroit and Philadelphia', '15000.00');
 
 COMMIT TRANSACTION;
 
