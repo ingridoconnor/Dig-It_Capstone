@@ -3,8 +3,8 @@
     
     <div class="map">
       <div>
-          <h3 class="description">The plant hardiness zone is a standard that gardeners use to determine which plants are most likely to thrive at a given location.  The hardiness zone of your region is determined by the average annual extreme minimum temperature</h3>
-          <h3 class="description">It's important to know which zone your garden is in before deciding which vegetables to grow</h3>
+          <h3 class="description">The Plant Hardiness Zone is a standard that gardeners use to determine which plants are most likely to thrive at a given location.    The hardiness zone of your region is determined by the average annual extreme minimum temperature</h3>
+          <h3 class="description">It's important to know which zone your garden is in before deciding which vegetables to grow.  Use the guide below to see which plants are best suited for your Hardiness Zone.</h3>
         <h1>Your Plant Hardiness Zone</h1>
           <img class="zonemap" src="../img/zonemaps/zone3.png" alt="grow zones map" v-if="this.$store.state.userData.region == '3a' || this.$store.state.userData.region == '3b'">
           <img class="zonemap" src="../img/zonemaps/zone4.png" alt="grow zones map" v-if="this.$store.state.userData.region == '4a' || this.$store.state.userData.region == '4b'">
@@ -35,7 +35,7 @@
     <div class="otherzones-start">
         <h2>See other Hardiness Zones</h2>
         <select name="mapValue" id="hzones-select" v-on:change="myFunction()" v-model="mapValue">
-          <option selected>Choose Zone</option>
+          <option selected default value="1">Choose Zone</option>
           <option value="3">Zones 3A and 3B</option>
           <option value="4">Zones 4A and 4B</option>
           <option value="5">Zones 5A and 5B</option>
@@ -121,7 +121,7 @@ export default {
   components: {},
   data() {
     return {
-      mapValue: "",
+      mapValue: "1",
       zonePlant: {
         id: "",
         name: "",
@@ -138,6 +138,13 @@ export default {
 </script>
 
 <style>
+
+  h3.description {
+    display: flex;
+    justify-content: center;
+    padding: 0px 50px 0px 50px;
+    max-width: 90%;
+  }
 
   .growing-info {
     justify-content: center;
@@ -157,11 +164,11 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-grow: 1;
     margin: 0px 5px;
     padding: 3px 3px;
     background-image: url("../img/vegetables/None.png");
     background-size: 350px;
+    max-width: 180px;
   }
 
   .zoneplantimg {

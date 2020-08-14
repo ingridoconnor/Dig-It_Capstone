@@ -63,7 +63,7 @@ INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Eggplant', 'Herbaceous perennial, related to the tomato, great for cooking', '1', 'Minimum of 6 hours', 'India', '7.50');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Garlic', 'Herbaceous, pungent, flowering bulb, often used in cooking, keeps the vampires away!', '9', 'Minimum of 8 hours', 'Middle Asia', '3.25');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Green Onions', 'Also known as scallions, often used for cooking', '16', '6-7 hours', 'Asia', '1.75');
-INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Lettuce (leaf)', 'Perfect for salads!', '6', '10-12 hours', 'Egypt', '4.95');
+
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Lettuce (head)', 'Perfect for salads!', '2', '10-12 hours', 'Egypt', '4.95');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Onion', 'Pungent biennial, great for cooking', '9', '13-16 hours', 'Central Asia', '2.50');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Zucchini', 'Dark green summer squash, great for cooking', '1', '6-8 hours', 'Central America', '8.00');
@@ -76,7 +76,7 @@ INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Potato', 'Versitile, starchy root vegetable', '4', 'Minimum of 6 hours', 'Peru', '3.50');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Bell Pepper', 'Perfect for salads and stir-fry dishes', '1', '6-8 hours', 'South America', '6.25');
 INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Peas', 'Classic garden veggie, great for novice gardeners', '9', '6-8 hours', 'Mediterranean', '4.00');
-
+INSERT INTO plant (plant_name, description, plants_per_sq_foot, sun_requirements, region, seedling_cost) VALUES ('Green Seeds', 'Those who eat the fruit of this seed gains ultimate knowledge.  Has a nutty taste', '1', '14 weeks', 'Detroit and Philadelphia', '15000.00');
 
 COMMIT TRANSACTION;
 
@@ -238,99 +238,85 @@ INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '19');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '17');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '6');
-
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3a', '14');
-
-
-
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '19');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '17');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '6');
-
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('3b', '14');
-
-
-
-
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '19');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '17');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '6');
-
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4a', '14');
-
-
-
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '18');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '19');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '17');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '6');
-
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('4b', '14');
 
-
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5a', '11');
-
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5a', '17');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5a', '18');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5a', '19');
-
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5b', '11');
-
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5a', '7');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5a', '15');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5a', '16');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5b', '17');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5b', '18');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5b', '19');
-
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6a', '11');
-
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5b', '7');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5b', '15');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('5b', '16');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6a', '17');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6a', '18');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6a', '19');
-
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6b', '11');
-
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6a', '7');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6a', '15');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6a', '16');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6b', '17');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6b', '18');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6b', '19');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7a', '11');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6b', '7');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6b', '15');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('6b', '16');
 
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7a', '11');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7a', '12');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7a', '9');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7a', '4');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7a', '7');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7b', '11');
-
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7b', '12');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7b', '9');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7b', '4');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('7b', '7');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8a', '11');
-
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8a', '12');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8a', '9');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8a', '4');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8a', '7');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8b', '11');
-
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8b', '12');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8b', '9');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8b', '4');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('8b', '7');
 
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '11');
-
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '18');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '19');
-
-
-
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '22');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '8');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '23');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9a', '10');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '11');
-
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '18');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '19');
-
-
-
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '22');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '8');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '23');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('9b', '10');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '11');
-
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '18');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '19');
-
-
-
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '22');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '8');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '23');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10a', '10');
 INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '11');
-
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '18');
-INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '19');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '22');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '8');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '23');
+INSERT INTO plant_hardiness (zone_name, plant_id) VALUES ('10b', '10');
 
 
 COMMIT TRANSACTION;
