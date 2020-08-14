@@ -131,7 +131,11 @@ export default new Vuex.Store({
     },
     SET_SUPPLIES(state, data) {
       state.supplies = data;
-    }   
+    },
+    CLEAR_SEEDLING_LIST(state) {
+      state.seedlingShoppingLists = [];
+    }
+
     
   }
 })

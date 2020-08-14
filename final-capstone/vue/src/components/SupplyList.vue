@@ -7,11 +7,12 @@
         <input
           type="checkbox"
           class="checkboxes"
-          v-bind:id="`Supply-${supply.supplyId}`"
+          v-bind:id="supply.supplyId"
           v-bind:value="supply.supplyId"
           v-on:change="selectSupply($event)"
+          v-bind:checked="selectedSupplies.includes(supply.supplyId)"
         />
-        <label v-bind:for="`Supply-${supply.supplyId}`">
+        <label v-bind:for="supply.supplyId">
           {{supply.supplyName}}
           <span class="mulch-cost">{{ supply.supplyCost | currency }}</span>
         </label>
@@ -23,7 +24,7 @@
       <a
         href="#"
         class="btn-add-item-to-list"
-        v-if="selectionMade"
+        v-if="this.selectedSupplies.length > 0"
         v-on:click.prevent="addItemsToShoppingList()"
       >Add Selections to Shopping List</a>
       <a href="#" class="btn-add-item-to-list-dead" v-else>Add Selection to Activate</a>
@@ -65,7 +66,6 @@ export default {
         supplyQty: "",
       },
       ShoppingLists: [],
-     
       FilteredSupplies: [
         {
           supplyId: "",
@@ -74,7 +74,6 @@ export default {
           supplyQty: "",
         },
       ],
-      selectionMade: false,
       selectedSupplies: [],
       filterString: "bagged",
     };
@@ -82,36 +81,40 @@ export default {
 
   methods: {
      selectSupply(event) {
-      this.selectionMade = true;
-      this.FilteredSupplies.forEach(
-          (supply) => {
-            if (supply.supplyId == event.target.value) {
-              this.selectedSupplies.push(supply);
-            }
-          });
+      if (event.target.checked) {
+        this.selectedSupplies.push(parseInt(event.target.id));
+      } else {
+        this.selectedSupplies = this.selectedSupplies.filter(supply => {
+          return supply !== parseInt(event.target.id);
+        });
+      }
       }, 
     
     
     addItemsToShoppingList() {
-      this.selectedSupplies.forEach((item) => {
-            let shoppingListItem = {cost: '', itemName: '', supplyQty: '', supplyId: '' };
+      this.selectedSupplies.forEach((id) => {
+
+        this.FilteredSupplies.forEach (item =>  {
+          if (item.supplyId === id) {
+                 let shoppingListItem = {cost: '', itemName: '', supplyQty: '', supplyId: '' };
                 shoppingListItem.cost = item.supplyCost;
                 shoppingListItem.supplyName = item.supplyName;
                 shoppingListItem.supplyId = item.supplyId
                 shoppingListItem.supplyQty = 1;
                 this.$store.commit("SET_SHOPPING_LISTS", shoppingListItem);
 
-             
-                    ShoppingService.addItemToList(shoppingListItem, this.$route.params.gardenid)
+                ShoppingService.addItemToList(shoppingListItem, this.$route.params.gardenid)
                       .then()
                       .catch((error) => {
                         const response = error.response;
-
-                        if (response.status === 401) {
+                         if (response.status === 401) {
                           this.invalidCredentials = true;
                         }
                       });
-          });
+          }});
+           
+        });
+         
       this.selectedSupplies = [];
      },
   }

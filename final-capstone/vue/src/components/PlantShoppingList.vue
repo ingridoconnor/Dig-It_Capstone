@@ -42,6 +42,7 @@ export default {
         ShoppingService.generateSeedlingShoppingList(this.$route.params.gardenid)
           .then((response) => {
             this.ShoppingLists = response.data;
+            this.$store.commit("CLEAR_SEEDLING_LIST");
             this.ShoppingLists.forEach((plant) => {
                  this.$store.commit("SET_SEEDLING_SHOPPING_LISTS", plant);
           });

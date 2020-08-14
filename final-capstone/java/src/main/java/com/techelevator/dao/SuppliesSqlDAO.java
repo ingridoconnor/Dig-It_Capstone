@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import com.techelevator.model.LineItem;
 import com.techelevator.model.ShoppingList;
 import com.techelevator.model.Supplies;
 @Component
@@ -72,8 +71,28 @@ public class SuppliesSqlDAO implements SuppliesDAO{
 	
 	@Override
 	public void addToShoppingListGardenSupplies(ShoppingList item) {
-		String sql = "INSERT INTO garden_supplies VALUES (?, ?, ?)";
-		template.update(sql, item.getGardenId(), item.getSupplyId(), item.getSupplyQty());
+		String check = "SELECT * FROM garden_supplies WHERE "
+				+ "supply_id = ? "
+				+ "AND "
+				+ "garden_id = ? ";
+		SqlRowSet result = template.queryForRowSet(check, item.getSupplyId(), item.getGardenId());
+		result.next();
+		if (result.getInt("supply_qty") < 1) {
+			String sql = "INSERT INTO garden_supplies VALUES (?, ?, ?)";
+			template.update(sql, item.getGardenId(), item.getSupplyId(), item.getSupplyQty());
+		} else {
+			item.setSupplyQty(result.getInt("supply_qty") + 1);
+			String sqlUpdate = "UPDATE garden_supplies SET "
+					+ "supply_qty = ? "
+					+ "WHERE supply_id = ? "
+					+ "AND "
+					+ "garden_id = ? ";
+			template.update(sqlUpdate, item.getSupplyQty(), item.getSupplyId(), item.getGardenId());
+			
+		}
+				
+		
+		
 		
 	}
 	
